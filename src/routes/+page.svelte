@@ -2,6 +2,22 @@
     import Container from "../components/container.svelte";
 </script>
 <title>NotJustAnna.net</title>
+<meta name="description" content="Hello, I'm Anna!
+I am a full-stack developer, currently studying at Douglas College.
+Here you can find what I have worked on, and what I am currently developing.">
+<meta property="og:url" content="https://notjustanna.net">
+<meta property="og:type" content="website">
+<meta property="og:title" content="NotJustAnna.net">
+<meta property="og:description" content="Hello, I'm Anna!
+I am a full-stack developer, currently studying at Douglas College.
+Here you can find what I have worked on, and what I am currently developing.">
+<meta name="twitter:card" content="summary">
+<meta property="twitter:domain" content="notjustanna.net">
+<meta property="twitter:url" content="https://notjustanna.net">
+<meta name="twitter:title" content="NotJustAnna.net">
+<meta name="twitter:description" content="Hello, I'm Anna!
+I am a full-stack developer, currently studying at Douglas College.
+Here you can find what I have worked on, and what I am currently developing.">
 <Container>
     <h1>Hello, I'm <span class="emphasis">Anna</span>!</h1>
     <div class="introduction">
