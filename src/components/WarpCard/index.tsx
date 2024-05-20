@@ -41,7 +41,7 @@ export default function WarpCard() {
   return (
     <Container>
       <LinkedInButton href="https://linkedin.com/in/notjustanna">
-        <FontAwesomeIcon icon={faLinkedinIn} mask={faSquare} transform="shrink-5 down-0.4"/> LinkedIn
+        <FontAwesomeIcon icon={faLinkedinIn}/> LinkedIn
       </LinkedInButton>
       <GreyButton href="https://github.com/annathelibri">
         <FontAwesomeIcon icon={faGithub}/> GitHub
