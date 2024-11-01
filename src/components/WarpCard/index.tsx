@@ -36,7 +36,7 @@ export default function WarpCard() {
       <LinkedInButton href="https://linkedin.com/in/notjustanna">
         <FontAwesomeIcon icon={faLinkedinIn}/> LinkedIn
       </LinkedInButton>
-      <GreyButton href="https://github.com/annathelibri">
+      <GreyButton href="https://github.com/notjustanna">
         <FontAwesomeIcon icon={faGithub}/> GitHub
       </GreyButton>
       <GreyButton href="https://steamcommunity.com/id/notjustanna">
