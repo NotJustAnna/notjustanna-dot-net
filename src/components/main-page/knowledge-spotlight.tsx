@@ -26,7 +26,7 @@ function MinorKnowledge({ value }: { value: Knowledge }) {
     return <a href={value.link} className="flex items-center gap-2 hover:scale-115 transition-transform duration-200 ease-in-out">
         {(value.custom === "fullsize") ? <img src={value.icon} alt={`${value.name} Icon`} className="size-6 min-[360px]:size-8 rounded-lg" /> :
             <div className="size-6 min-[360px]:size-8 rounded-lg bg-white flex items-center">
-                <img src={value.icon} alt={value.name} className={enhanceClasses[value.custom || ""] || "p-1"} />
+                <img src={value.icon} alt={`${value.name} Icon`} className={enhanceClasses[value.custom || ""] || "p-1"} />
             </div>}
         <div className="text-xs font-semibold text-muted-foreground min-sm:w-16 text-balance flex-1 ">{value.name}</div>
     </a>
