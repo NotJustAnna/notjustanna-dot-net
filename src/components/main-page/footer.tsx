@@ -17,18 +17,18 @@ export function Footer() {
             </p>
             <div className="flex gap-3">
                 <Button asChild variant="flavor_linkedin">
-                    <a href="https://linkedin.com/in/notjustanna/"><FontAwesomeIcon icon={faLinkedinIn}/><span
+                    <a aria-label="LinkedIn" href="https://linkedin.com/in/notjustanna/"><FontAwesomeIcon icon={faLinkedinIn}/><span
                         className="max-sm:hidden">LinkedIn</span></a>
                 </Button>
                 <Button asChild variant="flavor_github">
-                    <a href="https://github.com/notjustanna"><FontAwesomeIcon icon={faGithub}/><span
+                    <a aria-label="GitHub" href="https://github.com/notjustanna"><FontAwesomeIcon icon={faGithub}/><span
                         className="max-sm:hidden">GitHub</span></a>
                 </Button>
                 <Button asChild>
-                    <a {...decoratorProps} href="mailto:no@thankyou.net"><Mail/><span
+                    <a {...decoratorProps} aria-label="E-mail" href="mailto:no@thankyou.net"><Mail/><span
                         className="max-sm:hidden">E-mail</span></a>
                 </Button>
-                <Button asChild variant="flavor_bluesky">
+                <Button asChild aria-label="Bluesky" variant="flavor_bluesky">
                     <a href="https://bsky.app/profile/notjustanna.net"><FontAwesomeIcon icon={faBluesky}/><span
                         className="max-sm:hidden">Bluesky</span></a>
                 </Button>
