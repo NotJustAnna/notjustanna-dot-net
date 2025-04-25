@@ -16,7 +16,7 @@ const enhanceClasses: Record<string, string> = {
 function Knowledge({ value }: { value: Knowledge }) {
     return <a href={value.link} className="flex flex-col items-center gap-1.5 text-center hover:scale-115 transition-transform duration-200 ease-in-out">
         <div className="size-12 bg-white rounded-2xl flex items-center">
-            <img src={value.icon} alt={value.name} className="p-2" />
+            <img src={value.icon} alt={`${value.name} Icon`} className="p-2" />
         </div>
         <div className="text-xs font-semibold text-muted-foreground text-center text-balance">{value.name}</div>
     </a>
@@ -24,7 +24,7 @@ function Knowledge({ value }: { value: Knowledge }) {
 
 function MinorKnowledge({ value }: { value: Knowledge }) {
     return <a href={value.link} className="flex items-center gap-2 hover:scale-115 transition-transform duration-200 ease-in-out">
-        {(value.custom === "fullsize") ? <img src={value.icon} alt={value.name} className="size-6 min-[360px]:size-8 rounded-lg" /> :
+        {(value.custom === "fullsize") ? <img src={value.icon} alt={`${value.name} Icon`} className="size-6 min-[360px]:size-8 rounded-lg" /> :
             <div className="size-6 min-[360px]:size-8 rounded-lg bg-white flex items-center">
                 <img src={value.icon} alt={value.name} className={enhanceClasses[value.custom || ""] || "p-1"} />
             </div>}

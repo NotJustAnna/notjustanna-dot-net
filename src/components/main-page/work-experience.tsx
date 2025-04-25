@@ -13,7 +13,7 @@ function AvanadeTab() {
         <CardHeader>
             <CardTitle className="flex gap-3 items-center">
                 <Avatar>
-                    <AvatarImage src={avanadeIcon}/>
+                    <AvatarImage src={avanadeIcon} alt="Avanade icon"/>
                     <AvatarFallback>AV</AvatarFallback>
                 </Avatar>
                 <span className="text-lg">Avanade</span>
@@ -63,7 +63,7 @@ function TokenlabTab() {
         <CardHeader>
             <CardTitle className="flex gap-3 items-center">
                 <Avatar>
-                    <AvatarImage src={tokenlabIcon}/>
+                    <AvatarImage src={tokenlabIcon} alt="Tokenlab icon"/>
                     <AvatarFallback>TL</AvatarFallback>
                 </Avatar>
                 <span className="text-lg">Tokenlab</span>
