@@ -6,7 +6,7 @@ import {useMediaQuery} from "usehooks-ts";
 function NanoflakesCard() {
     return <Card className="gap-2.5">
         <CardHeader className="flex gap-3 items-center">
-            <img src="https://avatars.githubusercontent.com/u/64380743?v=4" alt="Nanoflakes Icon" className="size-12 bg-primary rounded-xl p-0.5" />
+            <img src="https://avatars.githubusercontent.com/u/64380743?v=4" alt="Nanoflakes Icon" className="size-12 bg-white rounded-xl p-0.5" />
             <div className="flex-1 space-y-1.5">
                 <CardTitle>Nanoflakes</CardTitle>
                 <CardDescription>Unique IDs for small apps.</CardDescription>
@@ -26,7 +26,7 @@ function NanoflakesCard() {
 function AuxCableCard() {
     return <Card className="gap-2.5">
         <CardHeader className="flex gap-3 items-center">
-            <Cable className="size-12 bg-[#020618] rounded-xl p-1.5"/>
+            <Cable className="size-12 bg-[#020618] text-white rounded-xl p-1.5"/>
             <div className="flex-1 space-y-1.5">
                 <CardTitle>Aux Cable</CardTitle>
                 <CardDescription>Discord Audio streaming made easy.</CardDescription>
