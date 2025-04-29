@@ -1,24 +1,24 @@
-import * as React from "react"
-import * as TabsPrimitive from "@radix-ui/react-tabs"
+import * as React from "react";
+import * as TabsPrimitive from "@radix-ui/react-tabs";
 
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/utils";
 import {cva, VariantProps} from "class-variance-authority";
 
 
 const tabVariants = cva(
-    "flex",
-    {
-      variants: {
-        orientation: {
-          horizontal: "flex-col gap-2",
-          vertical: "flex-row gap-2",
-        }
-      },
-      defaultVariants: {
-        orientation: "horizontal"
-      },
-    }
-)
+  "flex",
+  {
+    variants: {
+      orientation: {
+        horizontal: "flex-col gap-2",
+        vertical: "flex-row gap-2",
+      }
+    },
+    defaultVariants: {
+      orientation: "horizontal"
+    },
+  }
+);
 
 function Tabs({
   className,
@@ -32,7 +32,7 @@ function Tabs({
       orientation={orientation}
       {...props}
     />
-  )
+  );
 }
 
 function TabsList({
@@ -63,7 +63,7 @@ function TabsList({
       )}
       {...props}
     />
-  )
+  );
 }
 
 function TabsTrigger({
@@ -114,7 +114,7 @@ function TabsTrigger({
       )}
       {...props}
     />
-  )
+  );
 }
 
 function TabsContent({
@@ -133,7 +133,7 @@ function TabsContent({
       className={cn("flex-1 outline-none", className)}
       {...props}
     />
-  )
+  );
 }
 
-export { Tabs, TabsList, TabsTrigger, TabsContent }
+export { Tabs, TabsList, TabsTrigger, TabsContent };
