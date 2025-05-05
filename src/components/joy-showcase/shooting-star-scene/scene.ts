@@ -1,5 +1,5 @@
 import { ShootingStar } from './shooting-star.ts';
-import { clamp, nextGaussian } from './math.ts';
+import { clamp, nextGaussian } from '@/components/joy-showcase/shooting-stars/lib/math.ts';
 
 export class Scene {
   objs: ShootingStar[] = [];

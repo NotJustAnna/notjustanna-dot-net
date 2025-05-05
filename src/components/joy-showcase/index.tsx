@@ -16,18 +16,9 @@ export default function JoyShowcase() {
   return (
     <>
       <ShootingStarScene paused={false}/>
-      <EventContext.Provider value={eventService}>
-        <InfoBar position={Position.TopRight}/>
-        <Main/>
-        {/*<Router>*/}
-        {/*  <Routes>*/}
-        {/*    <Route path="/" element={<Main/>}/>*/}
-        {/*    <Route path="/system" element={<System/>}/>*/}
-        {/*    <Route path="/system/reboot" element={<Reboot/>}/>*/}
-        {/*    <Route path="/system/shutdown" element={<Shutdown/>}/>*/}
-        {/*  </Routes>*/}
-        {/*</Router>*/}
-      </EventContext.Provider>
+      {/*<EventContext.Provider value={eventService}>*/}
+      {/*  /!*<InfoBar position={Position.TopRight}/>*!/*/}
+      {/*</EventContext.Provider>*/}
     </>
   );
 }
