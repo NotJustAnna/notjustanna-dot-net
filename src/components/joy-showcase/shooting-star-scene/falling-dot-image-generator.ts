@@ -1,4 +1,4 @@
-import { ObjectCache } from './object-cache.ts';
+import { ObjectCache } from '../shooting-stars/lib/object-cache.ts';
 
 export class FallingDotImageGenerator {
   private bottleneck?: Promise<null>;

@@ -1,3 +1,8 @@
+/*
+ * nextGaussian is adapted from Java code.
+ * clamp is adapted from Unity code.
+ */
+
 let haveNextNextGaussian = false;
 let nextNextGaussian = 0;
 
