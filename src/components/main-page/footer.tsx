@@ -7,15 +7,17 @@ import {Mail} from "lucide-react";
 import {faBluesky} from "@fortawesome/free-brands-svg-icons/faBluesky";
 
 export function Footer() {
-  return <div className="bg-secondary text-secondary-foreground">
-    <div className="max-[57.75rem]:mx-3 max-w-4xl min-[57.75rem]:mx-auto py-12 space-y-1">
-      <h1 className="text-4xl font-semibold">
-                Anna Silva
-      </h1>
-      <p className="text-muted-foreground">
-                Usually, <span className="font-mono">@notjustanna</span> on the internet.
-      </p>
-      <div className="flex gap-3">
+  return <div className="mt-12 py-12 relative overflow-hidden bg-white/40 dark:bg-black/40 backdrop-blur-xl border-t border-white/20 dark:border-white/10 shadow-xl dark:shadow-2xl">
+    <div className="max-[57.75rem]:mx-3 max-w-4xl min-[57.75rem]:mx-auto space-y-4">
+      <div className="space-y-1">
+        <h1 className="text-4xl font-semibold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400 w-fit">
+          Anna Silva
+        </h1>
+        <p className="text-muted-foreground text-lg">
+          Usually, <span className="font-mono text-foreground font-semibold">@notjustanna</span> on the internet.
+        </p>
+      </div>
+      <div className="flex flex-wrap gap-3">
         <Button asChild variant="flavor_linkedin">
           <a aria-label="LinkedIn" href="https://linkedin.com/in/notjustanna/"><FontAwesomeIcon icon={faLinkedinIn}/><span
             className="max-sm:hidden">LinkedIn</span></a>

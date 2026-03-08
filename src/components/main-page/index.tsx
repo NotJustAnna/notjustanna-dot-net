@@ -14,14 +14,22 @@ import {ProjectSpotlight} from "@/components/main-page/project-spotlight.tsx";
 // }
 
 export function MainPage() {
-  return <div className="max-[57.75rem]:mx-3 max-w-4xl min-[57.75rem]:mx-auto">
-    <Header/>
-    <Leading/>
-    <div className="my-6 space-y-6">
-      <WorkExperience/>
-      <KnowledgeSpotlight/>
-      <ProjectSpotlight/>
-      {/*<InteractiveShowcase/>*/}
+  return <>
+    {/* Ambient Background */}
+    <div className="fixed inset-0 -z-10 h-full w-full bg-background transition-colors duration-300">
+      <div className="absolute top-0 w-full h-full bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))] dark:bg-[radial-gradient(ellipse_80%_80%_at_50%_-10%,rgba(120,119,198,0.25),rgba(255,255,255,0))]"></div>
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:32px_32px]"></div>
     </div>
-  </div>;
+    
+    <div className="relative max-[57.75rem]:mx-3 max-w-4xl min-[57.75rem]:mx-auto pt-6 pb-12 transition-all">
+      <Header/>
+      <Leading/>
+      <div className="my-10 space-y-10">
+        <WorkExperience/>
+        <KnowledgeSpotlight/>
+        <ProjectSpotlight/>
+        {/*<InteractiveShowcase/>*/}
+      </div>
+    </div>
+  </>;
 }
