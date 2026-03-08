@@ -195,6 +195,31 @@ function DeploymentCard() {
   </Card>;
 }
 
+function AICard() {
+  return <Card>
+    <CardHeader className="space-y-1.5">
+      <CardTitle>AI tools</CardTitle>
+      <CardDescription>Because AI augments human creativity.</CardDescription>
+    </CardHeader>
+    <CardContent className="space-y-1.5">
+      <div className="grid grid-cols-2 gap-2">
+        {knowledgebase.ai.spotlight.map((each) => <MinorKnowledge key={each.name} value={each}/>)}
+      </div>
+      <Accordion type="single" collapsible className="-mb-4">
+        <AccordionItem value="ai">
+          <AccordionTrigger>
+            <span className="flex-1">More:</span>
+            <Badge>{knowledgebase.ai.others.length}</Badge>
+          </AccordionTrigger>
+          <AccordionContent className="grid grid-cols-2 gap-2 z-100">
+            {knowledgebase.ai.others.map((each) => <MinorKnowledge key={each.name} value={each}/>)}
+          </AccordionContent>
+        </AccordionItem>
+      </Accordion>
+    </CardContent>
+  </Card>;
+}
+
 function DevelopmentCard() {
   return <Card>
     <CardHeader className="space-y-1.5">
@@ -253,7 +278,7 @@ export function KnowledgeSpotlight() {
           <LanguagesCard/>
         </CarouselItem>
         <CarouselItem className="basis-5/6 sm:basis-full md:basis-1/2 lg:basis-1/3">
-          <EmbeddedCard/>
+          <AICard/>
         </CarouselItem>
         <CarouselItem className="basis-5/6 sm:basis-full md:basis-1/2 lg:basis-1/3">
           <DeploymentCard/>
@@ -266,6 +291,9 @@ export function KnowledgeSpotlight() {
         </CarouselItem>
         <CarouselItem className="basis-5/6 sm:basis-full md:basis-1/2 lg:basis-1/3">
           <DatabasesCard/>
+        </CarouselItem>
+        <CarouselItem className="basis-5/6 sm:basis-full md:basis-1/2 lg:basis-1/3">
+          <EmbeddedCard/>
         </CarouselItem>
       </CarouselContent>
       {hasArrows && <><CarouselPrevious/><CarouselNext/></>}

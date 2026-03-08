@@ -31,10 +31,10 @@ import ssmLogo from "@/assets/brands/aws/ssm.svg";
 import vpcLogo from "@/assets/brands/aws/vpc.svg";
 
 export interface Knowledge {
-    name: string;
-    icon: string;
-    link: string;
-    custom?: string;
+  name: string;
+  icon: string;
+  link: string;
+  custom?: string;
 }
 
 
@@ -110,20 +110,26 @@ const K = {
     sqlite: k("SQLite", "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/sqlite/sqlite-original.svg", "https://www.sqlite.org/"),
   },
   deploy: {
+    ansible: k("Ansible", "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/ansible/ansible-original.svg", "https://www.ansible.com/"),
     teamcity: k("TeamCity", "https://upload.wikimedia.org/wikipedia/commons/2/29/TeamCity_Icon.svg", "https://www.jetbrains.com/teamcity/"),
     aws: k("AWS", "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-original-wordmark.svg", "https://aws.amazon.com"),
     circleci: k("CircleCI", "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/circleci/circleci-plain.svg", "https://circleci.com"),
     cloudflare: k("Cloudflare", "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/cloudflare/cloudflare-original.svg", "https://www.cloudflare.com", "bigger-2"),
     debian: k("Debian", "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/debian/debian-original.svg", "https://www.debian.org/"),
     jenkins: k("Jenkins", "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/jenkins/jenkins-original.svg", "https://www.jenkins.io", "bigger-3"),
+    kubernetes: k("Kubernetes", "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/kubernetes/kubernetes-original.svg", "https://kubernetes.io/"),
     sonarqube: k("Sonarqube", "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/sonarqube/sonarqube-original.svg", "https://www.sonarqube.org/"),
+    terraform: k("Terraform", "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/terraform/terraform-original.svg", "https://www.terraform.io/"),
     traefik: k("Traefik", "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/traefikproxy/traefikproxy-original.svg", "https://traefik.io/"),
     portainer: k("Portainer", "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/portainer/portainer-original.svg", "https://www.portainer.io/", "bigger-2"),
     travisci: k("TravisCI", "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/travis/travis-original.svg", "https://travis-ci.org", "bigger-2"),
     ubuntu: k("Ubuntu", ubuntuLogo, "https://ubuntu.com/", "fullsize"),
     ghactions: k("GitHub Actions", "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg", "https://actions.github.com"),
+    k3s: k("K3s", "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/k3s/k3s-original.svg", "https://k3s.io/"),
+    oracle: k("Oracle Cloud", "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/oracle/oracle-original.svg", "https://www.oracle.com/cloud/"),
   },
   dev: {
+    bun: k("Bun", "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/bun/bun-original.svg", "https://bun.sh/", "bigger-2"),
     docker: k("Docker", "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg", "https://www.docker.com/", "bigger-4"),
     postman: k("Postman", "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postman/postman-original.svg", "https://postman.com"),
     electron: k("Electron", "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/electron/electron-original.svg", "https://www.electronjs.org"),
@@ -175,6 +181,17 @@ const K = {
     lua: k("Lua", "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/lua/lua-original.svg", "https://www.lua.org/", "bigger-1"),
     pwsh: k("Powershell", "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/powershell/powershell-original.svg", "https://learn.microsoft.com/en-us/powershell/", "bigger-2"),
     ts: k("TypeScript", "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg", "https://www.typescriptlang.org/", "fullsize"),
+  },
+  ai: {
+    claudeCode: k("Claude Code", "https://cdn.jsdelivr.net/gh/NotJustAnna/extended-lobe-icons@main/packages/icons/claude/dark-colorbg-avatarfit.png", "https://claude.ai/code", "fullsize"),
+    copilot: k("GitHub Copilot", "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg", "https://github.com/features/copilot"),
+    cursor: k("Cursor", "https://www.cursor.com/favicon.ico", "https://www.cursor.com/", "fullsize"),
+    ollama: k("Ollama", "https://cdn.jsdelivr.net/gh/NotJustAnna/extended-lobe-icons@main/packages/icons/ollama/light-bg-avatarfit.png", "https://ollama.com/", "fullsize"),
+    antigravity: k("Antigravity", "https://cdn.jsdelivr.net/gh/simple-icons/simple-icons@latest/icons/googlegemini.svg", "https://gemini.google.com"),
+    mcp: k("MCP", "https://cdn.jsdelivr.net/gh/simple-icons/simple-icons@latest/icons/modelcontextprotocol.svg", "https://modelcontextprotocol.io/"),
+    qwen: k("Qwen", "https://cdn.jsdelivr.net/gh/NotJustAnna/extended-lobe-icons@main/packages/icons/qwen/dark-colorbg-avatarfit.png", "https://qwenlm.github.io/", "fullsize"),
+    gemma: k("Gemma", "https://cdn.jsdelivr.net/gh/NotJustAnna/extended-lobe-icons@main/packages/icons/gemma/dark-colorbg-avatarfit.png", "https://ai.google.dev/gemma", "fullsize"),
+    phi: k("Microsoft Phi", "https://cdn.jsdelivr.net/gh/NotJustAnna/extended-lobe-icons@main/packages/icons/copilot/light-color-bg-avatarfit.png", "https://azure.microsoft.com/en-us/products/phi", "fullsize"),
   }
 };
 
@@ -211,7 +228,7 @@ export const knowledgebase = {
       K.collab.jira,
       K.collab.confluence,
       K.collab.slack,
-      K.collab.zoom,
+      K.collab.teams,
     ],
     others: [
       K.collab.bitbucket,
@@ -219,7 +236,7 @@ export const knowledgebase = {
       K.collab.gather,
       K.collab.gitlab,
       K.collab.mattermost,
-      K.collab.teams,
+      K.collab.zoom,
       K.collab.trello,
     ]
   },
@@ -239,28 +256,34 @@ export const knowledgebase = {
     spotlight: [
       K.deploy.aws,
       K.deploy.cloudflare,
+      K.deploy.terraform,
+      K.deploy.kubernetes,
       K.deploy.ghactions,
-      K.deploy.sonarqube,
       K.deploy.ubuntu,
-      K.deploy.teamcity,
     ],
     others: [
+      K.deploy.sonarqube,
+      K.deploy.teamcity,
       K.deploy.traefik,
       K.deploy.jenkins,
       K.deploy.circleci,
       K.deploy.travisci,
       K.deploy.debian,
       K.deploy.portainer,
+      K.deploy.ansible,
+      K.deploy.k3s,
+      K.deploy.oracle,
     ],
   },
   development: {
     spotlight: [
       K.dev.intellij, K.dev.webstorm,
       K.dev.vsCode, K.dev.nodeJs,
-      K.dev.docker, K.dev.git,
-      K.dev.linux, K.dev.gradle,
+      K.dev.docker, K.dev.bun,
+      K.dev.git, K.dev.linux,
     ],
     others: [
+      K.dev.gradle,
       K.dev.yarn,
       K.dev.npm,
       K.dev.pnpm,
@@ -296,6 +319,21 @@ export const knowledgebase = {
       K.lang.c, K.lang.cpp,
     ],
     others: [K.lang.lua, K.lang.pwsh, K.lang.bash]
+  },
+  ai: {
+    spotlight: [
+      K.ai.claudeCode,
+      K.ai.copilot,
+      K.ai.cursor,
+      K.ai.ollama,
+      K.ai.antigravity,
+      K.ai.mcp,
+    ],
+    others: [
+      K.ai.qwen,
+      K.ai.gemma,
+      K.ai.phi,
+    ],
   },
   count: 0,
 };
