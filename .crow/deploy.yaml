@@ -1,0 +1,24 @@
+steps:
+  - name: build
+    image: node:22-alpine
+    commands:
+      - corepack enable
+      - pnpm install --frozen-lockfile
+      - pnpm run build
+
+  - name: deploy
+    image: woodpeckerci/plugin-s3
+    settings:
+      bucket: notjustanna.net
+      endpoint: http://garage.garage.svc.cluster.local:3900
+      path_style: true
+      source: dist/**/*
+      strip_prefix: dist/
+      delete: true
+      access_key:
+        from_secret: garage_access_key
+      secret_key:
+        from_secret: garage_secret_key
+    when:
+      - branch: main
+        event: push

@@ -1,0 +1,17 @@
+---
+import { getCollection } from 'astro:content';
+import { PostList } from '../components/blog/post-list';
+import BaseLayout from '../layouts/base-layout.astro';
+import { SITE_TITLE } from '../consts';
+
+const posts = (await getCollection('posts'))
+  .filter((post) => post.data.category === 'dev')
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+---
+
+<BaseLayout title={`Development — ${SITE_TITLE}`} description="Dev & ops posts.">
+  <section>
+    <h1 class="text-3xl font-bold text-center md:text-left mb-3 md:my-6">Development</h1>
+    <PostList posts={posts} />
+  </section>
+</BaseLayout>
