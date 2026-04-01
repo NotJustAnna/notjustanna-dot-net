@@ -69,6 +69,11 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
           (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)
       );
     </script>
+    <script
+      defer
+      src="https://static.cloudflareinsights.com/beacon.min.js"
+      data-cf-beacon='{"token": "f69d047cd37d4e0ca980d716b9ae135a"}'
+    ></script>
   </head>
   <body>
     <AmbientBackground />
