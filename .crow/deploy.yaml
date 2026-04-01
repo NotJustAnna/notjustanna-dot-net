@@ -11,6 +11,7 @@ steps:
     settings:
       bucket: notjustanna.net
       endpoint: http://garage.garage.svc.cluster.local:3900
+      region: garage
       path_style: true
       source: dist/**/*
       strip_prefix: dist/
