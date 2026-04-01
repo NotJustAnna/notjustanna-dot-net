@@ -16,6 +16,7 @@ steps:
       source: dist/**/*
       strip_prefix: dist/
       delete: true
+      overwrite: true
       access_key:
         from_secret: garage_access_key
       secret_key:
