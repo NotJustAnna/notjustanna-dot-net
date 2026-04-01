@@ -1,0 +1,13 @@
+---
+import BaseLayout from '../layouts/base-layout.astro';
+import { AboutHeader } from '../components/about-page/about-header';
+import { MainPage } from '../components/about-page/index';
+---
+
+<BaseLayout
+  title="NotJustAnna.net"
+  description="Full-stack developer. Open-source contributor. Technical challenges are just code waiting to be developed."
+>
+  <AboutHeader slot="header" client:load />
+  <MainPage client:load />
+</BaseLayout>

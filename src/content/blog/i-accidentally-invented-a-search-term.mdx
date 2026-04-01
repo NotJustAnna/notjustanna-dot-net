@@ -1,0 +1,55 @@
+---
+title: 'I Accidentally Invented a Search Term'
+description: My first dev post blew up. Great! A term that didn't exist became the definition because I put two words together. AI summaries is doing something new (and slightly alarming) to search.
+pubDate: 'Apr 01 2026'
+category: ramblings
+---
+
+import { Image } from 'astro:assets';
+import braveUniversalMicrokernel from '../../assets/blog/search-term/brave-universal-microkernel.png';
+
+I published my first post on March 20th — a rabbit hole think-piece about XNU, WASM, and why Apple's Universal Binary is two binaries in a trench coat. I hit publish, shared it, refreshed analytics compulsively for twenty minutes, and continued with my day.
+
+A week later: 800 LinkedIn impressions, 92 views on dev.to. I... did not expect that.
+
+---
+
+## Okay but what does that actually mean
+
+LinkedIn impressions are famously decoupled from reality, so I checked dev.to's traffic breakdown. LinkedIn Android: 40 views. Bluesky: 4. dev.to discovery: 2. And then: `google.com: 10`.
+
+Ten views from Google. Eight days old. Worth investigating. So I searched "universal microkernel."
+
+Wikipedia. A Reddit thread from r/osdev. And then, third result: me.
+
+---
+
+## Huh.
+
+"Universal microkernel" is not an established term. There's microkernel theory — decades old. There's Apple's Universal Binary. There's WASM-based sandboxing research. But "universal microkernel" as a coherent named concept? I assembled that while thinking out loud. It's not in any paper. It didn't exist before March 20th.
+
+Then I checked Brave Search. (Yes, I use Brave Search. Yes, it has an AI summary. No, I'm not explaining my browser habits to you.)
+
+<Image src={braveUniversalMicrokernel} alt="Brave Search result for 'universal microkernel'" className="rounded-lg border mb-4" />
+
+For "universal microkernel," the AI summary reads like a *textbook entry*. Capability-based isolation. WASM modules for drivers. Hardware-independent compilation. Clean bullet points with citation anchors that signal "established knowledge."
+
+The citation anchors link to my post. Brave synthesized my think-piece into a definition and is presenting it to anyone who searches the term as settled consensus. Not "one person's argument." A definition. With bullet points.
+
+I wrote it eleven days ago while procrastinating.
+
+---
+
+## What's actually happening
+
+Traditional search rewarded incumbency — links, authority, time. A new blog post by a nobody doesn't displace Wikipedia.
+
+AI search has a different failure mode: **the first coherent answer wins**.
+
+When you search a term that doesn't have a canonical source — because it's new, or someone coined it eleven days ago in a blog post — the AI doesn't say "this is contested." It finds the most coherent thing and presents it as ground truth. My post looked like a definition. So it became one.
+
+In the old model, establishing a term took years. AI search collapses that to: *write clearly, get indexed, get there first*.
+
+This is either a great opportunity or a significant epistemic hazard depending entirely on whether the person who gets there first knows what they're talking about.
+
+In this case, I think the argument holds. In general: be careful trusting AI search summaries on things that sound established but might just be someone's first post.
