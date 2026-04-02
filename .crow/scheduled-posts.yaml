@@ -4,10 +4,9 @@ when:
 
 steps:
   - name: publish scheduled posts
-    image: alpine/git
+    image: node:22-alpine
     commands:
-      - apk add --no-cache curl jq bash
-      - bash ./scripts/publish-scheduled.sh
+      - node ./scripts/publish-scheduled.mjs
     environment:
       REPO:
         from_secret: github_repo
