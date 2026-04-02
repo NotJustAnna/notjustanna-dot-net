@@ -1,6 +1,7 @@
 when:
   - event: cron
     cron: check-scheduled-posts
+  - event: manual
 
 steps:
   - name: publish scheduled posts
