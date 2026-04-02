@@ -1,6 +1,6 @@
 ---
 title: 'Infisical is Great, Actually'
-description: 'HashiCorp Nomad is designed for hundreds of nodes across multiple datacenters. I run it on my gaming PC. Cluster of one. It''s great.'
+description: "After looking at SOPS, Parameter Store, Vault: Infisical might be the homelabber's best friend."
 pubDate: 'Mar 27 2026'
 category: dev
 heroImage: '../../assets/blog/infinite.jpg'
