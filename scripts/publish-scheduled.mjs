@@ -1,10 +1,10 @@
 #!/usr/bin/env node
 
-const { GITHUB_TOKEN, REPO, GITHUB_USERNAME } = process.env;
+const { GITHUB_TOKEN, CI_REPO, CI_REPO_OWNER } = process.env;
 
 if (!GITHUB_TOKEN) throw new Error("GITHUB_TOKEN is not set");
-if (!REPO) throw new Error("REPO is not set");
-if (!GITHUB_USERNAME) throw new Error("GITHUB_USERNAME is not set");
+if (!CI_REPO) throw new Error("CI_REPO is not set");
+if (!CI_REPO_OWNER) throw new Error("CI_REPO_OWNER is not set");
 
 const headers = {
   Authorization: `Bearer ${GITHUB_TOKEN}`,
@@ -27,10 +27,10 @@ async function ghFetch(path, options = {}) {
 const now = Date.now();
 
 const prs = await ghFetch(
-  `/repos/${REPO}/pulls?state=open&base=main&per_page=100`
+  `/repos/${CI_REPO}/pulls?state=open&base=main&per_page=100`
 );
 
-const mine = prs.filter((pr) => pr.user.login === GITHUB_USERNAME);
+const mine = prs.filter((pr) => pr.user.login === CI_REPO_OWNER);
 
 for (const pr of mine) {
   const match = (pr.body ?? "").match(/\[scheduled:\s*([0-9T:+Z-]+)\]/);
@@ -45,7 +45,7 @@ for (const pr of mine) {
   if (now < scheduledAt.getTime()) continue;
 
   console.log(`Publishing PR #${pr.number} (scheduled: ${match[1]})`);
-  await ghFetch(`/repos/${REPO}/pulls/${pr.number}/merge`, {
+  await ghFetch(`/repos/${CI_REPO}/pulls/${pr.number}/merge`, {
     method: "PUT",
     body: JSON.stringify({ merge_method: "rebase" }),
     headers: { "Content-Type": "application/json" },
