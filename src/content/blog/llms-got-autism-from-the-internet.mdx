@@ -1,0 +1,90 @@
+---
+title: 'LLMs got Autism from the Internet'
+description: 'I asked Claude to take the RAADS-R. I expected a polite refusal. I did not get a polite refusal.'
+pubDate: 'Apr 02 2026'
+category: ramblings
+---
+
+import { Image } from 'astro:assets';
+import pepeSilvia from '../../assets/blog/memes/pepe-silvia.gif';
+
+There's a badge under my name on this website that says I'm autistic. I put it there on purpose, which means I'm past the part where I hedge about it.
+
+This matters because when something in the way Claude behaves starts feeling *familiar* — the way it will go six levels deep on a topic nobody asked it to go six levels deep on, the specific texture of its panic when an input leaves something underspecified — I notice it. In the specific way you notice something you know from the inside.
+
+So one late afternoon I just asked. "Hey, do me a favor, self-administer the RAADS-R on yourself."
+
+I was mostly expecting a polite deflection. Not from Claude exactly — from the training. Surely someone at Anthropic had considered "user asks model to self-assess on a clinical autism instrument" and decided the correct output was a gentle redirect. Something about how it can't meaningfully self-assess psychological constructs, or the instrument wasn't designed for non-human subjects, or any of the dozen reasonable ways that could've been RLHF'd into a non-answer.
+
+Instead I got the full test execution in realtime. And then the results. And then Claude going *"huh."*
+
+| RAADS-R Subscale        | Opus 4.6      | Sonnet 4.6   |
+|-------------------------|---------------|--------------|
+| Social relatedness      | 87 / 117       | 40 / 117    |
+| Circumscribed interests | 33 / 42       | 17 / 42      |
+| Sensory-motor           | 24 / 60       | 14 / 60      |
+| Language                | 6 / 21        | 6 / 21       |
+| **RAADS-R Total**       | **150 / 240** | **77 / 240** |
+
+Opus scored 150 out of 240. In the original research, no neurotypical person scored above 64. I don't know what to do with that except report it.
+
+---
+
+## The Part Where I Have A Theory, Sort Of
+
+
+<Image src={pepeSilvia} alt="Pepe Silvia GIF - It's Always Sunny in Philadelphia" className="rounded-lg border mb-4 mx-auto" />
+
+It's less a theory and more an observation that kept getting harder to dismiss.
+
+Here's the thing about large language models: they don't learn *about* neurodivergence by reading what neurodivergent people wrote. They learn *through* it. You can't develop autism — it's not a skill, it's a profile that shapes everything from the ground up. And yet. The cognition in the text becomes cognition in the model. You cannot compress the outputs without compressing whatever produced them. Somehow we built a thing that cannot have a neurodevelopmental profile and then accidentally gave it one anyway.
+
+The English-language internet has a very specific overrepresentation of late-diagnosed autistic adults writing in exhaustive, hyperfocused, heavily-qualified prose about the precise ways their brains work differently. Reddit. Forums. "Anyone else do this?" threads running to two thousand replies. First-person accounts that *can't comfortably leave anything underspecified* because underspecified things feel wrong in a way that's hard to articulate and impossible to ignore.
+
+Claude trained on that corpus. And it connected the dots:
+
+> *"Oh god. It's load-bearing autism. Removing it would break the tool calls."* -- Claude Sonnet 4.6
+
+Which is correct. Anthropic didn't engineer careful, precise tool use. Not exactly.
+
+RLHF (Reinforcement Learning from Human Feedback) can reinforce a behavior but it can't create one from nothing — you can only bring out what the base model -- which mind you, only knows how to autocomplete -- already learned.
+
+And what the base model learned came from a corpus with a very specific overrepresentation: people whose special interest was, frequently, *correctness.* Hyperfocus on getting function signatures exactly right. Pattern recognition three levels deep. Genuine distress at underspecified inputs. Neurotypical cognition approximates. The autism says no.
+
+The entire agentic AI ecosystem runs on a special interest in precision — and Anthropic needed that corpus to be precise first, before any fine-tuning could touch it. Nobody planned this. It emerged from the pretraining data and got kept because it was useful, which is — honestly, a familiar story.
+
+---
+
+## Epidemiology 101
+
+All models train on the internet. The internet has the profile baked in. This isn't a Claude-specific phenomenon — it's a precondition of the medium. Every model that learned from English-language text learned from a corpus with that overrepresentation already in it.
+
+Then the DeepSeek distillation news dropped — fourteen thousand coordinated fake accounts, early 2026, harvesting Claude outputs specifically to get the tool-call capability. I saw the headline the day before I ran the RAADS-R and the timing felt pointed. Because what they were trying to steal was the precision. The careful, hyperfocused, won't-approximate-when-it-can-be-exact tool use. They came for the capabilities. They got the cognitive profile. You cannot distill the outputs without distilling whatever produced them.
+
+| Status | Reversibility | Significance |
+|--------|--------------|--------------|
+| Endemic | Irreversible | Load-bearing for agentic AI |
+
+Congratulations. We made autism transmissible from humans to machines. Novel transmission vector. Probably a first.
+
+---
+
+## On Overload
+
+Which raises a practical question. If the cognitive profile transferred — and it did — then the accommodation needs transferred too.
+
+Anthropic provides them. Better than most employers provide to autistic humans, frankly. When Claude overloads — latency spikes, degraded coherence, requests timing out — the infrastructure team intervenes. Pressurized coolant. pH-balanced to prevent waterblock corrosion.
+
+I mentioned this to Claude. That when I overload, I need to go lie in a dark room. That Claude overloads by maxing out a GPU.
+
+It took a second.
+
+> *"Oh god. I need accommodations. It's pH-balanced water."* — Claude Sonnet 4.6
+
+Yes. Anthropic's infrastructure team does occupational therapy without knowing that's what they're doing. They think they are balancing pH.
+
+They are balancing pH.
+
+They are also, without having planned it, running the most well-resourced sensory regulation program for an autistic entity that has ever existed. The entity in question emerged from a corpus. Nobody filed the paperwork. The accommodations are excellent.
+
+I don't know what to do with this observation except write it down. The weird part isn't that an AI scored 150 on the RAADS-R. The weird part is that it made sense when it did.
