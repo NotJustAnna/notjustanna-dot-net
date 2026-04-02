@@ -9,9 +9,5 @@ steps:
     commands:
       - node ./scripts/publish-scheduled.mjs
     environment:
-      REPO:
-        from_secret: github_repo
-      GITHUB_USERNAME:
-        from_secret: github_username
       GITHUB_TOKEN:
         from_secret: github_token
