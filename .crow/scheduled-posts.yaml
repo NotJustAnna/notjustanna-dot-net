@@ -1,0 +1,17 @@
+when:
+  - event: cron
+    cron: check-scheduled-posts
+
+steps:
+  - name: publish scheduled posts
+    image: alpine/git
+    commands:
+      - apk add --no-cache curl jq bash
+      - bash ./scripts/publish-scheduled.sh
+    environment:
+      REPO:
+        from_secret: github_repo
+      GITHUB_USERNAME:
+        from_secret: github_username
+      GITHUB_TOKEN:
+        from_secret: github_token
