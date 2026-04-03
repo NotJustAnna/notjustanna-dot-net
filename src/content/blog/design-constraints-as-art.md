@@ -1,5 +1,5 @@
 ---
-title: 'Design Constraints as Art: Maximizing Your AWS Free Tier    '
+title: 'Design Constraints as Art: Maximizing Your AWS Free Tier'
 description: 'AWS has a free tier. It is weirder, more generous, and more dangerous than you think. Three years of building Lambda backends taught me how to make it sing.'
 pubDate: 'Apr 02 2026'
 category: dev

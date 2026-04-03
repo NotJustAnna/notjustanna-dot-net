@@ -18,7 +18,7 @@ const { Content } = await render(post);
 const { title, description, pubDate, updatedDate, heroImage } = post.data;
 ---
 
-<BaseLayout title={title} description={description ?? ''} compact>
+<BaseLayout title={title} description={description ?? ''} compact image={heroImage}>
 	<PostArticle title={title} pubDate={pubDate} updatedDate={updatedDate} heroImage={heroImage}>
 		<Content />
 	</PostArticle>
