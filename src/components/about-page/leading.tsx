@@ -1,10 +1,4 @@
-import {Button} from "@/components/ui/button.tsx";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faLinkedinIn} from "@fortawesome/free-brands-svg-icons/faLinkedinIn";
-import {faGithub} from "@fortawesome/free-brands-svg-icons/faGithub";
-import {decoratorProps} from "@/components/about-page/lib/decorator.tsx";
-import {Mail} from "lucide-react";
-import {faBluesky} from "@fortawesome/free-brands-svg-icons/faBluesky";
+import {SocialLinks} from "@/components/social-links";
 
 export function Leading() {
   return <div className="relative overflow-hidden bg-white/40 dark:bg-black/40 backdrop-blur-xl border border-white/20 dark:border-white/10 shadow-xl dark:shadow-2xl rounded-2xl space-y-6 p-6 transition-all duration-500 hover:shadow-blue-500/10 hover:-translate-y-1">
@@ -26,22 +20,7 @@ export function Leading() {
       <h3 className="font-semibold max-[400px]:hidden">
                 Get in touch:
       </h3>
-      <Button asChild variant="flavor_linkedin" size="sm">
-        <a aria-label="LinkedIn" href="https://linkedin.com/in/notjustanna/"><FontAwesomeIcon icon={faLinkedinIn}/><span
-          className="max-sm:hidden">LinkedIn</span></a>
-      </Button>
-      <Button asChild variant="flavor_github" size="sm">
-        <a aria-label="GitHub" href="https://github.com/notjustanna"><FontAwesomeIcon icon={faGithub}/><span
-          className="max-sm:hidden">GitHub</span></a>
-      </Button>
-      <Button asChild size="sm">
-        <a {...decoratorProps} aria-label="E-mail" href="mailto:no@thankyou.net"><Mail/><span
-          className="max-sm:hidden">E-mail</span></a>
-      </Button>
-      <Button asChild aria-label="Bluesky" variant="flavor_bluesky" size="sm">
-        <a href="https://bsky.app/profile/notjustanna.net"><FontAwesomeIcon icon={faBluesky}/><span
-          className="max-sm:hidden">Bluesky</span></a>
-      </Button>
+      <SocialLinks size="sm" />
     </div>
   </div>;
 }

@@ -5,6 +5,7 @@ import {Badge} from "@/components/ui/badge.tsx";
 import type {Knowledge} from "@/components/about-page/lib/knowledge.ts";
 import {knowledgebase} from "@/components/about-page/lib/knowledge.ts";
 import {useMediaQuery} from "usehooks-ts";
+import type {ReactNode} from "react";
 
 const enhanceClasses: Record<string, string> = {
   "bigger-4": "p-0",
@@ -13,7 +14,7 @@ const enhanceClasses: Record<string, string> = {
   "bigger-1": "p-0.75",
 };
 
-function Knowledge({ value }: { value: Knowledge }) {
+function KnowledgeItem({ value }: { value: Knowledge }) {
   return <a href={value.link} className="flex flex-col items-center gap-1.5 text-center hover:scale-115 transition-transform duration-200 ease-in-out">
     <div className="size-12 bg-white rounded-2xl flex items-center">
       <img src={value.icon} alt={`${value.name} Icon`} className="p-2" />
@@ -32,228 +33,71 @@ function MinorKnowledge({ value }: { value: Knowledge }) {
   </a>;
 }
 
-function AWSCard() {
-  const smallerText = useMediaQuery('(max-width: 370px)', { initializeWithValue: false });
-  return <Card className="gap-2.5">
-    <CardHeader className="flex gap-3 items-center">
-      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" alt="AWS Icon" className="max-sm:hidden size-12 bg-white rounded-xl p-1.5" />
-      <div className="flex-1 space-y-1.5">
-        <CardTitle>Amazon Web Services</CardTitle>
-        <CardDescription>Major experience on cloud-first projects.</CardDescription>
-      </div>
-    </CardHeader>
-    <CardContent className="space-y-1.5">
-      <div className="grid grid-cols-2 gap-2">
-        {knowledgebase.aws.spotlight.map((each) => <MinorKnowledge key={each.name} value={each}/>)}
-      </div>
-      <Accordion type="single" collapsible className="-mb-4">
-        <AccordionItem value="services">
-          <AccordionTrigger>
-            <span className="flex-1">{smallerText ? 'More:' : 'More services deployed:'}</span>
-            <Badge>{knowledgebase.aws.others.length}</Badge>
-          </AccordionTrigger>
-          <AccordionContent className="grid grid-cols-2 gap-2 z-100">
-            {knowledgebase.aws.others.map((each) => <MinorKnowledge key={each.name} value={each}/>)}
-          </AccordionContent>
-        </AccordionItem>
-      </Accordion>
-    </CardContent>
-  </Card>;
+type KnowledgeCategoryCardProps = {
+  title: string
+  description?: string
+  headerIcon?: ReactNode
+  items: Knowledge[]
+  moreItems?: Knowledge[]
+  moreLabel?: string
+  moreLabelWide?: string
+  itemVariant?: "minor" | "full"
 }
 
-function DatabasesCard() {
-  return <Card>
-    <CardHeader className="space-y-1.5">
-      <CardTitle>Databases</CardTitle>
-      <CardDescription>From local to global, be it SQL or Not.</CardDescription>
-    </CardHeader>
-    <CardContent className="grid grid-cols-2 gap-2">
-      {knowledgebase.databases.all.map((each) => <MinorKnowledge key={each.name} value={each}/>)}
-    </CardContent>
-  </Card>;
-}
+function KnowledgeCategoryCard({
+  title,
+  description,
+  headerIcon,
+  items,
+  moreItems,
+  moreLabel = "More:",
+  moreLabelWide,
+  itemVariant = "minor",
+}: KnowledgeCategoryCardProps) {
+  const isVerySmall = useMediaQuery('(max-width: 370px)', { initializeWithValue: false });
+  const Item = itemVariant === "full" ? KnowledgeItem : MinorKnowledge;
+  const expandLabel = moreLabelWide && !isVerySmall ? moreLabelWide : moreLabel;
 
-
-function LanguagesCard() {
-  return <Card>
-    <CardHeader className="space-y-1.5">
-      <CardTitle>Programming languages</CardTitle>
-    </CardHeader>
-    <CardContent className="space-y-1.5">
-      <div className="grid grid-cols-2 gap-2">
-        {knowledgebase.languages.spotlight.map((each) => <MinorKnowledge key={each.name} value={each}/>)}
-      </div>
-      <Accordion type="single" collapsible className="-mb-4">
-        <AccordionItem value="languages">
-          <AccordionTrigger>
-            <span className="flex-1">More:</span>
-            <Badge>{knowledgebase.languages.others.length}</Badge>
-          </AccordionTrigger>
-          <AccordionContent className="grid grid-cols-2 gap-2 z-100">
-            {knowledgebase.languages.others.map((each) => <MinorKnowledge key={each.name} value={each}/>)}
-          </AccordionContent>
-        </AccordionItem>
-      </Accordion>
-    </CardContent>
-  </Card>;
-}
-
-function BackendCard() {
-  return <Card>
-    <CardHeader className="space-y-1.5">
-      <CardTitle>Back-end development</CardTitle>
-    </CardHeader>
-    <CardContent className="space-y-1.5">
-      <div className="grid grid-cols-2 gap-2">
-        {knowledgebase.backend.spotlight.map((each) => <MinorKnowledge key={each.name} value={each}/>)}
-      </div>
-      <Accordion type="single" collapsible className="-mb-4">
-        <AccordionItem value="backend">
-          <AccordionTrigger>
-            <span className="flex-1">More:</span>
-            <Badge>{knowledgebase.backend.others.length}</Badge>
-          </AccordionTrigger>
-          <AccordionContent className="grid grid-cols-2 gap-2 z-100">
-            {knowledgebase.backend.others.map((each) => <MinorKnowledge key={each.name} value={each}/>)}
-          </AccordionContent>
-        </AccordionItem>
-      </Accordion>
-    </CardContent>
-  </Card>;
-}
-
-function FrontendCard() {
-  return <Card>
-    <CardHeader className="space-y-1.5">
-      <CardTitle>Front-end development</CardTitle>
-    </CardHeader>
-    <CardContent className="space-y-1.5">
-      <div className="grid grid-cols-2 gap-2">
-        {knowledgebase.frontend.spotlight.map((each) => <MinorKnowledge key={each.name} value={each}/>)}
-      </div>
-      <Accordion type="single" collapsible className="-mb-4">
-        <AccordionItem value="frontend">
-          <AccordionTrigger>
-            <span className="flex-1">More:</span>
-            <Badge>{knowledgebase.frontend.others.length}</Badge>
-          </AccordionTrigger>
-          <AccordionContent className="grid grid-cols-2 gap-2 z-100">
-            {knowledgebase.frontend.others.map((each) => <MinorKnowledge key={each.name} value={each}/>)}
-          </AccordionContent>
-        </AccordionItem>
-      </Accordion>
-    </CardContent>
-  </Card>;
-}
-
-function CollaborationCard() {
-  return <Card>
-    <CardHeader className="space-y-1.5">
-      <CardTitle>Team collaboration</CardTitle>
-      <CardDescription>Working with others is the only way to ship quality software.</CardDescription>
-    </CardHeader>
-    <CardContent className="space-y-1.5">
-      <div className="grid grid-cols-2 gap-2">
-        {knowledgebase.collaboration.spotlight.map((each) => <MinorKnowledge key={each.name} value={each}/>)}
-      </div>
-      <Accordion type="single" collapsible className="-mb-4">
-        <AccordionItem value="collaboration">
-          <AccordionTrigger>
-            <span className="flex-1">More:</span>
-            <Badge>{knowledgebase.collaboration.others.length}</Badge>
-          </AccordionTrigger>
-          <AccordionContent className="grid grid-cols-2 gap-2 z-100">
-            {knowledgebase.collaboration.others.map((each) => <MinorKnowledge key={each.name} value={each}/>)}
-          </AccordionContent>
-        </AccordionItem>
-      </Accordion>
-    </CardContent>
-  </Card>;
-}
-
-function DeploymentCard() {
-  return <Card>
-    <CardHeader className="space-y-1.5">
-      <CardTitle>Deployment tools</CardTitle>
-    </CardHeader>
-    <CardContent className="space-y-1.5">
-      <div className="grid grid-cols-2 gap-2">
-        {knowledgebase.deployment.spotlight.map((each) => <MinorKnowledge key={each.name} value={each}/>)}
-      </div>
-      <Accordion type="single" collapsible className="-mb-4">
-        <AccordionItem value="deployment">
-          <AccordionTrigger>
-            <span className="flex-1">More:</span>
-            <Badge>{knowledgebase.deployment.others.length}</Badge>
-          </AccordionTrigger>
-          <AccordionContent className="grid grid-cols-2 gap-2 z-100">
-            {knowledgebase.deployment.others.map((each) => <MinorKnowledge key={each.name} value={each}/>)}
-          </AccordionContent>
-        </AccordionItem>
-      </Accordion>
-    </CardContent>
-  </Card>;
-}
-
-function AICard() {
-  return <Card>
-    <CardHeader className="space-y-1.5">
-      <CardTitle>AI tools</CardTitle>
-      <CardDescription>Because AI augments human creativity.</CardDescription>
-    </CardHeader>
-    <CardContent className="space-y-1.5">
-      <div className="grid grid-cols-2 gap-2">
-        {knowledgebase.ai.spotlight.map((each) => <MinorKnowledge key={each.name} value={each}/>)}
-      </div>
-      <Accordion type="single" collapsible className="-mb-4">
-        <AccordionItem value="ai">
-          <AccordionTrigger>
-            <span className="flex-1">More:</span>
-            <Badge>{knowledgebase.ai.others.length}</Badge>
-          </AccordionTrigger>
-          <AccordionContent className="grid grid-cols-2 gap-2 z-100">
-            {knowledgebase.ai.others.map((each) => <MinorKnowledge key={each.name} value={each}/>)}
-          </AccordionContent>
-        </AccordionItem>
-      </Accordion>
-    </CardContent>
-  </Card>;
-}
-
-function DevelopmentCard() {
-  return <Card>
-    <CardHeader className="space-y-1.5">
-      <CardTitle>Development tools</CardTitle>
-    </CardHeader>
-    <CardContent className="space-y-1.5">
-      <div className="grid grid-cols-2 gap-2">
-        {knowledgebase.development.spotlight.map((each) => <MinorKnowledge key={each.name} value={each}/>)}
-      </div>
-      <Accordion type="single" collapsible className="-mb-4">
-        <AccordionItem value="development">
-          <AccordionTrigger>
-            <span className="flex-1">More:</span>
-            <Badge>{knowledgebase.development.others.length}</Badge>
-          </AccordionTrigger>
-          <AccordionContent className="grid grid-cols-2 gap-2 z-100">
-            {knowledgebase.development.others.map((each) => <MinorKnowledge key={each.name} value={each}/>)}
-          </AccordionContent>
-        </AccordionItem>
-      </Accordion>
-    </CardContent>
-  </Card>;
-}
-
-function EmbeddedCard() {
-  return <Card>
-    <CardHeader className="space-y-1.5">
-      <CardTitle>Embedded</CardTitle>
-      <CardDescription>The small devices are often the most important ones.</CardDescription>
-    </CardHeader>
-    <CardContent className="grid grid-cols-2 gap-2">
-      {knowledgebase.embedded.all.map((each) => <Knowledge key={each.name} value={each}/>)}
-    </CardContent>
-  </Card>;
+  return (
+    <Card className="gap-2.5">
+      <CardHeader className={headerIcon ? "flex gap-3 items-center" : "space-y-1.5"}>
+        {headerIcon}
+        {headerIcon ? (
+          <div className="flex-1 space-y-1.5">
+            <CardTitle>{title}</CardTitle>
+            {description && <CardDescription>{description}</CardDescription>}
+          </div>
+        ) : (
+          <>
+            <CardTitle>{title}</CardTitle>
+            {description && <CardDescription>{description}</CardDescription>}
+          </>
+        )}
+      </CardHeader>
+      <CardContent className={moreItems ? "space-y-1.5" : "grid grid-cols-2 gap-2"}>
+        {moreItems ? (
+          <>
+            <div className="grid grid-cols-2 gap-2">
+              {items.map((each) => <Item key={each.name} value={each} />)}
+            </div>
+            <Accordion type="single" collapsible className="-mb-4">
+              <AccordionItem value="more">
+                <AccordionTrigger>
+                  <span className="flex-1">{expandLabel}</span>
+                  <Badge>{moreItems.length}</Badge>
+                </AccordionTrigger>
+                <AccordionContent className="grid grid-cols-2 gap-2 z-100">
+                  {moreItems.map((each) => <Item key={each.name} value={each} />)}
+                </AccordionContent>
+              </AccordionItem>
+            </Accordion>
+          </>
+        ) : (
+          items.map((each) => <Item key={each.name} value={each} />)
+        )}
+      </CardContent>
+    </Card>
+  );
 }
 
 export function KnowledgeSpotlight() {
@@ -266,34 +110,41 @@ export function KnowledgeSpotlight() {
     <Carousel className="max-sm:-mx-3 max-sm:w-screen max-lg:mx-auto min-sm:max-lg:w-[calc(100vw-150px)] lg:w-full" opts={{align: hasArrows ? "start" : "center"}}>
       <CarouselContent className="max-sm:ps-3">
         <CarouselItem className="basis-5/6 sm:basis-full md:basis-1/2 lg:basis-1/3">
-          <BackendCard/>
+          <KnowledgeCategoryCard title="Back-end development" items={knowledgebase.backend.spotlight} moreItems={knowledgebase.backend.others} />
         </CarouselItem>
         <CarouselItem className="basis-5/6 sm:basis-full md:basis-1/2 lg:basis-1/3">
-          <FrontendCard/>
+          <KnowledgeCategoryCard title="Front-end development" items={knowledgebase.frontend.spotlight} moreItems={knowledgebase.frontend.others} />
         </CarouselItem>
         <CarouselItem className="basis-5/6 sm:basis-full md:basis-1/2 lg:basis-1/3">
-          <DevelopmentCard/>
+          <KnowledgeCategoryCard title="Development tools" items={knowledgebase.development.spotlight} moreItems={knowledgebase.development.others} />
         </CarouselItem>
         <CarouselItem className="basis-5/6 sm:basis-full md:basis-1/2 lg:basis-1/3">
-          <LanguagesCard/>
+          <KnowledgeCategoryCard title="Programming languages" items={knowledgebase.languages.spotlight} moreItems={knowledgebase.languages.others} />
         </CarouselItem>
         <CarouselItem className="basis-5/6 sm:basis-full md:basis-1/2 lg:basis-1/3">
-          <AICard/>
+          <KnowledgeCategoryCard title="AI tools" description="Because AI augments human creativity." items={knowledgebase.ai.spotlight} moreItems={knowledgebase.ai.others} />
         </CarouselItem>
         <CarouselItem className="basis-5/6 sm:basis-full md:basis-1/2 lg:basis-1/3">
-          <DeploymentCard/>
+          <KnowledgeCategoryCard title="Deployment tools" items={knowledgebase.deployment.spotlight} moreItems={knowledgebase.deployment.others} />
         </CarouselItem>
         <CarouselItem className="basis-5/6 sm:basis-full md:basis-1/2 lg:basis-1/3">
-          <AWSCard/>
+          <KnowledgeCategoryCard
+            title="Amazon Web Services"
+            description="Major experience on cloud-first projects."
+            headerIcon={<img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" alt="AWS Icon" className="max-sm:hidden size-12 bg-white rounded-xl p-1.5" />}
+            items={knowledgebase.aws.spotlight}
+            moreItems={knowledgebase.aws.others}
+            moreLabelWide="More services deployed:"
+          />
         </CarouselItem>
         <CarouselItem className="basis-5/6 sm:basis-full md:basis-1/2 lg:basis-1/3">
-          <CollaborationCard/>
+          <KnowledgeCategoryCard title="Team collaboration" description="Working with others is the only way to ship quality software." items={knowledgebase.collaboration.spotlight} moreItems={knowledgebase.collaboration.others} />
         </CarouselItem>
         <CarouselItem className="basis-5/6 sm:basis-full md:basis-1/2 lg:basis-1/3">
-          <DatabasesCard/>
+          <KnowledgeCategoryCard title="Databases" description="From local to global, be it SQL or Not." items={knowledgebase.databases.all} />
         </CarouselItem>
         <CarouselItem className="basis-5/6 sm:basis-full md:basis-1/2 lg:basis-1/3 max-sm:pe-3">
-          <EmbeddedCard/>
+          <KnowledgeCategoryCard title="Embedded" description="The small devices are often the most important ones." items={knowledgebase.embedded.all} itemVariant="full" />
         </CarouselItem>
       </CarouselContent>
       {hasArrows && <><CarouselPrevious/><CarouselNext/></>}
