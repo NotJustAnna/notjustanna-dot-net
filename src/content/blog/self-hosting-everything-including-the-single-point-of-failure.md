@@ -1,6 +1,6 @@
 ---
 title: 'Self-Hosting Everything, Including the Single Point of Failure'
-description: 'Full GitOps means secrets can''t go in the repo. So I looked at SOPS, GitHub Actions Secrets, AWS, OCI Vault, Doppler. All of them had the wrong answer.'
+description: 'Homelabbing is genuinely fun. I want to say that upfront, before I tell you about the time I locked myself out of my own infrastructure for an afternoon.'
 pubDate: 'Mar 27 2026'
 category: dev
 heroImage: '../../assets/blog/rip-coffee.jpg'
@@ -9,7 +9,7 @@ Homelabbing is genuinely fun. I want to say that upfront, before I tell you abou
 
 The premise is compelling: you have a VM, you have K3s, and the open source ecosystem has basically everything you'd pay a SaaS for. Keycloak for OIDC. Forgejo for Git. Headscale for VPN. ArgoCD for GitOps. A few YAML files and you have a self-hosted stack that would make a startup founder weep.
 
-And for a while, it works beautifully. Ansible (yes, Ansible — I've since retired it, but that's [another post](https://dev.to/notjustanna/containers-the-wrong-way-lessons-learnt-4obn)) kept everything converging to the right state. ArgoCD synced my apps from a Forgejo repo. Kubectl reached K3s over Headscale. Users — well, me — logged into Forgejo via Keycloak OIDC. My custom Keycloak theme was hosted on Forgejo.
+And for a while, it works beautifully. Ansible (yes, Ansible — I've since retired it, but that's [another post](https://notjustanna.net/post/containers-the-wrong-way-lessons-learnt/)) kept everything converging to the right state. ArgoCD synced my apps from a Forgejo repo. Kubectl reached K3s over Headscale. Users — well, me — logged into Forgejo via Keycloak OIDC. My custom Keycloak theme was hosted on Forgejo.
 
 It was elegant. It was self-referential. It was fine, right up until it wasn't.
 
