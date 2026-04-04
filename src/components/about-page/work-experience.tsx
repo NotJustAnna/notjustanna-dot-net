@@ -6,6 +6,7 @@ import kaffaIcon from "@/assets/brands/kaffa.png?url";
 import { useMediaQuery } from "usehooks-ts";
 import { Badge } from "@/components/ui/badge.tsx";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs.tsx";
+import type { ReactNode } from "react";
 
 const freelanceImages = import.meta.glob("@/assets/freelance/*.jpg", { eager: true, import: 'default', query: '?url' });
 
@@ -22,51 +23,66 @@ function sinceDate(startYear: number, startMonth: number, startDay: number): str
   return parts.join(' ') || 'less than a month';
 }
 
-function KaffaTab() {
+type WorkExperienceCardProps = {
+  icon: string
+  iconAlt: string
+  fallbackText: string
+  fallbackClassName?: string
+  name: string
+  role: string
+  dateRange: string
+  children: ReactNode
+}
+
+function WorkExperienceCard({ icon, iconAlt, fallbackText, fallbackClassName, name, role, dateRange, children }: WorkExperienceCardProps) {
   return <Card className="gap-2.5">
     <CardHeader>
       <CardTitle className="flex gap-3 items-center">
         <Avatar>
-          <AvatarImage src={kaffaIcon} alt="Kaffa icon" />
-          <AvatarFallback className="bg-emerald-600 text-white font-bold">K</AvatarFallback>
+          <AvatarImage src={icon} alt={iconAlt} />
+          <AvatarFallback className={fallbackClassName}>{fallbackText}</AvatarFallback>
         </Avatar>
-        <span className="text-lg">Kaffa</span>
+        <span className="text-lg">{name}</span>
       </CardTitle>
-      <CardDescription>Full-stack Developer · May 2025 - present ({sinceDate(2025, 5, 12)})</CardDescription>
+      <CardDescription>{role} · {dateRange}</CardDescription>
     </CardHeader>
     <CardContent className="space-y-2">
-      <p>At Kaffa, I began by implementing and customizing their operational asset management platform
-        for an energy distribution client, then transitioned to the company&apos;s product innovation team.</p>
-      <p>There I took on some of the more technically interesting challenges: building a Lua scripting layer
-        to make the platform fully loadable from a single executable, and authoring a Static
-        Reflections library for Kotlin — twice, once with ByteBuddy and once with KSP.</p>
-      <p>I&apos;ve since been developing a GIS platform in TypeScript with Vite + React, and a Bun-powered
-        task graph executor for spinning up and configuring temporary development environments.</p>
+      {children}
     </CardContent>
   </Card>;
 }
 
+function KaffaTab() {
+  return <WorkExperienceCard
+    icon={kaffaIcon} iconAlt="Kaffa icon"
+    fallbackText="K" fallbackClassName="bg-emerald-600 text-white font-bold"
+    name="Kaffa" role="Full-stack Developer"
+    dateRange={`May 2025 - present (${sinceDate(2025, 5, 12)})`}
+  >
+    <p>At Kaffa, I began by implementing and customizing their operational asset management platform
+      for an energy distribution client, then transitioned to the company&apos;s product innovation team.</p>
+    <p>There I took on some of the more technically interesting challenges: building a Lua scripting layer
+      to make the platform fully loadable from a single executable, and authoring a Static
+      Reflections library for Kotlin — twice, once with ByteBuddy and once with KSP.</p>
+    <p>I&apos;ve since been developing a GIS platform in TypeScript with Vite + React, and a Bun-powered
+      task graph executor for spinning up and configuring temporary development environments.</p>
+  </WorkExperienceCard>;
+}
+
 function AvanadeTab() {
-  return <Card className="gap-2.5">
-    <CardHeader>
-      <CardTitle className="flex gap-3 items-center">
-        <Avatar>
-          <AvatarImage src={avanadeIcon} alt="Avanade icon" />
-          <AvatarFallback>AV</AvatarFallback>
-        </Avatar>
-        <span className="text-lg">Avanade</span>
-      </CardTitle>
-      <CardDescription>Full-stack Developer · May 2024 - Mar 2025 (11 months)</CardDescription>
-    </CardHeader>
-    <CardContent className="space-y-2">
-      <p>While at Avanade, I collaborated in many agile teams to deliver high-quality software solutions for
-        clients.</p>
-      <p>I worked on various front-end and back-end solutions, where I utilized my skills in Java/Spring,
-        TypeScript/NextJS.</p>
-      <p>My experience at Avanade has allowed me to grow as a developer and gain valuable insights on working with
-        big corporate clients.</p>
-    </CardContent>
-  </Card>;
+  return <WorkExperienceCard
+    icon={avanadeIcon} iconAlt="Avanade icon"
+    fallbackText="AV"
+    name="Avanade" role="Full-stack Developer"
+    dateRange="May 2024 - Mar 2025 (11 months)"
+  >
+    <p>While at Avanade, I collaborated in many agile teams to deliver high-quality software solutions for
+      clients.</p>
+    <p>I worked on various front-end and back-end solutions, where I utilized my skills in Java/Spring,
+      TypeScript/NextJS.</p>
+    <p>My experience at Avanade has allowed me to grow as a developer and gain valuable insights on working with
+      big corporate clients.</p>
+  </WorkExperienceCard>;
 }
 
 function FreelanceTab() {
@@ -97,26 +113,19 @@ function FreelanceTab() {
 }
 
 function TokenlabTab() {
-  return <Card className="gap-2.5">
-    <CardHeader>
-      <CardTitle className="flex gap-3 items-center">
-        <Avatar>
-          <AvatarImage src={tokenlabIcon} alt="Tokenlab icon" />
-          <AvatarFallback>TL</AvatarFallback>
-        </Avatar>
-        <span className="text-lg">Tokenlab</span>
-      </CardTitle>
-      <CardDescription>Full-stack Developer · Nov 2020 - Jul 2023 (2 years 9 months)</CardDescription>
-    </CardHeader>
-    <CardContent className="space-y-2">
-      <p>While at Tokenlab, I grew as a developer and learned to work with a variety of technologies,
-        as well as to work in a team and deliver high-quality software solutions.</p>
-      <p>I shined as a junior and mid developer with tons of technical knowledge and experience, being able to
-        deliver high-quality software solutions in a timely manner.</p>
-      <p>My knowledge and experience led me to focus on my development of soft skills, such as communication and
-        teamwork.</p>
-    </CardContent>
-  </Card>;
+  return <WorkExperienceCard
+    icon={tokenlabIcon} iconAlt="Tokenlab icon"
+    fallbackText="TL"
+    name="Tokenlab" role="Full-stack Developer"
+    dateRange="Nov 2020 - Jul 2023 (2 years 9 months)"
+  >
+    <p>While at Tokenlab, I grew as a developer and learned to work with a variety of technologies,
+      as well as to work in a team and deliver high-quality software solutions.</p>
+    <p>I shined as a junior and mid developer with tons of technical knowledge and experience, being able to
+      deliver high-quality software solutions in a timely manner.</p>
+    <p>My knowledge and experience led me to focus on my development of soft skills, such as communication and
+      teamwork.</p>
+  </WorkExperienceCard>;
 }
 
 export function WorkExperience() {

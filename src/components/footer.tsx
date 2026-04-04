@@ -1,10 +1,4 @@
-import { Button } from "@/components/ui/button";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faLinkedinIn } from "@fortawesome/free-brands-svg-icons/faLinkedinIn";
-import { faGithub } from "@fortawesome/free-brands-svg-icons/faGithub";
-import { decoratorProps } from "@/components/about-page/lib/decorator";
-import { Mail } from "lucide-react";
-import { faBluesky } from "@fortawesome/free-brands-svg-icons/faBluesky";
+import { SocialLinks } from "@/components/social-links";
 
 export function Footer({ compact = false }: { compact?: boolean }) {
   return (
@@ -19,26 +13,7 @@ export function Footer({ compact = false }: { compact?: boolean }) {
           </p>
         </div>
         <div className="flex justify-center md:justify-start flex-wrap gap-3">
-          <Button asChild variant="flavor_linkedin">
-            <a aria-label="LinkedIn" href="https://linkedin.com/in/notjustanna/">
-              <FontAwesomeIcon icon={faLinkedinIn} /><span className="max-sm:hidden">LinkedIn</span>
-            </a>
-          </Button>
-          <Button asChild variant="flavor_github">
-            <a aria-label="GitHub" href="https://github.com/notjustanna">
-              <FontAwesomeIcon icon={faGithub} /><span className="max-sm:hidden">GitHub</span>
-            </a>
-          </Button>
-          <Button asChild>
-            <a {...decoratorProps} aria-label="E-mail" href="mailto:no@thankyou.net">
-              <Mail /><span className="max-sm:hidden">E-mail</span>
-            </a>
-          </Button>
-          <Button asChild aria-label="Bluesky" variant="flavor_bluesky">
-            <a href="https://bsky.app/profile/notjustanna.net">
-              <FontAwesomeIcon icon={faBluesky} /><span className="max-sm:hidden">Bluesky</span>
-            </a>
-          </Button>
+          <SocialLinks />
         </div>
       </div>
     </div>
