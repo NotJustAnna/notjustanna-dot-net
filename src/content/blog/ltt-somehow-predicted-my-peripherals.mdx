@@ -1,0 +1,94 @@
+---
+title: 'LTT Somehow Predicted my Peripherals'
+description: 'I wanted a wireless keyboard and ended up finding the factory behind half the brands on AliExpress.'
+pubDate: 'May 13 2026'
+category: tech
+heroImage: '../../assets/blog/keyboard.jpg'
+---
+
+import { Image } from 'astro:assets';
+import ohLookItsMyKeyboard from '../../assets/blog/startec/oh-look-its-my-keyboard.png';
+import ohGodItsEveryonesKeyboards from '../../assets/blog/startec/oh-god-its-everyones-keyboards.png';
+
+My Logitech G502 mouse and 512 keyboard served me well for four years, but I needed a wireless upgrade and a gaming downgrade. Something which I could take to work, in my backpack, without the cable situation being a whole thing. Something that didn't scream *gamer* when management walked by. Still, both served me so well that my girlfriend is now the proud owner of both.
+
+The whole mouse situation was solved in fifteen minutes. Logitech mouses are a no-brainer. The Lightspeed protocol, although mostly proprietary marketing, delivers on its promises. I opened Amazon, the G305 was on sale, it had the feature set I wanted, and I bought it. Done.
+
+The keyboard, meanwhile, was a rabbit hole so deep it's now a whole post series.
+
+---
+
+## Work Friends and Mechanical Keyboards
+
+The guys at work are into mechanical keyboards. Like, a lot. Some of them own multiple mechanical keyboards. One of them owns a 60% layout with not even the F-keys. The other owns a R$1000 low-profile Logitech keyboard he's also trying to sell. One day I decided to throw them my non-negotiables and ask for recommendations.
+
+First: I like the numpad. A lot. It's from modded Minecraft days where having a numpad meant more keybinds. And also, I didn't want to give up the numpad. Second: I like tactile switches. I don't want to bottom out every keypress. Third: Wireless. Everything else was negotiable.
+
+They immediately threw me into the 95-98% layout category. It's a full-size layout with a numpad, but the keys are more tightly packed and there's no dead space between the main cluster and the numpad. The lack of Scroll Lock and Page Up/Down was a non-issue. I loved the look of it immediately.
+
+But they all came with linear switches. But, some of the keyboards explicitly mentioned hot-swappable sockets in their product description. Great, I just have to buy a hundred-pack of switches on AliExpress, pop the stems in, and I'm good. The hardware is basically a PCB with holes. The switch is the opinion.
+
+We had a "rough spec" of the keyboard I wanted.
+
+---
+
+## Keyboard brands, SuperFrame, and LTT
+
+They started throwing AliExpress brands at me. Aula came up a lot. Decent build quality, reasonable price, ships from China. I started searching and then — the way your brain surfaces things — I remembered Linus Tech Tips made a video about a Brazilian gaming brand I'd never heard of called SuperFrame. They'd built a PC almost entirely from SuperFrame components, except Linus didn't actually go to Brazil — he had two contacts source and assemble it locally and ship the finished machine to Canada. I hadn't thought about it since.
+
+One thing from the video did stick, though. The SuperFrame RAM was, in Linus's own words, a Kingston rebadge. Same sticks, two logos. Filed under "huh" and forgotten.
+
+I searched "SuperFrame keyboard" and found the SuperFrame Phantom on TerabyteShop. 98% layout, numpad, gasket mount, wireless (Bluetooth + 2.4GHz dongle), RGB, hot-swap. Listed with KTT WineRed Linear switches, but explicitly hot-swappable, so I could replace them with tactiles. It looked, to a suspicious degree, like an Aula F99 Pro. Same chassis silhouette. Same side knob. Same RGB diffuser pattern. We figured it was probably a rebrand. I bought it anyway — the tariff math worked out, the spec sheet was honest, and for an extra R$ 100 I bought Redragon-branded Browns off AliExpress to swap in.
+
+## The Keyboard Arrives with a `lsusb` Surprise
+
+Being a national purchase, the keyboard arrived quickly enough. The imported Redragon Browns were a couple of days out, and the KTT WineRed Linears that came with the keyboard were, well, not to my liking. Linears feel like fighting with springs to me. They were smooth on paper, but dead in hand. "Linear" was technically accurate. "WineRed" is a name and a color and nothing else. To kill time, I plugged the keyboard in and ran `lsusb` just to see what Linux would make of it.
+
+```sh
+Bus 001 Device 025: ID 258a:019d SINO WEALTH StarTec MKGP98 Keyboard
+        # ⮡ Keyboard connected via USB-C
+Bus 001 Device 021: ID 258a:0150 SINOWEALTH Gaming KB
+        # ⮡ The 2.4GHz dongle
+```
+
+What is a "SinoWealth"? And what is a "StarTec"? I thought the keyboard was a SuperFrame Phantom, but the OS sees it as a MKGP98 from StarTec and SinoWealth.
+
+## The Factory Behind Half the Brands on AliExpress
+
+I wonder what happens if I search "StarTec MKGP98" on Google.
+
+<Image src={ohLookItsMyKeyboard} alt="Oh look, it's my keyboard!" />
+
+Oh. [That is literally my keyboard.](https://www.globalsources.com/Mechanical-keyboard/Gasket-wireless-mechanical-keyboard-1218079996p.htm)
+
+So, the SuperFrame Phantom is a white-label rebrand of the StarTec MKGP98. The specs are exactly the same, including the KTT WineRed Linears.
+
+Then I saw that StarTec had a storefront.
+
+<Image src={ohGodItsEveryonesKeyboards} alt="Oh god, it's everyone's keyboards!" />
+
+Oh god. [I can recognize the chassis of at least half the keyboards on AliExpress in this one page](https://startec.manufacturer.globalsources.com/showroom_6008825347795/mechanical-keyboard_1715999-1.htm).
+
+Okay. Existential crisis aside. Let me put the picture together.
+
+SuperFrame is not a brand. It's TerabyteShop — the retailer — with a logo on it. They launched it in 2020 and sell it exclusively through their own store. The Phantom is a StarTec MKGP98. The RAM is Kingston with the sticker swapped. Presumably the motherboards, PSUs, and monitors are similarly someone-else's-product-with-a-sticker. The brand is the supply chain.
+
+The economic trick is the Zona Franca de Manaus — a federal tax regime where assembling electronics in Manaus waives most of the import duty on the components. So TerabyteShop ships StarTec parts into Manaus, has someone click the switches and the gasket into place, and the keyboard is now legally a domestic product. R$ 800 of imported keyboard becomes R$ 300 of "Brazilian" keyboard. Same hardware. Different paperwork.
+
+I cannot be mad about this. I got a R$ 300 keyboard. TerabyteShop got a customer. StarTec got a wholesale order. Manaus got an assembly job. The only entity getting underbid here is the importer who tried to bring the same keyboard in legitimately, and frankly, that's their problem.
+
+Linus Tech Tips made a 25-minute video about SuperFrame and didn't catch that the brand was the store. I caught it from searching "SuperFrame" and seeing that only TerabyteShop sold products from them. Make of that what you will.
+
+## The Switches Arrive.
+
+The AliExpress order of Redragon Browns arrived. After some research, I found out that Redragon's "Browns" are actually Outemu Browns. The irony of going from Logitech-branded Gateron Browns to Outemu-branded Browns is not lost on me.
+
+I've watched a total of 2 minutes of a YouTube video before getting the hang of swapping the switches, and did so during a work call I was only half paying attention to. The tactile bump is exactly what I wanted.
+
+I now also had a hundred-pack of KTT WineRed Linears I had no use for. I told the guys I was gonna sell them on Facebook Marketplace for R$ 50. They bought them before I even took pictures to post the listing — specifically, the same coworker who recommended the keyboard in the first place, because he has a board with Blue switches he wants to rehabilitate.
+
+So: I bought a keyboard, swapped its switches out for different switches, and sold the original switches to the person who told me to buy the keyboard, who needed them because his other keyboard has the wrong switches. Some people are really particular about their switches, huh.
+
+---
+
+> Cover photo by [Jay Zhang](https://unsplash.com/@jay_zhang) on [Unsplash](https://unsplash.com)
