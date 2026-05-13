@@ -20,6 +20,7 @@ import dynamodbLogo from "@/assets/brands/aws/dynamodb.svg?url";
 import ec2Logo from "@/assets/brands/aws/ec2.svg?url";
 import ecrLogo from "@/assets/brands/aws/ecr.svg?url";
 import ecsLogo from "@/assets/brands/aws/ecs.svg?url";
+import eksLogo from "@/assets/brands/aws/eks.svg?url";
 import iamLogo from "@/assets/brands/aws/iam.svg?url";
 import lambdaLogo from "@/assets/brands/aws/lambda.svg?url";
 import route53Logo from "@/assets/brands/aws/route53.svg?url";
@@ -50,6 +51,7 @@ const K = {
   aws: {
     apigateway: k("API Gateway", apiGatewayLogo, "https://aws.amazon.com/api-gateway", "fullsize"),
     aurora: k("RDS Aurora", auroraLogo, "https://aws.amazon.com/aurora", "fullsize"),
+    bedrock: k("Bedrock", "https://cdn.jsdelivr.net/gh/NotJustAnna/extended-lobe-icons@main/packages/icons/bedrock/dark-colorbg-avatar.png", "https://aws.amazon.com/bedrock", "fullsize"),
     cloudformation: k("Cloud Formation", cloudformationLogo, "https://aws.amazon.com/cloudformation", "fullsize"),
     cloudfront: k("CloudFront", cloudfrontLogo, "https://aws.amazon.com/cloudfront", "fullsize"),
     cloudwatch: k("CloudWatch", cloudwatchLogo, "https://aws.amazon.com/cloudwatch", "fullsize"),
@@ -61,6 +63,7 @@ const K = {
     ec2: k("EC2", ec2Logo, "https://aws.amazon.com/ec2", "fullsize"),
     ecr: k("ECR", ecrLogo, "https://aws.amazon.com/ecr", "fullsize"),
     ecs: k("ECS", ecsLogo, "https://aws.amazon.com/ecs", "fullsize"),
+    eks: k("EKS", eksLogo, "https://aws.amazon.com/eks", "fullsize"),
     iam: k("IAM", iamLogo, "https://aws.amazon.com/iam", "fullsize"),
     lambda: k("Lambda", lambdaLogo, "https://aws.amazon.com/lambda", "fullsize"),
     route53: k("Route 53", route53Logo, "https://aws.amazon.com/route53", "fullsize"),
@@ -87,7 +90,7 @@ const K = {
   collab: {
     gworkspace: k("Google Workspaces", "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/google/google-original.svg", "https://workspace.google.com"),
     bitbucket: k("Bitbucket", "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/bitbucket/bitbucket-original.svg", "https://bitbucket.org", "bigger-3"),
-    bookstack: k("Bookstack", "https://cdn.jsdelivr.net/gh/BookStackApp/BookStack@development/public/icon.png", "https://www.bookstackapp.com", "bigger-2"),
+    bookstack: k("Bookstack", "https://cdn.jsdelivr.net/gh/BookStackApp/BookStack@v26.03.4/public/icon.png", "https://www.bookstackapp.com", "bigger-2"),
     confluence: k("Confluence", "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/confluence/confluence-original.svg", "https://www.atlassian.com/software/confluence"),
     gather: k("Gather", "https://avatars.githubusercontent.com/u/64757313?v=4", "https://gather.town", "bigger-4"),
     github: k("GitHub", "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg", "https://github.com"),
@@ -111,6 +114,7 @@ const K = {
   },
   deploy: {
     ansible: k("Ansible", "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/ansible/ansible-original.svg", "https://www.ansible.com/"),
+    argocd: k("ArgoCD", "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/argocd/argocd-original.svg", "https://argo-cd.readthedocs.io/", "bigger-2"),
     teamcity: k("TeamCity", "https://upload.wikimedia.org/wikipedia/commons/2/29/TeamCity_Icon.svg", "https://www.jetbrains.com/teamcity/"),
     aws: k("AWS", "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-original-wordmark.svg", "https://aws.amazon.com"),
     circleci: k("CircleCI", "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/circleci/circleci-plain.svg", "https://circleci.com"),
@@ -131,8 +135,8 @@ const K = {
   dev: {
     bun: k("Bun", "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/bun/bun-original.svg", "https://bun.sh/", "bigger-2"),
     docker: k("Docker", "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg", "https://www.docker.com/", "bigger-4"),
-    postman: k("Postman", "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postman/postman-original.svg", "https://postman.com"),
-    electron: k("Electron", "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/electron/electron-original.svg", "https://www.electronjs.org"),
+    postman: k("Postman", "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postman/postman-original.svg", "https://postman.com", "bigger-2"),
+    electron: k("Electron", "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/electron/electron-original.svg", "https://www.electronjs.org", "bigger-4"),
     figma: k("Figma", "https://www.vectorlogo.zone/logos/figma/figma-icon.svg", "https://www.figma.com/"),
     git: k("Git", "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg", "https://git-scm.com/", "bigger-1"),
     gradle: k("Gradle", "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/gradle/gradle-original.svg", "https://gradle.org", "bigger-1"),
@@ -144,36 +148,40 @@ const K = {
     npm: k("NPM", "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/npm/npm-original-wordmark.svg", "https://www.npmjs.com/", "bigger-2"),
     playwright: k("Playwright", "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/playwright/playwright-original.svg", "https://playwright.dev", "bigger-4"),
     pnpm: k("PNPM", "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/pnpm/pnpm-original.svg", "https://pnpm.io/"),
+    podman: k("Podman", "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/podman/podman-original.svg", "https://podman.io/", "bigger-2"),
     puppeteer: k("Puppeteer", "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/puppeteer/puppeteer-original.svg", "https://github.com/puppeteer/puppeteer"),
     redis: k("Redis", "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/redis/redis-original.svg", "https://redis.io", "bigger-1"),
     rxjs: k("RxJS", "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/rxjs/rxjs-original.svg", "https://rxjs.dev", "bigger-1"),
-    ssh: k("SSH", "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/ssh/ssh-original-wordmark.svg", "https://www.ssh.com/ssh/"),
+    ssh: k("SSH", "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/ssh/ssh-original-wordmark.svg", "https://www.ssh.com/ssh/", "bigger-3"),
+    tailscale: k("Tailscale", "https://cdn.jsdelivr.net/gh/simple-icons/simple-icons@latest/icons/tailscale.svg", "https://tailscale.com/"),
     vsCode: k("VS Code", "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vscode/vscode-original.svg", "https://code.visualstudio.com/", "bigger-1"),
     wasm: k("WASM", "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/wasm/wasm-original.svg", "https://webassembly.org/"),
-    webpack: k("Webpack", "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/webpack/webpack-original.svg", "https://webpack.js.org"),
+    webpack: k("Webpack", "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/webpack/webpack-original.svg", "https://webpack.js.org", "bigger-2"),
     webstorm: k("Webstorm", "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/webstorm/webstorm-original.svg", "https://www.jetbrains.com/webstorm/", "bigger-2"),
-    yarn: k("Yarn", "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/yarn/yarn-original.svg", "https://yarnpkg.com/"),
+    yarn: k("Yarn", "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/yarn/yarn-original.svg", "https://yarnpkg.com/", "bigger-2"),
   },
   embedded: {
     arduino: k("Arduino", "https://www.vectorlogo.zone/logos/arduino/arduino-icon.svg", "https://www.arduino.cc/"),
     rpi: k("Raspberry Pi", "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/raspberrypi/raspberrypi-original.svg", "https://www.raspberrypi.org/"),
   },
   frontend: {
+    astro: k("Astro", "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/astro/astro-original.svg", "https://astro.build/", "bigger-2"),
+    bootstrap: k("Bootstrap", "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/bootstrap/bootstrap-original.svg", "https://getbootstrap.com/", "bigger-2"),
     bulma: k("Bulma", "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/bulma/bulma-plain.svg", "https://bulma.io/", "bigger-2"),
     css3: k("CSS3", "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg", "https://www.w3schools.com/css/", "bigger-1"),
     html5: k("HTML5", "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg", "https://www.w3.org/html/", "bigger-1"),
     materialize: k("Materialize", "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/materializecss/materializecss-original.svg", "https://materializecss.com/", "bigger-4"),
     mui: k("MUI", "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/materialui/materialui-plain.svg", "https://mui.com/material-ui/", "bigger-1"),
-    nextjs: k("NextJS", "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nextjs/nextjs-original.svg", "https://nextjs.org/"),
-    react: k("React", "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg", "https://reactjs.org/", "bigger-4"),
+    nextjs: k("NextJS", "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nextjs/nextjs-original.svg", "https://nextjs.org/", "bigger-2"),
+    react: k("React", "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg", "https://reactjs.org/", "bigger-3"),
     sass: k("Sass", "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/sass/sass-original.svg", "https://sass-lang.com/", "bigger-2"),
     shadcn: k("Shadcn UI", shadcnLogo, "https://ui.shadcn.com/", "bigger-3"),
-    tailwind: k("Tailwind", "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg", "https://tailwindcss.com/"),
+    tailwind: k("Tailwind", "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg", "https://tailwindcss.com/", "bigger-1"),
     vite: k("Vite", "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vitejs/vitejs-original.svg", "https://vitejs.dev", "bigger-2"),
   },
   lang: {
     bash: k("Bash", "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/bash/bash-original.svg", "https://www.gnu.org/software/bash/", "bigger-3"),
-    c: k("C", "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/c/c-original.svg", "https://en.wikipedia.org/wiki/C_(programming_language)", "bigger-2"),
+    c: k("C", "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/c/c-original.svg", "https://en.wikipedia.org/wiki/C_(programming_language)"),
     cpp: k("C++", "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/cplusplus/cplusplus-original.svg", "https://en.wikipedia.org/wiki/C%2B%2B", "bigger-2"),
     java: k("Java", "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg", "https://www.java.com", "bigger-2"),
     js: k("JavaScript", "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg", "https://www.javascript.com/", "fullsize"),
@@ -183,15 +191,15 @@ const K = {
     ts: k("TypeScript", "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg", "https://www.typescriptlang.org/", "fullsize"),
   },
   ai: {
-    claudeCode: k("Claude Code", "https://cdn.jsdelivr.net/gh/NotJustAnna/extended-lobe-icons@main/packages/icons/claude/dark-colorbg-avatarfit.png", "https://claude.ai/code", "fullsize"),
+    claudeCode: k("Claude Code", "https://cdn.jsdelivr.net/gh/NotJustAnna/extended-lobe-icons@main/packages/icons/claude/dark-colorbg-avatar.png", "https://claude.ai/code", "fullsize"),
     copilot: k("GitHub Copilot", "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg", "https://github.com/features/copilot"),
     cursor: k("Cursor", "https://www.cursor.com/favicon.ico", "https://www.cursor.com/", "fullsize"),
-    ollama: k("Ollama", "https://cdn.jsdelivr.net/gh/NotJustAnna/extended-lobe-icons@main/packages/icons/ollama/light-bg-avatarfit.png", "https://ollama.com/", "fullsize"),
+    ollama: k("Ollama", "https://cdn.jsdelivr.net/gh/NotJustAnna/extended-lobe-icons@main/packages/icons/ollama/light-bg-avatar.png", "https://ollama.com/", "fullsize"),
     antigravity: k("Antigravity", "https://cdn.jsdelivr.net/gh/simple-icons/simple-icons@latest/icons/googlegemini.svg", "https://gemini.google.com"),
     mcp: k("MCP", "https://cdn.jsdelivr.net/gh/simple-icons/simple-icons@latest/icons/modelcontextprotocol.svg", "https://modelcontextprotocol.io/"),
-    qwen: k("Qwen", "https://cdn.jsdelivr.net/gh/NotJustAnna/extended-lobe-icons@main/packages/icons/qwen/dark-colorbg-avatarfit.png", "https://qwenlm.github.io/", "fullsize"),
-    gemma: k("Gemma", "https://cdn.jsdelivr.net/gh/NotJustAnna/extended-lobe-icons@main/packages/icons/gemma/dark-colorbg-avatarfit.png", "https://ai.google.dev/gemma", "fullsize"),
-    phi: k("Microsoft Phi", "https://cdn.jsdelivr.net/gh/NotJustAnna/extended-lobe-icons@main/packages/icons/copilot/light-color-bg-avatarfit.png", "https://azure.microsoft.com/en-us/products/phi", "fullsize"),
+    qwen: k("Qwen", "https://cdn.jsdelivr.net/gh/NotJustAnna/extended-lobe-icons@main/packages/icons/qwen/dark-colorbg-avatar.png", "https://qwenlm.github.io/", "fullsize"),
+    gemma: k("Gemma", "https://cdn.jsdelivr.net/gh/NotJustAnna/extended-lobe-icons@main/packages/icons/gemma/dark-colorbg-avatar.png", "https://ai.google.dev/gemma", "fullsize"),
+    phi: k("Microsoft Phi", "https://cdn.jsdelivr.net/gh/NotJustAnna/extended-lobe-icons@main/packages/icons/copilot/light-color-bg-avatar.png", "https://azure.microsoft.com/en-us/products/phi", "fullsize"),
   }
 };
 
@@ -207,7 +215,8 @@ export const knowledgebase = {
       K.aws.codebuild, K.aws.codepipeline,
       K.aws.cognito, K.aws.dynamodb,
       K.aws.ec2, K.aws.ecr,
-      K.aws.ecs, K.aws.iam,
+      K.aws.ecs, K.aws.eks,
+      K.aws.iam, K.aws.bedrock,
       K.aws.aurora, K.aws.ses,
       K.aws.sns, K.aws.sqs,
       K.aws.ssm, K.aws.vpc,
@@ -271,6 +280,7 @@ export const knowledgebase = {
       K.deploy.debian,
       K.deploy.portainer,
       K.deploy.ansible,
+      K.deploy.argocd,
       K.deploy.k3s,
       K.deploy.oracle,
     ],
@@ -287,6 +297,7 @@ export const knowledgebase = {
       K.dev.yarn,
       K.dev.npm,
       K.dev.pnpm,
+      K.dev.podman,
       K.dev.electron,
       K.dev.figma,
       K.dev.insomnia,
@@ -296,6 +307,7 @@ export const knowledgebase = {
       K.dev.redis,
       K.dev.rxjs,
       K.dev.ssh,
+      K.dev.tailscale,
       K.dev.wasm,
       K.dev.webpack,
       K.dev.postman,
@@ -307,10 +319,10 @@ export const knowledgebase = {
   frontend: {
     spotlight: [
       K.frontend.vite, K.frontend.tailwind,
-      K.frontend.react, K.frontend.nextjs,
+      K.frontend.react, K.frontend.astro,
       K.frontend.shadcn, K.frontend.sass,
     ],
-    others: [K.frontend.html5, K.frontend.css3, K.frontend.bulma, K.frontend.materialize, K.frontend.mui],
+    others: [K.frontend.html5, K.frontend.css3, K.frontend.nextjs, K.frontend.bootstrap, K.frontend.bulma, K.frontend.materialize, K.frontend.mui],
   },
   languages: {
     spotlight: [
