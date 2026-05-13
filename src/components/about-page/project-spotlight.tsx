@@ -1,6 +1,6 @@
 import {Card, CardContent, CardDescription, CardHeader, CardTitle} from "@/components/ui/card.tsx";
 import {Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious} from "@/components/ui/carousel.tsx";
-import {Cable} from "lucide-react";
+import {Cable, Layers} from "lucide-react";
 import {useMediaQuery} from "usehooks-ts";
 import type {ReactNode} from "react";
 
@@ -42,6 +42,22 @@ export function ProjectSpotlight() {
     </h2>
     <Carousel className="max-sm:-mx-3 max-sm:w-screen max-lg:mx-auto min-sm:max-lg:w-[calc(100vw-150px)] lg:w-full" opts={{align: hasArrows ? "start" : "center"}}>
       <CarouselContent className="max-sm:ps-3">
+        <CarouselItem className="basis-5/6 sm:basis-full md:basis-1/2">
+          <ProjectCard
+            icon={<Layers className="size-12 bg-[#020618] text-white rounded-xl p-1.5"/>}
+            title="SeamStack"
+            description="A not-a-framework for full-stack web apps."
+          >
+            <p className="text-sm">
+              SeamStack is a pattern (and a small set of plugins) for building full-stack web apps without the usual
+              dev/prod wiring boilerplate between frontend and backend.
+            </p>
+            <p className="text-sm">
+              It&apos;s bring-your-own-bundler and bring-your-own-server — the seams disappear regardless of which
+              tools you pick on either side.
+            </p>
+          </ProjectCard>
+        </CarouselItem>
         <CarouselItem className="basis-5/6 sm:basis-full md:basis-1/2">
           <ProjectCard
             icon={<img src="https://avatars.githubusercontent.com/u/64380743?v=4" alt="Nanoflakes Icon" className="size-12 bg-white rounded-xl p-0.5" />}
