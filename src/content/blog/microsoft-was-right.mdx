@@ -1,0 +1,149 @@
+---
+title: 'Microsoft Was Right. They Were Just Fifteen Years Early.'
+description: "Windows 8 was correct. Metro was correct. Microsoft saw convergence before anyone and got laughed off the stage for it. Fifteen years later Valve and Google are eating the lunch Microsoft left on the counter."
+pubDate: 'May 19 2026'
+category: tech
+heroImage: '../../assets/blog/microsoft.jpg'
+---
+
+import { Image } from 'astro:assets';
+import windowsPhoneSeven from '../../assets/blog/convergence/windows-phone-7.png';
+import windowsEight from '../../assets/blog/convergence/windows-8.png';
+import steam from '../../assets/blog/convergence/steam.jpg';
+import dex from '../../assets/blog/convergence/dex.png';
+
+There's a specific kind of vindication that takes a decade and a half to land, and it usually arrives via someone else's hardware.
+
+I've been using Parsec to remote into my desktop from a tablet — which works exactly as well as you'd think until you try to open a browser, at which point you remember that the operating system on the other end was designed by people who decided, sometime around 2017, that touch input was a phase. Windows had Tablet Mode. Windows *invented*, more or less, the consumer notion that a single OS should adapt to whatever input device was in front of it. And then Windows quietly took Tablet Mode out back and shot it.
+
+Fifteen years later, I'm mad at Microsoft because I keep watching other companies ship the future they already built and then abandoned.
+
+---
+
+## The Bet Microsoft Made
+
+Rewind. 2011-ish. Microsoft looks at the world and decides — correctly — that the next era of computing is convergence. Same design language, same interaction model, same conceptual surface across phone, tablet, laptop, TV, and console. They commit. *Hard.*
+
+<Image src={windowsPhoneSeven} alt="Windows Phone 7, running Metro" />
+
+Windows Phone 7 ships Metro. Tiles, typography, motion. It is the first mobile OS since the original iPhone with an actual design opinion. Critics call it beautiful. Users who try it tend to like it. It sells terribly, for reasons that are mostly about app ecosystems and carrier relationships rather than the OS itself, but the design is right.
+
+<Image src={windowsEight} alt="Windows 8, running Metro" style={{ marginLeft: 'auto', marginRight: 'auto' }} />
+
+Windows 8 ships Metro on the desktop. Reviewers struggled to find words. Most settled on *'jarring.'*
+
+Windows Media Center, by then already a half-decade old, gets folded into the same conceptual lineage — a TV-friendly, controller-friendly shell for content. The Xbox 360 dashboard moves to Metro. Then the Xbox One launches with a Metro-derived UI, designed around the assumption that you might be sitting on a couch with a controller, or standing in front of the TV waving at a Kinect. A few years later Windows Mixed Reality ships — Microsoft's bet that VR and AR were the next form factor, with a shell that was, of course, Metro tiles floating in a virtual house. Same design language. New dimension. Convergence.
+
+And — I should say this out loud, because the rest of the post pretends to be objective and it isn't — Metro was beautiful. Not "interesting." Not "a bold experiment." Beautiful. The typography was right. The motion was right. The information density was correct for the device it was on. Live tiles were the only good idea anyone has had about home screens since the original iPhone, and nobody has had a better one since they died. I am writing this post partly because the industry abandoned a design language I loved and replaced it with rounded rectangles and frosted glass for fifteen years and I would like, on the record, to be annoyed about it.
+
+The pitch was: one design language, one mental model, every device. You learn the system once. It scales from a 4-inch phone to a 65-inch television to a headset strapped to your face. The tile is the unit. The tile is universal.
+
+Microsoft was *right.*
+
+Microsoft was also, as it turns out, fifteen years early. Or as the industry would say, *wrong.*
+
+---
+
+## What Killed It
+
+Several things, all at once, none of them the design.
+
+The desktop user base did not want tablet UI on their non-tablets. Reasonable. The problem wasn't Metro, the problem was Microsoft forcing Metro onto people who'd bought a desktop tower specifically because they were not, in fact, holding it. The fix was a Tablet Mode toggle — which Windows 8.1 added, which Windows 10 refined into something genuinely good, and which Windows 11 deleted. We'll come back to that.
+
+Windows Phone died because of apps, not design. Developers wouldn't ship for it, users wouldn't buy it because developers wouldn't ship for it, chicken, meet egg, etc. The OS itself was — and I will die on this hill — better than what was around it at the time. Live tiles were a genuinely good idea that no one has improved on since.
+
+The Xbox One launch was sabotaged by every adjacent decision Microsoft made *about* the Xbox One. Always-online, used games, Kinect bundling, the whole bit. The UI got tarred with the same brush. By the time the dust settled, "Metro on a console" was associated with the worst console launch of the modern era, which is unfair to Metro, but that's how memory works.
+
+Windows Media Center got killed because Microsoft killed it. There's no deeper story. They stopped shipping it in Windows 10 and the entire category of "PC as TV brain" went with it.
+
+So Microsoft retreats. Windows 10 walks back the Metro maximalism. Windows 11 walks back the walk-back, in the sense that it removes Tablet Mode entirely and ships a desktop UI that's worse on touchscreens than Windows 8 was. The convergence bet is over. The company that placed it pretends it didn't.
+
+And then — and this is the part that gets me — fifteen years pass and the bet starts paying off. For other people.
+
+---
+
+## Valve, Quietly Stealing Microsoft's Roadmap
+ 
+Look at what Valve is doing right now. Not what they're saying — what they're shipping.
+
+<Image src={steam} alt="Steam Deck running SteamOS" style={{ marginLeft: 'auto', marginRight: 'auto' }} />
+ 
+SteamOS. Steam Deck. Steam Machine (the new one, this time it might actually work). Steam Controller. Steam Frame. Big Picture Mode, which has been the best controller-friendly OS layer on any desktop OS for *years* and which is now, with SteamOS 3, basically the default shell of an entire device category.
+ 
+This is — and I want to be precise here — convergence. It's the same mental model running on a handheld, a TV box, a desktop, a VR headset, and a gamepad-shaped peripheral. One design language. One interaction model. Scales from a 7-inch screen to a 65-inch television. Controller-first, but works with mouse and keyboard. Touch where it makes sense.
+
+The tile is the unit. The tile is universal.
+
+It is, structurally, what Microsoft tried to build with Xbox + Windows + Windows Phone + Media Center + SmartGlass. Valve is doing it with one team and FOSS software, on commodity hardware, without owning a phone OS or a TV ecosystem. And it's *working*, in the limited sense that the Steam Deck has carved out a real category and SteamOS has become the only mainstream Linux distribution your non-technical relatives might actually be running by accident.
+
+And then, because the blueprint wasn't enough, Valve took the apps too. Wine, Proton, DXVK, VKD3D, and now FEX for their ARM-based VR headset — a translation layer stack that runs Windows games on Linux, increasingly better than Windows runs them. The convergence ecosystem Microsoft abandoned now runs on Microsoft's own software catalogue, on hardware Microsoft doesn't sell, on an OS Microsoft doesn't make. They didn't just take the roadmap. They took the library.
+
+The only good thing in all of this is that this time we're actually rooting for the company doing the grave-robbing.
+
+---
+
+## Google, Less Quietly
+
+Meanwhile, a long con was unfolding on Google's end.
+
+Google buys Android in 2005. Drives Windows Mobile off a cliff. Then, when Microsoft retools and ships Windows Phone, drives that off a cliff too. Android goes on tablets — badly, at first, then less badly, then fine. Android goes on TVs as Android TV, which is now Google TV, which is now (depending on which week you ask) one of the dominant smart TV operating systems on Earth. Android Auto runs as a phone-projected layer in cars. Android Automotive runs *as the car*. Let's hope this one doesn't get driven off a cliff too.
+
+And then, late last year, ChromeOS and Android quietly merged into the thing currently being marketed as Googlebooks — a single OS running on phones, tablets, laptops, TVs, cars, and whatever Google decides counts as a computer next.
+
+One OS. Many shells. Every form factor.
+
+<Image src={dex} alt="Samsung DeX running on a monitor" style={{ marginLeft: 'auto', marginRight: 'auto' }} />
+
+And — because the joke is never finished until it's painful — Samsung has been shipping Continuum for almost a decade. It's DeX. You plug a Galaxy phone into a monitor and it becomes a desktop. Motorola does the same thing under the name Ready For. The exact feature Microsoft demoed in 2015 with the Lumia 950, the one that was supposed to be the bridge between Windows Phone and "your phone is your PC" — that's been a stable, shipping, unremarkable feature on Android flagships since 2017. Hundreds of millions of phones. Nobody talks about it because it's not novel anymore. The novelty was Microsoft's. The product is Android's.
+
+This is convergence. This is the bet Microsoft made and walked away from. Google didn't even need to make the bet — they just kept incrementally absorbing form factors until the convergence happened by accumulation. The Microsoft strategy executed in slow motion by a company patient enough to wait fifteen years for the user base to catch up.
+
+---
+
+## Apple is Apparently Asleep
+
+Apple's position on all of this is, to put it generously, *baffling.*
+
+Because Apple already built it. They just refuse to finish it.
+
+Look at the ecosystem. Handoff. Continuity. AirDrop. AirPlay. Sidecar. Universal Clipboard. The thing where your iPhone unlocks your Mac. The thing where your AirPods know which device you just picked up. The thing where you start typing an email on your phone and finish it on your laptop. *Apple invented Continuum.* They shipped it years before Microsoft tried to. They just called it "Continuity" and never made a big deal out of it because it worked. Your iPhone, your iPad, your Mac, your Apple TV, your Watch, your AirPods, and your Vision Pro are, by any reasonable definition, a personal area network that authenticates itself and shuffles state between devices invisibly. The walled garden *is* the convergent ecosystem. That's what makes it a walled garden.
+
+Apple makes the TV box. Apple makes the VR headset. Apple makes the watch, the earbuds, the phone, the tablet, the laptop, the desktop, the silicon, the OS, the apps, and the store. There is no company on Earth better positioned to ship the unified convergent experience Microsoft drew up in 2011. There is no company that has *more aggressively assembled the pieces.*
+
+And then they stopped.
+
+The iPad has been one of the most powerful consumer computers in the world for about half a decade. The M-series silicon in the current iPad Pro is the same chip as the MacBook. Same memory architecture. Same neural cores. Apple forked iOS specifically to make it more Mac-like — added a cursor, added mouse and keyboard support, added windowing, added Stage Manager, added external display output, added a file manager — and then drew a line and refused to cross it. iPadOS today is iOS plus *every individual Mac feature Apple felt safe shipping* minus the actual identity of being a Mac. It's the longest, most expensive, most architecturally elaborate refusal in consumer software.
+
+People — millions of them, for years — have asked for one of two things. Either put macOS on the iPad. Or put a touchscreen on the MacBook. Pick whichever direction makes Apple less uncomfortable. Just pick one.
+
+Apple has picked a third option, which is to ship iPadOS updates that get closer to macOS every year while continuing to insist that the iPad is a fundamentally different kind of device, and to ship MacBooks that get faster every year while continuing to insist that touching the screen would be ergonomic blasphemy. Both claims would be more convincing if Apple weren't simultaneously selling a $129 keyboard with a trackpad that you attach to the iPad so you can use it like a laptop.
+
+The unifying theory of Apple's product line is *no.* Just, on principle. They will build every individual piece of a convergent ecosystem, ship it, market it, lock it down, and refuse to admit that what they've assembled is a convergent ecosystem. The reason changes year to year. The position doesn't.
+
+Which means the company best positioned to ship the convergent computing experience Microsoft drew up in 2011 — silicon, OS, devices, ecosystem, customers, *all of it* — is the company that has most explicitly decided not to.
+
+And if you need a receipt for this, Apple shipped the MacBook Neo in March. Six hundred dollars. Same A18 Pro chip as the iPhone 16 Pro. The first Mac to run on an iPhone chip. At the exact same $599 you could buy a base iPad with Apple's keyboard folio — same Apple, same price, same form factor in your lap — except that one runs iPadOS. Apple is literally selling you a touchscreen and a non-touchscreen, at the same price, with the same silicon, and the entire material difference is which operating system Apple has decided you're allowed to have on each one. And the non-touchscreen one is *sold out*. The position works. People bought it. Apple, ladies and gentlemen.
+
+---
+
+## We Lost The Best Kind of Convergence
+
+Here is the part that bothers me, and the reason I started writing this in the first place.
+
+The future arrived. It's here. You can stream from a desktop to a tablet to a TV with two clicks. You can take a controller, a keyboard, and a touchscreen and use all three on the same machine in the same hour. You can put your phone on a dock and have it drive a 4K display. The hardware caught up. The bandwidth caught up. The protocols caught up.
+
+What didn't catch up is the *shell.*
+
+There are almost no good TV-friendly, controller-friendly, touch-friendly launchers in 2026. Steam Big Picture is one. Kodi exists. Playnite exists. We can list Android TV launchers, but then you're locked into Android TV's ecosystem, which is not great. The Xbox dashboard is fine if you like the Xbox dashboard, but it's not designed for anything other than Xbox content. That's pretty much the list. For everything else — for the actual operating system you're trying to use through Parsec, for the apps you want to run with a controller, for the file manager you want to poke at from across the couch — you get a desktop UI rendered onto a screen it wasn't designed for, and you make it work.
+
+Windows had this. Windows had Tablet Mode, and Continuum, and Media Center, and Xbox, and a coherent design language that *worked on televisions.* Then Windows decided, sometime between 10 and 11, that the desktop was the only form factor that mattered, and threw the rest away.
+
+So now we're in this strange place where the future has technically arrived, and the only company that ever had a complete vision for what it should look like is the one that gave up on it. Valve is reconstructing one corner of it. Google is reconstructing another. Apple is refusing to participate. And the rest of us are remoting into a Windows desktop from a tablet so we can right-click on a folder, because the design that would've made that unnecessary got shipped in 2012 and nobody wanted it yet.
+
+In a different timeline, Microsoft was either fifteen years late or fifteen years lazy. They kept Windows with the Metro shell and their Continuum features. An alternate-timeline Anna is now writing a post about how Microsoft is justified with all their convergence features.
+
+Instead: Microsoft built the future, shipped it, and walked away from it. The future is here. It's just not on Windows.
+
+---
+
+> Cover photo by [Matthew Manuel](https://unsplash.com/@sawtooth_utopia) on [Unsplash](https://unsplash.com)
