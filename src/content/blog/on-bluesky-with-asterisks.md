@@ -1,7 +1,7 @@
 ---
 title: 'On trusting Bluesky, with asterisks'
 description: 'I was somewhat wrong about ATProto. The protocol decoupling mostly holds. I still do not trust it 100%, and the asterisks are where I live now.'
-pubDate: 'Jun 16 2026'
+pubDate: 'Jun 15 2026'
 category: ramblings
 ---
 
