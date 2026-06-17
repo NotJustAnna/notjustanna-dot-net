@@ -5,6 +5,8 @@ pubDate: 'May 09 2026'
 category: ramblings
 ---
 
+> **Update, a month on:** I was more wrong than right about the identity layer being hostage to Bluesky moderation. Follow-up: ["On trusting Bluesky, with asterisks"](/post/on-bluesky-with-asterisks/).
+
 GitHub sucks. Microsoft is somehow actively making it worse. Both of these are stable
 facts and neither is news. The interesting part is what comes next, which
 is: nothing comes next.
