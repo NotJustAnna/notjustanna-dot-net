@@ -121,4 +121,4 @@ If you're still thinking about that Minecraft server, go host it tonight. Just c
 
 ---
 
-> Cover photo by [PHOTOGRAPHER NAME](https://unsplash.com/@handle) on [Unsplash](https://unsplash.com)
+> Cover photo by [Arisa Chattasa](https://unsplash.com/@golfarisa) on [Unsplash](https://unsplash.com)
