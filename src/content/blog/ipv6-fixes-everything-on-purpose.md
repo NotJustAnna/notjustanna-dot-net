@@ -6,7 +6,7 @@ category: tech
 heroImage: '../../assets/blog/sixth-floor.jpg'
 ---
 
-**We're out of IP addresses.** Between IANA handing out its last unallocated blocks in early 2011 and AfriNIC — the last regional registry standing — finally running its own pool dry in 2017, "being out of IP addresses" is a decade-old problem already. We have now been recycling IPv4 addresses like our digital lives depend on it. That's because they do.
+**We're out of IPv4 addresses.** Between IANA handing out its last unallocated blocks in early 2011 and AfriNIC — the last regional registry standing — finally running its own pool dry in 2017, "being out of IPv4 addresses" is a decade-old problem already. We have now been recycling IPv4 addresses like our digital lives depend on it. That's because they do.
 
 This, in turn, created horrible decisions, such as NAT routers, and then the devil's spawn: **Carrier-Grade NAT (CGNAT)**. You may be actively suffering under CGNAT this exact moment — hint hint, your router's address is `100.64.x.x`-shaped. Your CGNAT internet may also be IPv4-only. If that's you, please sue your ISP for emotional damages, like, right now. You may also choose to leave this post to avoid further emotional pain, and that's fine. Go check [test-ipv6.com](https://test-ipv6.com) if you want the receipts.
 
