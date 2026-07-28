@@ -20,17 +20,17 @@ The [serial port](https://en.wikipedia.org/wiki/Serial_port) took [modems](https
 
 Everything is now WiFi, PCIe, USB, Ethernet, or HDMI/DP. That's the whole list. Five.
 
-And those five are already tangled in each other. Bluetooth is 2.4GHz PAN wearing a brand name, running on the same WiFi chip already doing everything else on your laptop or phone. NVMe sounds like a port and gets talked about like a port, and is a protocol riding PCIe. Thunderbolt, the connector that used to feel like a separate tier of civilization, is just USB4: USB, PCIe, and DP, mashed together, occasionally forming a direct Ethernet link between two machines because sure, why not, it's all the same wire underneath.
+And those five are already tangled in each other. Bluetooth is 2.4GHz PAN wearing a brand name, running on the same WiFi chip already doing everything else on your laptop or phone. NVMe sounds like a port and gets talked about like a port, and is a protocol riding PCIe.
 
-WiFi does gigabit now. Ethernet does 10Gbps. USB does 40. SSDs — genuine miracles of engineering, arguably the single best thing to happen to computing in my lifetime — arrive over PCIe. Power arrives over Ethernet, at 70W, if you ask it to. Your printer is USB or wireless. So is your gamepad. Your TV has HDMI, USB, Ethernet, and a WiFi driver, and that is the entire feature list now.
+WiFi does gigabit now. Ethernet does 10Gbps. USB does 40Gbps. SSDs — genuine miracles of engineering, arguably the single best thing to happen to computing in my lifetime — arrive over PCIe. Power arrives over Ethernet, at 70W, if you ask it to. Your printer is USB or wireless. So is your gamepad. Your TV has HDMI, USB, Ethernet, and a WiFi driver, and that is the entire feature list now.
 
-Need a paleolithic port? Gamepad ports, parallel ports, serial ports and analog audio can all be obtained through a USB adapter, like a species kept going in a single zoo enclosure. A DVI or VGA projector can be fed through an HDMI-to-oldschool-video adapter.
+Need a paleolithic port? Gamepad ports, parallel ports, serial ports and analog audio can all be obtained through a USB adapter, like a species kept going in a single zoo enclosure. A DVI or VGA projector can be fed through an HDMI/DP-to-oldschool-video adapter as well.
 
 Those five standards not only survived but conquered everything else. And then USB-C conquered all five.
 
 Not by killing them. Instead, a single USB-C port, wired generously, plus a couple of dongles, will hand you *everything on that list*.
 
-USB carries DisplayPort now — my vertical monitor gets power and video out of one cable, which would have sounded like a lie in 2008. You can get HDMI or DP out of a USB port, which is about 90% true on a laptop and some smaller, more honest percentage true on a desktop, but I'm counting it. PCIe comes down the same pins through a USB4 tunnel, which is how an eGPU works: a graphics card, at the end of a USB cable. Ethernet and WiFi come off a PHY or a radio at the far end — a less glamorous mechanism that works just as well as the rest. And the power goes back the other way, at up to 240W.
+USB carries DisplayPort now — my vertical monitor gets power and video out of one cable, which would have sounded like a lie in 2008. You can get HDMI or DP out of a USB port, which is about 90% true on a laptop and some smaller, more honest percentage true on a desktop, but I'm counting it. Thunderbolt, the connector that used to feel like a separate tier of civilization, is just USB4: USB, PCIe, and DP, mashed together on a USB-C cable, occasionally forming a direct Ethernet link between two machines because sure, why not, it's all the same wire underneath. PCIe comes down the same pins through a USB4 tunnel, which is how an eGPU works: a graphics card, at the end of a USB cable. Ethernet and WiFi come off a PHY or a radio at the far end — a less glamorous mechanism that works just as well as the rest. And the power goes back the other way, at up to 240W.
 
 My motherboard's rear IO is a sea of identical USB ports. A hub turns that into a hundred more identical USB ports. Scale, solved. Problem, gone.
 
