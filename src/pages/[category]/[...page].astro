@@ -1,0 +1,47 @@
+---
+import type { GetStaticPaths, Page } from 'astro';
+import type { CollectionEntry } from 'astro:content';
+import { Pagination } from '../../components/blog/pagination';
+import { PostList } from '../../components/blog/post-list';
+import BaseLayout from '../../layouts/base-layout.astro';
+import { SITE_TITLE } from '../../consts';
+import { CATEGORIES, getSortedPosts, POSTS_PER_PAGE } from '../../lib/posts';
+
+export const getStaticPaths: GetStaticPaths = async ({ paginate }) => {
+  const routes = await Promise.all(
+    Object.entries(CATEGORIES).map(async ([slug, meta]) =>
+      paginate(await getSortedPosts(meta.category), {
+        pageSize: POSTS_PER_PAGE,
+        params: { category: slug },
+        props: { meta },
+      }),
+    ),
+  );
+  return routes.flat();
+};
+
+type Meta = (typeof CATEGORIES)[keyof typeof CATEGORIES];
+const { page, meta } = Astro.props as {
+  page: Page<CollectionEntry<'posts'>>;
+  meta: Meta;
+};
+
+const title =
+  page.currentPage === 1
+    ? `${meta.title} — ${SITE_TITLE}`
+    : `${meta.title} — Page ${page.currentPage} — ${SITE_TITLE}`;
+---
+
+<BaseLayout title={title} description={meta.description}>
+  <section>
+    <h1 class="text-3xl font-bold text-center md:text-left mb-3 md:my-6">{meta.heading}</h1>
+    <PostList posts={page.data} featureFirst={page.currentPage === 1} />
+    <Pagination
+      currentPage={page.currentPage}
+      lastPage={page.lastPage}
+      prevUrl={page.url.prev}
+      nextUrl={page.url.next}
+      base={`/${Astro.params.category}`}
+    />
+  </section>
+</BaseLayout>

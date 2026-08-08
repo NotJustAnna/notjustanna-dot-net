@@ -14,17 +14,26 @@ type Post = {
   };
 };
 
-export function PostList({ posts }: { posts: Post[] }) {
+export function PostList({
+  posts,
+  featureFirst = true,
+}: {
+  posts: Post[];
+  /** Render the first post as a large hero card. Off past page 1. */
+  featureFirst?: boolean;
+}) {
   return (
     <ul className="space-y-4 list-none p-0 m-0">
-      {posts.map((post, index) => (
+      {posts.map((post, i) => {
+        const isFeatured = featureFirst && i === 0;
+        return (
         <li key={post.id}>
           <a href={`/post/${post.id}/`} className="group block no-underline">
             <Card
-              className={`overflow-hidden gap-0 py-0 flex flex-col ${index !== 0 ? 'sm:flex-row' : ''}`}
+              className={`overflow-hidden gap-0 py-0 flex flex-col ${isFeatured ? '' : 'sm:flex-row'}`}
             >
               {post.data.heroImage && (
-                <div className={index === 0 ? 'w-full aspect-[1000/420]' : 'w-full aspect-[1000/420] sm:w-32 sm:aspect-square shrink-0'}>
+                <div className={isFeatured ? 'w-full aspect-[1000/420]' : 'w-full aspect-[1000/420] sm:w-32 sm:aspect-square shrink-0'}>
                   <img
                     width={1000}
                     height={420}
@@ -36,7 +45,7 @@ export function PostList({ posts }: { posts: Post[] }) {
               )}
               <CardContent className="p-4">
                 <h2
-                  className={`font-semibold text-card-foreground group-hover:text-primary transition-colors m-0 ${index === 0 ? 'text-2xl' : 'text-lg'}`}
+                  className={`font-semibold text-card-foreground group-hover:text-primary transition-colors m-0 ${isFeatured ? 'text-2xl' : 'text-lg'}`}
                 >
                   {post.data.title}
                 </h2>
@@ -57,7 +66,8 @@ export function PostList({ posts }: { posts: Post[] }) {
             </Card>
           </a>
         </li>
-      ))}
+        );
+      })}
     </ul>
   );
 }

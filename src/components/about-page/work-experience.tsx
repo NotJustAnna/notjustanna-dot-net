@@ -56,7 +56,7 @@ function KaffaTab() {
   return <WorkExperienceCard
     icon={kaffaIcon} iconAlt="Kaffa icon"
     fallbackText="K" fallbackClassName="bg-emerald-600 text-white font-bold"
-    name="Kaffa" role="Full-stack Developer"
+    name="Kaffa" role="Senior Full-stack Developer"
     dateRange={`May 2025 - present (${sinceDate(2025, 5, 12)})`}
   >
     <p>At Kaffa, I began by implementing and customizing their operational asset management platform
