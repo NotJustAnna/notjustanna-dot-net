@@ -151,7 +151,7 @@ The path-based organization (`/traefik`, `/monitoring`, and so on) felt immediat
 
 The managed free tier covers up to 5 projects with unlimited secrets. For a homelab or small production workload, there's genuinely no reason to self-host unless you want to.
 
-If you do want to self-host — the Helm chart is well-documented. Just be aware of the chicken-and-egg problem: if Infisical lives on the same cluster it's serving secrets to, it becomes a bootstrap dependency, and that gets messy fast. I wrote about this failure mode [in more detail here](link-to-chicken-and-egg-post). Infisical Cloud sidesteps it entirely, which is why I'm using it.
+If you do want to self-host — the Helm chart is well-documented. Just be aware of the chicken-and-egg problem: if Infisical lives on the same cluster it's serving secrets to, it becomes a bootstrap dependency, and that gets messy fast. I wrote about this failure mode [in more detail here](/post/self-hosting-everything-including-the-single-point-of-failure/). Infisical Cloud sidesteps it entirely, which is why I'm using it.
 
 ## Bottom Line
 
