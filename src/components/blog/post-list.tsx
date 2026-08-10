@@ -27,6 +27,8 @@ export function PostList({
     <ul className="space-y-4 list-none p-0 m-0">
       {posts.map((post, i) => {
         const isFeatured = featureFirst && i === 0;
+        // Title and meta share a line when they fit, keeping list rows short.
+        const isCompact = !isFeatured;
         return (
         <li key={post.id}>
           <div className="group relative">
@@ -44,34 +46,40 @@ export function PostList({
                   />
                 </div>
               )}
-              <CardContent className="p-4">
-                <h2
-                  className={`font-semibold text-card-foreground group-hover:text-primary transition-colors m-0 ${isFeatured ? 'text-2xl' : 'text-lg'}`}
-                >
-                  <a
-                    href={`/post/${post.id}/`}
-                    className="no-underline text-inherit after:absolute after:inset-0 after:rounded-2xl"
+              <CardContent className={isCompact ? 'flex-1 min-w-0 p-3 sm:p-4' : 'p-4'}>
+                <div className={isCompact ? 'sm:flex sm:flex-wrap sm:items-baseline sm:gap-x-3 sm:gap-y-1' : ''}>
+                  <h2
+                    className={`font-semibold text-card-foreground group-hover:text-primary transition-colors m-0 ${isFeatured ? 'text-2xl' : 'text-lg'}`}
                   >
-                    {post.data.title}
-                  </a>
-                </h2>
-                <div className="flex items-center gap-2 mt-1">
-                  <p className="text-sm text-muted-foreground m-0">
-                    <FormattedDate date={post.data.pubDate} />
-                  </p>
-                  {post.data.category && (
-                    <span className="relative z-10">
-                      <CategoryPill category={post.data.category} />
-                    </span>
-                  )}
-                  {post.data.highlight && (
-                    <span className="relative z-10">
-                      <FeaturedPill />
-                    </span>
-                  )}
+                    <a
+                      href={`/post/${post.id}/`}
+                      className="no-underline text-inherit after:absolute after:inset-0 after:rounded-2xl"
+                    >
+                      {post.data.title}
+                    </a>
+                  </h2>
+                  <div
+                    className={`flex items-center gap-2 ${isCompact ? 'mt-1 sm:mt-0 sm:ml-auto sm:shrink-0' : 'mt-1'}`}
+                  >
+                    <p className="text-sm text-muted-foreground m-0">
+                      <FormattedDate date={post.data.pubDate} />
+                    </p>
+                    {post.data.category && (
+                      <span className="relative z-10">
+                        <CategoryPill category={post.data.category} />
+                      </span>
+                    )}
+                    {post.data.highlight && (
+                      <span className="relative z-10">
+                        <FeaturedPill />
+                      </span>
+                    )}
+                  </div>
                 </div>
                 {post.data.description && (
-                  <p className="text-sm text-muted-foreground mt-2 mb-0 line-clamp-3">
+                  <p
+                    className={`text-sm text-muted-foreground mb-0 line-clamp-3 ${isCompact ? 'mt-1.5' : 'mt-2'}`}
+                  >
                     {post.data.description}
                   </p>
                 )}
