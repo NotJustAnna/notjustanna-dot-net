@@ -7,7 +7,7 @@ function Card({ className, ...props }: React.ComponentProps<"div">) {
     <div
       data-slot="card"
       className={cn(
-        "bg-white/40 dark:bg-black/40 backdrop-blur-xl border border-white/20 dark:border-white/10 shadow-xl dark:shadow-2xl text-card-foreground flex flex-col gap-6 rounded-2xl py-6 transition-all duration-500 hover:shadow-blue-500/10 hover:-translate-y-1",
+        "bg-white/10 dark:bg-black/40 backdrop-blur-xl border border-white/30 dark:border-white/10 shadow-xl dark:shadow-2xl text-card-foreground flex flex-col gap-6 rounded-2xl py-6 transition-all duration-500 hover:shadow-blue-500/10 hover:-translate-y-1",
         className
       )}
       {...props}

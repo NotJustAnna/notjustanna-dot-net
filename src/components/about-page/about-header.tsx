@@ -12,9 +12,9 @@ export function AboutHeader() {
       }
     >
       <div className="space-x-1.5 sm:space-x-2">
-        <Badge variant="secondary" className="bg-pink-600 text-white">she / her</Badge>
-        <Badge variant="secondary" className="bg-cyan-600 text-white">transgender</Badge>
-        <Badge variant="secondary" className="bg-amber-600 text-white">autistic</Badge>
+        <Badge variant="secondary" className="bg-pink-700 text-white">she / her</Badge>
+        <Badge variant="secondary" className="bg-cyan-700 text-white">transgender</Badge>
+        <Badge variant="secondary" className="bg-amber-700 text-white">autistic</Badge>
       </div>
     </HeaderBase>
   );

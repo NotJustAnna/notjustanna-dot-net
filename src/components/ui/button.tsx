@@ -25,7 +25,7 @@ const buttonVariants = cva(
         flavor_github:
             "bg-zinc-900 text-white shadow-xs hover:bg-zinc-900/90",
         flavor_bluesky:
-            "bg-sky-600 text-white shadow-xs hover:bg-sky-600/90",
+            "bg-sky-700 text-white shadow-xs hover:bg-sky-700/90",
       },
       size: {
         default: "h-9 px-4 py-2 has-[>svg]:px-3",

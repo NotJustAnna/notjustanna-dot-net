@@ -55,7 +55,7 @@ function WorkExperienceCard({ icon, iconAlt, fallbackText, fallbackClassName, na
 function KaffaTab() {
   return <WorkExperienceCard
     icon={kaffaIcon} iconAlt="Kaffa icon"
-    fallbackText="K" fallbackClassName="bg-emerald-600 text-white font-bold"
+    fallbackText="K" fallbackClassName="bg-emerald-700 text-white font-bold"
     name="Kaffa" role="Senior Full-stack Developer"
     dateRange={`May 2025 - present (${sinceDate(2025, 5, 12)})`}
   >
