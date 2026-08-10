@@ -2,6 +2,7 @@
 title: 'IPv6 Fixes Everything On Purpose'
 description: 'IPv6 does not have design flaws so much as it has people bringing DHCP-shaped, firewall-shaped, and subnet-shaped complaints to a protocol that already gave everyone a public address and moved on.'
 pubDate: 'Jul 2 2026'
+highlight: true
 category: tech
 heroImage: '../../assets/blog/sixth-floor.jpg'
 ---

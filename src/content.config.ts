@@ -15,6 +15,8 @@ const posts = defineCollection({
 			updatedDate: z.coerce.date().optional(),
 			heroImage: z.optional(image()),
 			category: z.enum(['dev', 'tech', 'ramblings']).optional(),
+			archived: z.boolean().default(false),
+			highlight: z.boolean().default(false),
 		}),
 });
 

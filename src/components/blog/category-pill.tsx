@@ -15,4 +15,14 @@ export function CategoryPill({ category }: { category: 'dev' | 'tech' | 'ramblin
     </Badge>
   );
 }
+
+export function FeaturedPill() {
+  return (
+    <Badge variant="outline" asChild>
+      <a href="/featured" className="no-underline font-mono">
+        #featured
+      </a>
+    </Badge>
+  );
+}
  

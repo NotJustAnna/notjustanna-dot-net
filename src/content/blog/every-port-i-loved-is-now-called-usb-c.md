@@ -2,6 +2,7 @@
 title: 'Every Port I Loved is now called USB-C'
 description: 'Every cable and port from my childhood — VGA, PS/2, parallel, serial, RCA — quietly became USB-C one way or another, and I have feelings about it.'
 pubDate: 'Jul 24 2026'
+highlight: true
 category: tech
 heroImage: '../../assets/blog/usb-c.jpg'
 ---

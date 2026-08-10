@@ -3,10 +3,10 @@ import rss from '@astrojs/rss';
 import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 
 export async function GET(context) {
-	const posts = await getCollection('posts');
+	const posts = await getCollection('posts', (post) => !post.data.archived);
 	const sortedPosts = [...posts].sort((a, b) => {
-		const aTime = new Date(a.data.pubDate ?? 0).getTime();
-		const bTime = new Date(b.data.pubDate ?? 0).getTime();
+		const aTime = new Date(a.data.updatedDate ?? a.data.pubDate ?? 0).getTime();
+		const bTime = new Date(b.data.updatedDate ?? b.data.pubDate ?? 0).getTime();
 		return bTime - aTime;
 	});
 	return rss({

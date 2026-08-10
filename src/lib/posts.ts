@@ -29,10 +29,21 @@ export const CATEGORIES = {
   { category: Category; heading: string; title: string; description: string }
 >;
 
-/** Every post, newest first, optionally narrowed to a single category. */
+/** Latest highlighted posts, newest first, for the home page's featured grid. */
+export async function getFeaturedPosts(limit = 4) {
+  const posts = await getSortedPosts();
+  return posts.filter((post) => post.data.highlight).slice(0, limit);
+}
+
+/** Every non-archived post, newest first, optionally narrowed to a single category. */
 export async function getSortedPosts(category?: Category) {
   const posts = await getCollection('posts');
   return posts
+    .filter((post) => !post.data.archived)
     .filter((post) => !category || post.data.category === category)
-    .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+    .sort(
+      (a, b) =>
+        (b.data.updatedDate ?? b.data.pubDate).valueOf() -
+        (a.data.updatedDate ?? a.data.pubDate).valueOf(),
+    );
 }

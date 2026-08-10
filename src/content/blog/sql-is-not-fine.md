@@ -2,6 +2,7 @@
 title: 'SQL Is Fine. The Problem Is That We Kept It.'
 description: 'SQL survived every replacement attempt not because it won, but because its challengers attacked the wrong layer.'
 pubDate: 'May 28 2026'
+highlight: true
 category: dev
 heroImage: '../../assets/blog/mysql.jpg'
 ---

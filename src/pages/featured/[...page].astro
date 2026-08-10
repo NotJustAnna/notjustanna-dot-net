@@ -1,0 +1,35 @@
+---
+import type { GetStaticPaths, Page } from 'astro';
+import type { CollectionEntry } from 'astro:content';
+import { Pagination } from '../../components/blog/pagination';
+import { PostList } from '../../components/blog/post-list';
+import BaseLayout from '../../layouts/base-layout.astro';
+import { SITE_TITLE } from '../../consts';
+import { getSortedPosts, POSTS_PER_PAGE } from '../../lib/posts';
+
+export const getStaticPaths: GetStaticPaths = async ({ paginate }) => {
+  const posts = (await getSortedPosts()).filter((post) => post.data.highlight);
+  return paginate(posts, { pageSize: POSTS_PER_PAGE });
+};
+
+const { page } = Astro.props as { page: Page<CollectionEntry<'posts'>> };
+
+const title =
+  page.currentPage === 1
+    ? `Featured — ${SITE_TITLE}`
+    : `Featured — Page ${page.currentPage} — ${SITE_TITLE}`;
+---
+
+<BaseLayout title={title} description="Featured posts.">
+  <section>
+    <h1 class="text-3xl font-bold text-center md:text-left mb-3 md:my-6">Featured Posts</h1>
+    <PostList posts={page.data} featureFirst={false} />
+    <Pagination
+      currentPage={page.currentPage}
+      lastPage={page.lastPage}
+      prevUrl={page.url.prev}
+      nextUrl={page.url.next}
+      base="/featured"
+    />
+  </section>
+</BaseLayout>

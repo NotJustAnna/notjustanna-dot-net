@@ -1,6 +1,6 @@
 import type { ImageMetadata } from 'astro';
 import { Card, CardContent } from '@/components/ui/card';
-import { CategoryPill, FeaturedPill } from './category-pill';
+import { CategoryPill } from './category-pill';
 import { FormattedDate } from './formatted-date';
 
 type Post = {
@@ -11,30 +11,19 @@ type Post = {
     description?: string | null;
     category?: 'dev' | 'tech' | 'ramblings';
     heroImage?: ImageMetadata;
-    highlight?: boolean;
   };
 };
 
-export function PostList({
-  posts,
-  featureFirst = true,
-}: {
-  posts: Post[];
-  /** Render the first post as a large hero card. Off past page 1. */
-  featureFirst?: boolean;
-}) {
+export function FeaturedPosts({ posts }: { posts: Post[] }) {
+  if (posts.length === 0) return null;
   return (
-    <ul className="space-y-4 list-none p-0 m-0">
-      {posts.map((post, i) => {
-        const isFeatured = featureFirst && i === 0;
-        return (
+    <ul className="grid gap-4 sm:grid-cols-2 list-none p-0 m-0">
+      {posts.map((post) => (
         <li key={post.id}>
-          <div className="group relative">
-            <Card
-              className={`overflow-hidden gap-0 py-0 flex flex-col ${isFeatured ? '' : 'sm:flex-row'}`}
-            >
+          <div className="group relative h-full">
+            <Card className="overflow-hidden gap-0 py-0 flex flex-col h-full">
               {post.data.heroImage && (
-                <div className={isFeatured ? 'w-full aspect-[1000/420]' : 'w-full aspect-[1000/420] sm:w-32 sm:aspect-square shrink-0'}>
+                <div className="w-full aspect-[1000/420] shrink-0">
                   <img
                     width={1000}
                     height={420}
@@ -45,16 +34,14 @@ export function PostList({
                 </div>
               )}
               <CardContent className="p-4">
-                <h2
-                  className={`font-semibold text-card-foreground group-hover:text-primary transition-colors m-0 ${isFeatured ? 'text-2xl' : 'text-lg'}`}
-                >
+                <h3 className="font-semibold text-lg text-card-foreground group-hover:text-primary transition-colors m-0">
                   <a
                     href={`/post/${post.id}/`}
                     className="no-underline text-inherit after:absolute after:inset-0 after:rounded-2xl"
                   >
                     {post.data.title}
                   </a>
-                </h2>
+                </h3>
                 <div className="flex items-center gap-2 mt-1">
                   <p className="text-sm text-muted-foreground m-0">
                     <FormattedDate date={post.data.pubDate} />
@@ -64,14 +51,9 @@ export function PostList({
                       <CategoryPill category={post.data.category} />
                     </span>
                   )}
-                  {post.data.highlight && (
-                    <span className="relative z-10">
-                      <FeaturedPill />
-                    </span>
-                  )}
                 </div>
                 {post.data.description && (
-                  <p className="text-sm text-muted-foreground mt-2 mb-0 line-clamp-3">
+                  <p className="text-sm text-muted-foreground mt-2 mb-0 line-clamp-2">
                     {post.data.description}
                   </p>
                 )}
@@ -79,8 +61,7 @@ export function PostList({
             </Card>
           </div>
         </li>
-        );
-      })}
+      ))}
     </ul>
   );
 }
