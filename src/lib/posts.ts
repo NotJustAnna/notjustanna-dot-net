@@ -30,9 +30,10 @@ export const CATEGORIES = {
 >;
 
 /** Latest highlighted posts, newest first, for the home page's featured grid. */
-export async function getFeaturedPosts(limit = 4) {
+export async function getFeaturedPosts(limit?: number) {
   const posts = await getSortedPosts();
-  return posts.filter((post) => post.data.highlight).slice(0, limit);
+  const featured = posts.filter((post) => post.data.highlight);
+  return limit === undefined ? featured : featured.slice(0, limit);
 }
 
 /** Every non-archived post, newest first, optionally narrowed to a single category. */
