@@ -36,7 +36,7 @@ Then it reproduced the bug to be sure, and correctly migrated the whole stack to
 
 ## Remember How It Was Oracle's Problem?
 
-I once [declared Oracle giving away free ARM hardware to be, frankly, *their* problem](https://notjustanna.net/post/containers-the-wrong-way-for-always-free-fun-and-profit/). Then they made it a bit more mine: they halved the Always Free tier overnight, a day's notice, via a quiet documentation edit. I wrote [a smug follow-up](https://notjustanna.net/post/it-was-in-fact-oracles-problem/) about how it couldn't touch me, because my server is *cattle* — nothing important on the boot volume, one number in Terraform, done.
+I once [declared Oracle giving away free ARM hardware to be, frankly, *their* problem](/post/containers-the-wrong-way-for-always-free-fun-and-profit/). Then they made it a bit more mine: they halved the Always Free tier overnight, a day's notice, via a quiet documentation edit. I wrote [a smug follow-up](/post/it-was-in-fact-oracles-problem/) about how it couldn't touch me, because my server is *cattle* — nothing important on the boot volume, one number in Terraform, done.
 
 That post was true. It also left something out.
 

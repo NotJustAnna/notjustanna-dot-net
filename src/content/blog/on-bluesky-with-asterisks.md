@@ -5,7 +5,7 @@ pubDate: 'Jun 15 2026'
 category: ramblings
 ---
 
-> This is a follow-up to ["On leaving GitHub, conditionally"](https://notjustanna.net/post/on-leaving-github/).
+> This is a follow-up to ["On leaving GitHub, conditionally"](/post/on-leaving-github/).
 
 Last month I said I wouldn't put my code's identity layer on ATProto, because
 the moderation layer and the identity layer were coupled in practice even

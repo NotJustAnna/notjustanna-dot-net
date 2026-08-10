@@ -3,8 +3,11 @@ title: 'I Run Nomad on my Gaming PC (It''s Great)'
 description: 'HashiCorp Nomad is designed for hundreds of nodes across multiple datacenters. I run it on my gaming PC. Cluster of one. It''s great.'
 pubDate: 'Mar 26 2026'
 category: dev
-heroImage: '../../assets/blog/gaming-pc.jpg'
+archived: true
 ---
+
+> **Update, August 2026:** I don't run Nomad on the gaming PC anymore — it's systemd units and Docker Compose now, and the cloud side went to K3s. The premise still holds, the tool changed. See ["Your Gaming PC is a Server. You just don't know it yet."](/post/your-gaming-pc-is-a-server/)
+
 HashiCorp Nomad is a workload orchestrator. Think Kubernetes, but without the container-first dogma — it can schedule containers, sure, but also raw executables, Java applications, scripts, whatever you have. It's designed for fleets: multiple datacenters, hundreds of nodes, cross-machine scheduling. The kind of infrastructure where "where does this service run" is a question Nomad answers for you.
 
 That's the intended use case. Here's another one.
@@ -58,7 +61,3 @@ But the off-label usage holds up — and I say this as someone who stumbled into
 At some point you stop calling it wrong and start calling it yours.
 
 Sometimes the right tool is the one you already know how to use. Even if you learned it wrong.
-
----
-
-> Cover photo by [Balkouras Nicos](https://unsplash.com/@ba1kouras) on [Unsplash](https://unsplash.com)

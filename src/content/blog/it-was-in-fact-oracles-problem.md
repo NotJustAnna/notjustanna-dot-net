@@ -5,7 +5,7 @@ pubDate: 'Jun 15 2026'
 category: ramblings
 ---
 
-> This concerns ["Containers, The Wrong Way, For Always-Free Fun and Profit"](https://notjustanna.net/post/containers-the-wrong-way-for-always-free-fun-and-profit/) and [its follow-up](https://notjustanna.net/post/containers-the-wrong-way-lessons-learnt/).
+> This concerns ["Containers, The Wrong Way, For Always-Free Fun and Profit"](/post/containers-the-wrong-way-for-always-free-fun-and-profit/) and [its follow-up](/post/containers-the-wrong-way-lessons-learnt/).
 
 In March I wrote, about Oracle handing out four ARM cores and 24GB of RAM for free, forever:
 

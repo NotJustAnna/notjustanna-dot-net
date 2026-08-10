@@ -5,7 +5,7 @@ pubDate: 'Mar 23 2026'
 category: dev
 heroImage: '../../assets/blog/networking.jpg'
 ---
-> **Update, June 2026:** Oracle has since quietly halved the Always Free Ampere tier to 2 OCPUs and 12GB. Everything below was written when it was 4 and 24, and I've left the numbers as they were — see ["It Was, In Fact, Oracle's Problem"](https://notjustanna.net/post/it-was-in-fact-oracles-problem/) for what changed and what to do about it. If you're following this as a how-to, halve the OCPU and memory values wherever they appear.
+> **Update, June 2026:** Oracle has since quietly halved the Always Free Ampere tier to 2 OCPUs and 12GB. Everything below was written when it was 4 and 24, and I've left the numbers as they were — see ["It Was, In Fact, Oracle's Problem"](/post/it-was-in-fact-oracles-problem/) for what changed and what to do about it. If you're following this as a how-to, halve the OCPU and memory values wherever they appear.
 
 ## Prelude: Oracle Cloud's Always-Free Tier
 
