@@ -28,7 +28,7 @@ export function PostList({
         const isFeatured = featureFirst && i === 0;
         return (
         <li key={post.id}>
-          <a href={`/post/${post.id}/`} className="group block no-underline">
+          <div className="group relative">
             <Card
               className={`overflow-hidden gap-0 py-0 flex flex-col ${isFeatured ? '' : 'sm:flex-row'}`}
             >
@@ -47,14 +47,21 @@ export function PostList({
                 <h2
                   className={`font-semibold text-card-foreground group-hover:text-primary transition-colors m-0 ${isFeatured ? 'text-2xl' : 'text-lg'}`}
                 >
-                  {post.data.title}
+                  <a
+                    href={`/post/${post.id}/`}
+                    className="no-underline text-inherit after:absolute after:inset-0 after:rounded-2xl"
+                  >
+                    {post.data.title}
+                  </a>
                 </h2>
                 <div className="flex items-center gap-2 mt-1">
                   <p className="text-sm text-muted-foreground m-0">
                     <FormattedDate date={post.data.pubDate} />
                   </p>
                   {post.data.category && (
-                    <CategoryPill category={post.data.category} />
+                    <span className="relative z-10">
+                      <CategoryPill category={post.data.category} />
+                    </span>
                   )}
                 </div>
                 {post.data.description && (
@@ -64,7 +71,7 @@ export function PostList({
                 )}
               </CardContent>
             </Card>
-          </a>
+          </div>
         </li>
         );
       })}
