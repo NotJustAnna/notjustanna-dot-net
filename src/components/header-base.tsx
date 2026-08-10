@@ -19,7 +19,7 @@ export function HeaderBase({ children, actions }: { children?: React.ReactNode; 
   }
 
   return (
-    <div className="flex items-center my-4 gap-4">
+    <div className="flex items-center gap-4 mt-4 pb-3 mb-6 border-b border-border">
       <a href="/">
         <Avatar className="size-16 text-2xl">
           <AvatarImage src={personalAvatar} alt="Profile icon" />
@@ -31,7 +31,7 @@ export function HeaderBase({ children, actions }: { children?: React.ReactNode; 
         {children}
       </div>
       {actions}
-      <Button variant="outline" size="icon" onClick={toggleTheme} aria-label="Toggle theme">
+      <Button variant="outline" size="icon" className="rounded-full" onClick={toggleTheme} aria-label="Toggle theme">
         {isDark ? <Sun /> : <Moon />}
       </Button>
     </div>

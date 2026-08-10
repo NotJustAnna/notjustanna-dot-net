@@ -40,7 +40,7 @@ export function Pagination({
       aria-label="Pagination"
       className="flex items-center justify-center gap-1 mt-8"
     >
-      <Button variant="ghost" size="icon" asChild={!!prevUrl} disabled={!prevUrl}>
+      <Button variant="ghost" size="icon" className="rounded-full" asChild={!!prevUrl} disabled={!prevUrl}>
         {prevUrl ? (
           <a href={prevUrl} aria-label="Previous page" className="no-underline">
             <ChevronLeft />
@@ -64,6 +64,7 @@ export function Pagination({
             key={page}
             variant={page === currentPage ? 'default' : 'ghost'}
             size="icon"
+            className="rounded-full"
             asChild
           >
             <a
@@ -78,7 +79,7 @@ export function Pagination({
         ),
       )}
 
-      <Button variant="ghost" size="icon" asChild={!!nextUrl} disabled={!nextUrl}>
+      <Button variant="ghost" size="icon" className="rounded-full" asChild={!!nextUrl} disabled={!nextUrl}>
         {nextUrl ? (
           <a href={nextUrl} aria-label="Next page" className="no-underline">
             <ChevronRight />

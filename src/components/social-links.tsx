@@ -8,22 +8,22 @@ import { Mail } from "lucide-react";
 
 export function SocialLinks({ size }: { size?: "default" | "sm" | "lg" | "icon" }) {
   return <>
-    <Button asChild variant="flavor_linkedin" size={size}>
+    <Button asChild variant="flavor_linkedin" size={size} className="rounded-full">
       <a aria-label="LinkedIn" href="https://linkedin.com/in/notjustanna/">
         <FontAwesomeIcon icon={faLinkedinIn} /><span className="max-sm:hidden">LinkedIn</span>
       </a>
     </Button>
-    <Button asChild variant="flavor_github" size={size}>
+    <Button asChild variant="flavor_github" size={size} className="rounded-full">
       <a aria-label="GitHub" href="https://github.com/notjustanna">
         <FontAwesomeIcon icon={faGithub} /><span className="max-sm:hidden">GitHub</span>
       </a>
     </Button>
-    <Button asChild size={size}>
+    <Button asChild variant="flavor_email" size={size} className="rounded-full">
       <a {...decoratorProps} aria-label="E-mail" href="mailto:no@thankyou.net">
         <Mail /><span className="max-sm:hidden">E-mail</span>
       </a>
     </Button>
-    <Button asChild aria-label="Bluesky" variant="flavor_bluesky" size={size}>
+    <Button asChild aria-label="Bluesky" variant="flavor_bluesky" size={size} className="rounded-full">
       <a href="https://bsky.app/profile/notjustanna.net">
         <FontAwesomeIcon icon={faBluesky} /><span className="max-sm:hidden">Bluesky</span>
       </a>

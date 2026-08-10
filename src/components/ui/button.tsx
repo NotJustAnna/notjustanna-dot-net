@@ -21,11 +21,13 @@ const buttonVariants = cva(
           "hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50",
         link: "text-primary underline-offset-4 hover:underline",
         flavor_linkedin:
-            "bg-blue-900 text-white shadow-xs hover:bg-blue-900/90",
+            "bg-[#0a66c2] text-white shadow-xs hover:bg-[#0958a8]",
         flavor_github:
-            "bg-zinc-900 text-white shadow-xs hover:bg-zinc-900/90",
+            "bg-zinc-900 text-white shadow-xs hover:bg-zinc-800",
+        flavor_email:
+            "bg-[#c0392b] text-white shadow-xs hover:bg-[#a93226]",
         flavor_bluesky:
-            "bg-sky-700 text-white shadow-xs hover:bg-sky-700/90",
+            "bg-[#1083fe] text-white shadow-xs hover:bg-[#0e75e6]",
       },
       size: {
         default: "h-9 px-4 py-2 has-[>svg]:px-3",
