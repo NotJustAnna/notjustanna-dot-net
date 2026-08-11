@@ -105,7 +105,7 @@ export function KnowledgeSpotlight() {
   return <div className="space-y-2">
     <div>
       <h2 className="text-xl font-semibold">I already worked with…</h2>
-      <p>... at least <strong>{knowledgebase.count} different technologies</strong>, and counting. I love to learn and I&apos;m always looking for new challenges.</p>
+      <p>… at least <strong>{knowledgebase.count} different technologies</strong>. Not all of them by choice. I&apos;d use most of them again.</p>
     </div>
     <Carousel className="max-sm:-mx-3 max-sm:w-screen max-lg:mx-auto min-sm:max-lg:w-[calc(100vw-150px)] lg:w-full" opts={{align: hasArrows ? "start" : "center"}}>
       <CarouselContent className="max-sm:ps-3">
@@ -122,7 +122,7 @@ export function KnowledgeSpotlight() {
           <KnowledgeCategoryCard title="Programming languages" items={knowledgebase.languages.spotlight} moreItems={knowledgebase.languages.others} />
         </CarouselItem>
         <CarouselItem className="basis-5/6 sm:basis-full md:basis-1/2 lg:basis-1/3">
-          <KnowledgeCategoryCard title="AI tools" description="Because AI augments human creativity." items={knowledgebase.ai.spotlight} moreItems={knowledgebase.ai.others} />
+          <KnowledgeCategoryCard title="AI tools" description="Used daily, as a scaffolder and a very fast reader." items={knowledgebase.ai.spotlight} moreItems={knowledgebase.ai.others} />
         </CarouselItem>
         <CarouselItem className="basis-5/6 sm:basis-full md:basis-1/2 lg:basis-1/3">
           <KnowledgeCategoryCard title="Deployment tools" items={knowledgebase.deployment.spotlight} moreItems={knowledgebase.deployment.others} />
@@ -130,7 +130,7 @@ export function KnowledgeSpotlight() {
         <CarouselItem className="basis-5/6 sm:basis-full md:basis-1/2 lg:basis-1/3">
           <KnowledgeCategoryCard
             title="Amazon Web Services"
-            description="Major experience on cloud-first projects."
+            description="Years of it on cloud-first projects."
             headerIcon={<img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" alt="AWS Icon" className="max-sm:hidden size-12 bg-white rounded-xl p-1.5" />}
             items={knowledgebase.aws.spotlight}
             moreItems={knowledgebase.aws.others}
@@ -138,13 +138,13 @@ export function KnowledgeSpotlight() {
           />
         </CarouselItem>
         <CarouselItem className="basis-5/6 sm:basis-full md:basis-1/2 lg:basis-1/3">
-          <KnowledgeCategoryCard title="Team collaboration" description="Working with others is the only way to ship quality software." items={knowledgebase.collaboration.spotlight} moreItems={knowledgebase.collaboration.others} />
+          <KnowledgeCategoryCard title="Team collaboration" description="Every team picks a different stack. I have worked in all of these." items={knowledgebase.collaboration.spotlight} moreItems={knowledgebase.collaboration.others} />
         </CarouselItem>
         <CarouselItem className="basis-5/6 sm:basis-full md:basis-1/2 lg:basis-1/3">
           <KnowledgeCategoryCard title="Databases" description="From local to global, be it SQL or Not." items={knowledgebase.databases.all} />
         </CarouselItem>
         <CarouselItem className="basis-5/6 sm:basis-full md:basis-1/2 lg:basis-1/3 max-sm:pe-3">
-          <KnowledgeCategoryCard title="Embedded" description="The small devices are often the most important ones." items={knowledgebase.embedded.all} itemVariant="full" />
+          <KnowledgeCategoryCard title="Embedded" description="Fewer abstractions, more consequences." items={knowledgebase.embedded.all} itemVariant="full" />
         </CarouselItem>
       </CarouselContent>
       {hasArrows && <><CarouselPrevious/><CarouselNext/></>}

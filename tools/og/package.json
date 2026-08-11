@@ -1,0 +1,13 @@
+{
+  "name": "@notjustanna/og",
+  "private": true,
+  "type": "module",
+  "version": "0.0.1",
+  "description": "Renders the site's social cards from HTML, once, into src/assets/og.",
+  "scripts": {
+    "render": "node render.mjs"
+  },
+  "devDependencies": {
+    "playwright": "^1.56.1"
+  }
+}

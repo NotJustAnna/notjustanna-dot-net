@@ -38,7 +38,7 @@ export function ProjectSpotlight() {
 
   return <div className="space-y-2">
     <h2 className="text-xl font-semibold">
-            Projects I&apos;m Proud
+            Projects I&apos;m Proud Of
     </h2>
     <Carousel className="max-sm:-mx-3 max-sm:w-screen max-lg:mx-auto min-sm:max-lg:w-[calc(100vw-150px)] lg:w-full" opts={{align: hasArrows ? "start" : "center"}}>
       <CarouselContent className="max-sm:ps-3">

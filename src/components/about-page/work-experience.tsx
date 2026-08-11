@@ -56,7 +56,7 @@ function KaffaTab() {
   return <WorkExperienceCard
     icon={kaffaIcon} iconAlt="Kaffa icon"
     fallbackText="K" fallbackClassName="bg-emerald-700 text-white font-bold"
-    name="Kaffa" role="Senior Full-stack Developer"
+    name="Kaffa" role="Senior Engineer, Strategic Projects"
     dateRange={`May 2025 - present (${sinceDate(2025, 5, 12)})`}
   >
     <p>At Kaffa, I began by implementing and customizing their operational asset management platform
@@ -64,8 +64,11 @@ function KaffaTab() {
     <p>There I took on some of the more technically interesting challenges: building a Lua scripting layer
       to make the platform fully loadable from a single executable, and authoring a Static
       Reflections library for Kotlin — twice, once with ByteBuddy and once with KSP.</p>
-    <p>I&apos;ve since been developing a GIS platform in TypeScript with Vite + React, and a Bun-powered
-      task graph executor for spinning up and configuring temporary development environments.</p>
+    <p>Since then: a GIS platform in TypeScript with Vite + React, and a Bun-powered task graph
+      executor for spinning up and configuring temporary development environments.</p>
+    <p>I&apos;m now on the Strategic Projects squad, as the sole engineer on a greenfield platform for
+      the utilities sector. It isn&apos;t public yet, so that&apos;s as much as I can say — except that
+      it&apos;s the largest thing I&apos;ve built.</p>
   </WorkExperienceCard>;
 }
 
@@ -76,12 +79,11 @@ function AvanadeTab() {
     name="Avanade" role="Full-stack Developer"
     dateRange="May 2024 - Mar 2025 (11 months)"
   >
-    <p>While at Avanade, I collaborated in many agile teams to deliver high-quality software solutions for
-      clients.</p>
-    <p>I worked on various front-end and back-end solutions, where I utilized my skills in Java/Spring,
-      TypeScript/NextJS.</p>
-    <p>My experience at Avanade has allowed me to grow as a developer and gain valuable insights on working with
-      big corporate clients.</p>
+    <p>Consulting: several agile teams, clients I am NDA&apos;d from telling you about, and the most
+      paranoid security posture I have ever worked under. Those two facts are related.</p>
+    <p>Java/Spring on the back, TypeScript/NextJS on the front. I mean the paranoia as a compliment,
+      by the way — it taught me a lot about what &quot;enterprise&quot; actually costs to build.</p>
+    <p>It ended in the Q1 2025 layoffs, along with a lot of other people&apos;s jobs.</p>
   </WorkExperienceCard>;
 }
 
@@ -119,12 +121,12 @@ function TokenlabTab() {
     name="Tokenlab" role="Full-stack Developer"
     dateRange="Nov 2020 - Jul 2023 (2 years 9 months)"
   >
-    <p>While at Tokenlab, I grew as a developer and learned to work with a variety of technologies,
-      as well as to work in a team and deliver high-quality software solutions.</p>
-    <p>I shined as a junior and mid developer with tons of technical knowledge and experience, being able to
-      deliver high-quality software solutions in a timely manner.</p>
-    <p>My knowledge and experience led me to focus on my development of soft skills, such as communication and
-      teamwork.</p>
+    <p>My first job, and the one where I learned the most per hour. An AWS serverless shop — Lambda and
+      DynamoDB, because our clients liked absurd economics — which is where I picked up the habit of
+      treating cost as a design constraint.</p>
+    <p>I arrived as a junior with more technical knowledge than sense, and left as a mid who had
+      figured out that most of the hard problems were communication problems wearing a stack trace.</p>
+    <p>Three years of it. I&apos;d recommend the experience to anyone starting out.</p>
   </WorkExperienceCard>;
 }
 

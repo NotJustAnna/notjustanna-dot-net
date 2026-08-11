@@ -10,7 +10,8 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "og": "pnpm --filter @notjustanna/og render"
   },
   "dependencies": {
     "@astrojs/mdx": "^7.0.5",
