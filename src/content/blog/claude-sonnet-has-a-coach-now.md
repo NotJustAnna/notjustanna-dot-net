@@ -4,6 +4,7 @@ description: 'My Sonnet got better AND cheaper? Where do I sign up?'
 pubDate: 'May 21 2026'
 category: tech
 heroImage: '../../assets/blog/coaching.jpg'
+archived: true
 ---
 
 Let's be real here: the model you use is not determined by the problem you're trying to solve, but by what models you have unlimited-enough access to, in whatever subscription tier you have. You get what you pay for, monthly. This post is about people using Sonnet 4.6.

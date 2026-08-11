@@ -8,6 +8,7 @@ type Post = {
   data: {
     title: string;
     pubDate: Date;
+    updatedDate?: Date;
     description?: string | null;
     category?: 'dev' | 'tech' | 'ramblings';
     heroImage?: ImageMetadata;
@@ -62,7 +63,13 @@ export function PostList({
                     className={`flex items-center gap-2 ${isCompact ? 'mt-1 sm:mt-0 sm:ml-auto sm:shrink-0' : 'mt-1'}`}
                   >
                     <p className="text-sm text-muted-foreground m-0">
-                      <FormattedDate date={post.data.pubDate} />
+                      {post.data.updatedDate ? (
+                        <>
+                          Updated <FormattedDate date={post.data.updatedDate} />
+                        </>
+                      ) : (
+                        <FormattedDate date={post.data.pubDate} />
+                      )}
                     </p>
                     {post.data.category && (
                       <span className="relative z-10">
