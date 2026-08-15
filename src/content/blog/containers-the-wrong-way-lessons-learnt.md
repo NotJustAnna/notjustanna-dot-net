@@ -5,6 +5,9 @@ pubDate: 'Mar 25 2026'
 category: dev
 heroImage: '../../assets/blog/learning.jpg'
 ---
+
+> **Update, August 2026:** See ["Container Images Are Operating Systems"](/post/container-images-are-operating-systems/) for why this was never the wrong way.
+
 > This is a follow-up of ["Containers, The Wrong Way, For Always-Free Fun and Profit"](/post/containers-the-wrong-way-for-always-free-fun-and-profit/)
 
 In my last post, I told you all a wild idea: stop caring about the host OS of your EC2/VM. Take the OS hostage. Make it a babysitter of privileged container, and from that point on it's as relevant as a bastion VM. Your environment lives in an Docker/Podman image.
