@@ -1,7 +1,7 @@
 ---
 title: 'Container Images Are Operating Systems'
 description: "Containers are VMs that share a kernel, your image is a whole operating system, and if you own the machine end-to-end, the second kernel is rent you don't owe."
-pubDate: 'Aug 13 2026'
+pubDate: 'Aug 14 2026'
 category: dev
 highlight: true
 heroImage: '../../assets/blog/container-images-are-operating-systems.jpg'
