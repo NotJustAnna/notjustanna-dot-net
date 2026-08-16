@@ -10,8 +10,7 @@ heroImage: '../../assets/blog/learning.jpg'
 
 > This is a follow-up of ["Containers, The Wrong Way, For Always-Free Fun and Profit"](/post/containers-the-wrong-way-for-always-free-fun-and-profit/)
 
-In my last post, I told you all a wild idea: stop caring about the host OS of your EC2/VM. Take the OS hostage. Make it a babysitter of privileged container, and from that point on it's as relevant as a bastion VM. Your environment lives in an Docker/Podman image.
-Versioned, reproducible, and testable on your laptop/QEMU/VMWare.
+In my last post, I told you all a wild idea: stop caring about the host OS of your EC2/VM. Take the OS hostage. Make it a babysitter of privileged container, and from that point on it's as relevant as a bastion VM. Your environment lives in an Docker/Podman image. Versioned, reproducible, and testable on your laptop/QEMU/VMWare.
 
 A week later, `119 files changed, +612 -4210 lines changed` (this is what an Ansible retirement looks like) and I have one thing to say:
 
@@ -63,8 +62,7 @@ ENTRYPOINT ["sh", "-c"]
 CMD ["/image/steward.sh"]
 ```
 
-K3s runs from `rancher/k3s:v1.35.2-k3s1`. Tailscale runs from `tailscale/tailscale:v1.94.2`. Both are purpose-built, upstream, and updated by bumping a version tag. I don't own their
-internals. I just sequence them.
+K3s runs from `rancher/k3s:v1.35.2-k3s1`. Tailscale runs from `tailscale/tailscale:v1.94.2`. Both are purpose-built, upstream, and updated by bumping a version tag. I don't own their internals. I just sequence them.
 
 ```yaml
 services:
@@ -93,8 +91,7 @@ Longhorn is the right persistent storage story for K3s. It's also sitting behind
 
 This is, ironically, the exact trap the whole setup was designed to avoid. So I didn't do it. `/data` on the block volume is fine for a homelab. Local-path PVCs do the job.
 
-The headache of homelab infrastructure is supposed to be *fun* headache. There's a line between "productive friction you learn from" and "work you do instead of the actual thing." Longhorn
-crossed that line. I cut it. If this were production, I'd be on EKS and none of this would exist.
+The headache of homelab infrastructure is supposed to be *fun* headache. There's a line between "productive friction you learn from" and "work you do instead of the actual thing." Longhorn crossed that line. I cut it. If this were production, I'd be on EKS and none of this would exist.
 
 ---
 

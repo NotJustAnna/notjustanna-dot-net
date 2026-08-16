@@ -60,9 +60,7 @@ The optimization is frozen at compile time. When Apple releases a new chip, your
 
 It's the right solution to the wrong problem. It solves "how do we run x86 apps on ARM during a transition period." It does not solve "how do we write software once and have it run optimally everywhere, forever."
 
-I wanted the deeper solution. LLVM IR would have solved this: compile to IR, ship the IR, recompile for whatever hardware you're actually running on. Late-binding optimization. Your binary gets smarter when Apple releases a new chip. For free.
-Apple literally makes the compiler that could do this. They maintain Clang. They built their own LLVM-based toolchain. They had all the pieces.
-Why???
+I wanted the deeper solution. LLVM IR would have solved this: compile to IR, ship the IR, recompile for whatever hardware you're actually running on. Late-binding optimization. Your binary gets smarter when Apple releases a new chip. For free. Apple literally makes the compiler that could do this. They maintain Clang. They built their own LLVM-based toolchain. They had all the pieces. Why???
 
 ---
 
