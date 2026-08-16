@@ -6,9 +6,9 @@ category: ramblings
 heroImage: '../../assets/blog/java.jpg'
 ---
 
-I was 18. Second year of CS. Minding my own business — as much business as an 18-year-old can muster — building a Discord bot in Java because building Discord bots is what the *cool kids* did in 2019, and Java because it was my favorite way to suffer. The bot used a now-defunct library called [Catnip](https://github.com/mewna/catnip), which ran on Vert.x, which ran on Netty, which talked to Discord over TLS WebSockets. Discord runs behind Cloudflare. Anyways.
+I was 18. Second year of CS. Minding my own business (as much business as an 18-year-old can muster), building a Discord bot in Java because building Discord bots is what the *cool kids* did in 2019, and Java because it was my favorite way to suffer. The bot used a now-defunct library called [Catnip](https://github.com/mewna/catnip), which ran on Vert.x, which ran on Netty, which talked to Discord over TLS WebSockets. Discord runs behind Cloudflare. Anyways.
 
-Java 12 had just landed. This was new — Java 11 was the current LTS but it was early days, nobody had really settled into the LTS-or-nothing rhythm we have now, and Java 12 was right there with shiny new things. One of those shiny new things was a first-class TLSv1.3 implementation. Anyways.
+Java 12 had just landed. This was new: Java 11 was the current LTS but it was early days, nobody had really settled into the LTS-or-nothing rhythm we have now, and Java 12 was right there with shiny new things. One of those shiny new things was a first-class TLSv1.3 implementation. Anyways.
 
 My bot refused to boot on Java 12. The stack trace was 36 frames deep and the bottom of it looked like this:
 
@@ -30,7 +30,7 @@ The workaround was disabling either TLSv1.3 or ChaCha20-Poly1305. Worked fine. G
 
 A few weeks later I got an email from an engineer at Oracle named Jamil. He was working on the fix and couldn't reproduce it.
 
-I was both legitimately surprised he'd reached out to me, and legitimately sorry he'd been assigned that bug. By the time he emailed, Cloudflare had quietly changed something on their end and I couldn't reproduce it either. My logs were gone — piped from a VPS to hasteb.in, paste expired. I had nothing. All I could muster was explaining how Discord's websocket frames could get really big for large guild member lists, and that the crash only happened when the frames got big enough that Netty split them across multiple TLS records.
+I was both legitimately surprised he'd reached out to me, and legitimately sorry he'd been assigned that bug. By the time he emailed, Cloudflare had quietly changed something on their end and I couldn't reproduce it either. My logs were gone, piped from a VPS to hasteb.in, paste expired. I had nothing. All I could muster was explaining how Discord's websocket frames could get really big for large guild member lists, and that the crash only happened when the frames got big enough that Netty split them across multiple TLS records.
 
 That was it. That was everything I had.
 
@@ -48,9 +48,9 @@ Looking back, I handed a JDK engineer a Discord bot reproduction and somehow got
 
 I'm writing this six years later, and only now do I actually understand what Jamil figured out. At the time, the fix landed and I moved on, vaguely relieved nobody had been mean to me on the internet. So this is me, finally, reading the patch.
 
-ChaCha20-Poly1305 in AEAD decryption mode has to buffer data across `update()` calls. It can't release plaintext until `doFinal()` runs and the authentication tag verifies — that's the whole point of authenticated encryption. Correct. Expected.
+ChaCha20-Poly1305 in AEAD decryption mode has to buffer data across `update()` calls. It can't release plaintext until `doFinal()` runs and the authentication tag verifies. That's the whole point of authenticated encryption. Correct. Expected.
 
-The bug was in `engineGetOutputSize`, the method that sizes the output buffer *before* decryption runs. For large frames — frames big enough that Netty split them across multiple TLS records — the cipher had accumulated data across several `update()` calls before `doFinal` ran. The output buffer was sized based on only the `doFinal` input:
+The bug was in `engineGetOutputSize`, the method that sizes the output buffer *before* decryption runs. For large frames (frames big enough that Netty split them across multiple TLS records), the cipher had accumulated data across several `update()` calls before `doFinal` ran. The output buffer was sized based on only the `doFinal` input:
 
 ```java
 // Java 12: wrong
@@ -72,7 +72,7 @@ I couldn't have seen that at 18. I didn't know enough about AEAD ciphers to know
 
 ## The Ending
 
-I didn't have any AI tooling. I had a 36-frame stack trace and the patience to read it to the bottom. Past that, I had Jamil — who took what little I gave him and turned it into six tokens in a buffer sizing formula, and was kind to me about it.
+I didn't have any AI tooling. I had a 36-frame stack trace and the patience to read it to the bottom. Past that, I had Jamil, who took what little I gave him and turned it into six tokens in a buffer sizing formula, and was kind to me about it.
 
 It's in the JDK now. Has been since 2019. Every Java installation running ChaCha20-Poly1305 AEAD decryption across a multi-call update carries that `+ cipherBuf.size()`.
 

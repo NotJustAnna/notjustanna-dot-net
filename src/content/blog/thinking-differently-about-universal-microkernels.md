@@ -5,15 +5,15 @@ pubDate: 'Mar 20 2026'
 category: dev
 heroImage: '../../assets/blog/kernels.jpg'
 ---
-As a not-Macbook owner, I have to yell this into the void: I really like macOS' kernel. Not macOS — XNU. The kernel underneath.
+As a not-Macbook owner, I have to yell this into the void: I really like macOS' kernel. Not macOS. XNU. The kernel underneath.
 
-XNU's a hybrid microkernel — meaning most of the OS lives in userspace rather than baked into the kernel itself. Device drivers? Architecturally designed to be userspace programs, even if Apple doesn't always do it that way. Crash a device driver, you crash the device driver. Not the whole system. The kernel stays up. The kernel doesn't care.
+XNU's a hybrid microkernel, meaning most of the OS lives in userspace rather than baked into the kernel itself. Device drivers? Architecturally designed to be userspace programs, even if Apple doesn't always do it that way. Crash a device driver, you crash the device driver. Not the whole system. The kernel stays up. The kernel doesn't care.
 
 Compare that to Linux, where a buggy driver can take down the entire machine because it's all in the same address space, with the same privileges, one bad pointer away from a kernel panic.
 
-XNU's model is just... better in every way. Cleaner. The kernel does the minimum, as the SOLID gods stated on their Single Responsibility Commandment. Everything else is up to the rest of the operating system. XNU is an actual kernel rather than a cob of corn — which in Linux's case, is one fire away from exploding into popcorn.
+XNU's model is just... better in every way. Cleaner. The kernel does the minimum, as the SOLID gods stated on their Single Responsibility Commandment. Everything else is up to the rest of the operating system. XNU is an actual kernel rather than a cob of corn. In Linux's case, that's one fire away from exploding into popcorn.
 
-And I would love this on my CachyOS with COSMIC desktop. I should be allowed to have bad taste in desktop environment but good taste in kernel architecture. I want my drivers isolated. I want to run whatever userspace I feel like, on x86 or ARM, and not particularly care which one I'm on. I want something like Apple's Universal Binary — one thing that runs everywhere — except _actually_ universal, not "universal between the two architectures Apple currently sells."
+And I would love this on my CachyOS with COSMIC desktop. I should be allowed to have bad taste in desktop environment but good taste in kernel architecture. I want my drivers isolated. I want to run whatever userspace I feel like, on x86 or ARM, and not particularly care which one I'm on. I want something like Apple's Universal Binary (one thing that runs everywhere), except _actually_ universal, not "universal between the two architectures Apple currently sells."
 
 So Anyway, I Started ~~Blasting~~ Googling.
 
@@ -27,10 +27,10 @@ Microkernels aren't a new idea. They're not even an "Think Different" idea. They
 
 And yet the consumer OS landscape is:
 
-- **macOS/iOS** — XNU, hybrid microkernel ✓
-- **Windows** — monolithic-ish NT kernel, practically speaking
-- **Linux** — monolithic, famously so
-- **Android** — Linux underneath, with a Java runtime on top
+- **macOS/iOS**: XNU, hybrid microkernel ✓
+- **Windows**: monolithic-ish NT kernel, practically speaking
+- **Linux**: monolithic, famously so
+- **Android**: Linux underneath, with a Java runtime on top
 
 (Everything else is too niche to matter for this conversation. For now. We'll get back to it.)
 
@@ -60,7 +60,7 @@ The optimization is frozen at compile time. When Apple releases a new chip, your
 
 It's the right solution to the wrong problem. It solves "how do we run x86 apps on ARM during a transition period." It does not solve "how do we write software once and have it run optimally everywhere, forever."
 
-I wanted the deeper solution. LLVM IR would have solved this — compile to IR, ship the IR, recompile for whatever hardware you're actually running on. Late-binding optimization. Your binary gets smarter when Apple releases a new chip. For free.
+I wanted the deeper solution. LLVM IR would have solved this: compile to IR, ship the IR, recompile for whatever hardware you're actually running on. Late-binding optimization. Your binary gets smarter when Apple releases a new chip. For free.
 Apple literally makes the compiler that could do this. They maintain Clang. They built their own LLVM-based toolchain. They had all the pieces.
 Why???
 
@@ -68,13 +68,13 @@ Why???
 
 ## Someone Already Tried This. Several Someones, Actually.
 
-Let's set the microkernel idea on the shelf for a moment and look at the universal binary problem separately. They're going to converge, I promise. But before we get to what I think the answer is — for both — it's worth knowing that this problem has a graveyard.
+Let's set the microkernel idea on the shelf for a moment and look at the universal binary problem separately. They're going to converge, I promise. But before we get to what I think the answer is, for both, it's worth knowing that this problem has a graveyard.
 
-Microsoft Research built **Singularity** in 2003 — an entire OS written in managed C#, where the type system replaced hardware memory protection. That's not a metaphor. The language verifier was doing the job the MMU normally does. Load-bearing C#, if you will.
+Microsoft Research built **Singularity** in 2003: an entire OS written in managed C#, where the type system replaced hardware memory protection. That's not a metaphor. The language verifier was doing the job the MMU normally does. Load-bearing C#, if you will.
 
 It evolved into a project called Midori, got far enough to run Microsoft's search infrastructure in production, and was quietly killed in 2015. Too much to ask the world to abandon their existing software ecosystem for a managed-code utopia. Graveyard, plot one.
 
-Then, Google built **Fuchsia** — a capability-based microkernel OS with proper driver isolation, a real component model, everything done right. It shipped briefly on the Nest Hub smart display. Then got rolled back to Linux. Now it exists in a state of quantum superposition between "advanced research" and "we'll get to sunsetting that eventually."
+Then, Google built **Fuchsia**: a capability-based microkernel OS with proper driver isolation, a real component model, everything done right. It shipped briefly on the Nest Hub smart display. Then got rolled back to Linux. Now it exists in a state of quantum superposition between "advanced research" and "we'll get to sunsetting that eventually."
 
 The pattern is consistent: build the right thing, hit the ecosystem wall, die.
 
@@ -84,15 +84,15 @@ But there's one entry in this space that *didn't* die, and it's interesting beca
 
 ## eBPF: the idea that snuck in sideways
 
-**eBPF** is nominally a "packet filtering" system in the Linux kernel. The name stands for "extended Berkeley Packet Filter" — very boring, sounds like a networking detail, easy to ignore.
+**eBPF** is nominally a "packet filtering" system in the Linux kernel. The name stands for "extended Berkeley Packet Filter." Very boring, sounds like a networking detail, easy to ignore.
 
 It isn't a networking detail.
 
-Here's what eBPF actually is: a bytecode format, a verifier, and a JIT compiler living inside the Linux kernel. You write a program, the verifier checks that it's safe (no unbounded loops, no invalid memory access, all paths terminate), and then it runs in kernel space with near-zero overhead. No ring transitions. No syscall overhead. Just verified code running at the most privileged level because the verifier already proved it can't do anything wrong.
+eBPF is a bytecode format, a verifier, and a JIT compiler living inside the Linux kernel. You write a program, the verifier checks that it's safe (no unbounded loops, no invalid memory access, all paths terminate), and then it runs in kernel space with near-zero overhead. No ring transitions. No syscall overhead. Just verified code running at the most privileged level because the verifier already proved it can't do anything wrong.
 
-That's the Singularity bet — type safety replacing hardware protection — except applied narrowly enough that nobody objected to merging it into mainline Linux.
+That's the Singularity bet (type safety replacing hardware protection), except applied narrowly enough that nobody objected to merging it into mainline Linux.
 
-And the scope of what eBPF can do keeps expanding: network processing, system call filtering, security policy enforcement, TCP congestion control, and now — as of recent Linux versions — **writing CPU schedulers**. Userspace-authored, verifier-checked code making scheduling decisions in ring 0. Meta runs their entire production infrastructure networking on eBPF. Cloudflare's DDoS mitigation runs on eBPF.
+And the scope of what eBPF can do keeps expanding: network processing, system call filtering, security policy enforcement, TCP congestion control, and now (as of recent Linux versions) **writing CPU schedulers**. Userspace-authored, verifier-checked code making scheduling decisions in ring 0. Meta runs their entire production infrastructure networking on eBPF. Cloudflare's DDoS mitigation runs on eBPF.
 
 eBPF is the VM-as-OS idea that actually shipped at scale. It just wore a disguise.
 
@@ -100,7 +100,7 @@ eBPF is the VM-as-OS idea that actually shipped at scale. It just wore a disguis
 
 ## WebAssembly changes the equation
 
-Here's where I think things get interesting.
+Now, the part I find interesting.
 
 **WebAssembly (WASM)** is a bytecode format originally designed for running code in browsers at near-native speed. That's its origin story. That's what it says on the tin.
 
@@ -112,9 +112,9 @@ If your brain works in the particular weird way that mine does, something just c
 
 You could just. Use WASM. As the driver sandbox. Instead of the MMU.
 
-And while we're at it — why stop at drivers?
+And while we're at it, why stop at drivers?
 
-WASI (the WebAssembly System Interface) exists precisely to run system-level code in WASM. It's POSIX, but typed. Capability-gated. You declare what your module needs — filesystem access, network access, memory-mapped I/O — and the host grants exactly that. Nothing undeclared is accessible. Not "restricted." Not "monitored." Just. Not there.
+WASI (the WebAssembly System Interface) exists precisely to run system-level code in WASM. It's POSIX, but typed. Capability-gated. You declare what your module needs (filesystem access, network access, memory-mapped I/O) and the host grants exactly that. Nothing undeclared is accessible. Not "restricted." Not "monitored." Just. Not there.
 
 That's not a driver sandbox. That's an entire OS component model.
 
@@ -130,11 +130,11 @@ These are not as different as they sound.
 
 ## Great idea. Where do we get drivers? Where do we get apps? 
 
-Here's where the LLVM thing becomes important: the drivers and applications are just waiting to be recompiled.
+This is where the LLVM thing pays off: the drivers and applications are just waiting to be recompiled.
 
 WASM is a valid LLVM target. LLVM is the backend that powers Clang, Rust, Swift, Kotlin Native, and most modern compiled languages. Which means any language that compiles through LLVM can emit WASM. Not as an afterthought. As a flag you pass to the compiler.
 
-So when someone asks "who writes the drivers for your WASM microkernel" — the answer is nobody. They're already written. In C. Sitting in the Linux kernel tree. Twenty years of accumulated hardware knowledge, weird edge cases, datasheets that lied, and fixes in comments nobody has read since 2009.
+So when someone asks "who writes the drivers for your WASM microkernel", the answer is nobody. They're already written. In C. Sitting in the Linux kernel tree. Twenty years of accumulated hardware knowledge, weird edge cases, datasheets that lied, and fixes in comments nobody has read since 2009.
 
 You don't rewrite them. You recompile them.
 
@@ -152,7 +152,7 @@ Universal Binary was the right idea. This is the actual implementation.
 
 ## So what would this actually look like?
 
-A Rust microkernel — Rust because memory safety in the kernel itself matters, and because Rust has excellent embedded/bare-metal support. A small, trusted core: interrupt handling, capability-based IPC, a scheduler, physical memory management. As little as possible.
+A Rust microkernel: Rust because memory safety in the kernel itself matters, and because Rust has excellent embedded/bare-metal support. A small, trusted core: interrupt handling, capability-based IPC, a scheduler, physical memory management. As little as possible.
 
 A WASM runtime (Wasmtime is embeddable as a Rust library, this is its designed use case) handling module loading, verification, and JIT compilation via Cranelift for startup speed and the LLVM backend for optimizing hot paths.
 
@@ -160,7 +160,7 @@ WASI as the system interface. Drivers and kernel modules are WASM components tha
 
 A persistent module store: compiled WASM cached as native artifacts per hardware profile. Recompiled when the hardware changes. Profile-guided optimization over time as the system learns which paths are hot.
 
-POSIX compatibility as a WASM component itself — a userspace layer, not baked into the kernel. You want Linux semantics? Load the POSIX compatibility module. You want something else? Load something else. The kernel doesn't care.
+POSIX compatibility as a WASM component itself: a userspace layer, not baked into the kernel. You want Linux semantics? Load the POSIX compatibility module. You want something else? Load something else. The kernel doesn't care.
 
 The result: your COSMIC desktop, or KDE, or whatever you want, running on top of a clean microkernel with isolated drivers, on x86 or ARM, with code that gets better at running on your specific hardware over time.
 
@@ -168,13 +168,13 @@ The result: your COSMIC desktop, or KDE, or whatever you want, running on top of
 
 ## The wall
 
-And... here's where I have to be honest.
+And... I have to be honest now.
 
-This requires WebAssembly to become a serious systems target, not just a browser and edge-compute story. That's happening — slowly. The Bytecode Alliance (Mozilla, Microsoft, Fastly, Intel, Red Hat) is doing real work on WASI and the Component Model. Wasmtime is production quality-ish. The pieces exist.
+This requires WebAssembly to become a serious systems target, not just a browser and edge-compute story. That's happening. Slowly. The Bytecode Alliance (Mozilla, Microsoft, Fastly, Intel, Red Hat) is doing real work on WASI and the Component Model. Wasmtime is production quality-ish. The pieces exist.
 
 But "the pieces exist" is a long way from "the ecosystem exists." Linux driver authors aren't thinking about WASM targets. Systems programmers aren't writing kernel modules in WASM-first workflows. The toolchain integration is immature. The debugging story is rough.
 
-Meanwhile the Android black hole keeps pulling everything in. Amazon just shipped Vega OS — their escape from Android's GPL gravity — and their solution to "what's the application runtime" was JavaScript. React Native on Linux. They escaped the JVM and landed in the V8 engine. Different VM, same fundamental bet, worse type system. The ecosystem gravity is so strong that even the companies with resources to build something better keep reinventing 1996 with a different runtime.
+Meanwhile the Android black hole keeps pulling everything in. Amazon just shipped Vega OS (their escape from Android's GPL gravity) and their solution to "what's the application runtime" was JavaScript. React Native on Linux. They escaped the JVM and landed in the V8 engine. Different VM, same fundamental bet, worse type system. The ecosystem gravity is so strong that even the companies with resources to build something better keep reinventing 1996 with a different runtime.
 
 ---
 
@@ -182,9 +182,9 @@ Meanwhile the Android black hole keeps pulling everything in. Amazon just shippe
 
 While we were busy eulogizing Singularity and Fuchsia, something quietly happened to Linux.
 
-Someone snuck eBPF in. It now handles networking, security policy, system call filtering, TCP congestion control, and as of recent kernel versions — CPU scheduling. Someone wrote a CPU scheduler in eBPF. It merged. Linus signed off on it.
+Someone snuck eBPF in. It now handles networking, security policy, system call filtering, TCP congestion control, and as of recent kernel versions, CPU scheduling. Someone wrote a CPU scheduler in eBPF. It merged. Linus signed off on it.
 
-And separately, people are smuggling Rust into the kernel. Driver by driver. Not a rewrite — a slow infiltration. Memory-safe, verifiable, LLVM-native code quietly becoming acceptable in the codebase that's been C since before most of us were born.
+And separately, people are smuggling Rust into the kernel. Driver by driver. Not a rewrite. A slow infiltration. Memory-safe, verifiable, LLVM-native code quietly becoming acceptable in the codebase that's been C since before most of us were born.
 
 The monolithic cob of corn is being hollowed out. Slowly. Commit by commit. By people with CVEs on their conscience and patience measured in decades.
 

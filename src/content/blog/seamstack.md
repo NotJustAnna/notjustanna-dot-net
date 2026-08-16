@@ -88,7 +88,7 @@ serve({ fetch: app.fetch, hostname: host, port });
 
 The prototype became an MVP target in an afternoon.
 
-The core insight is that dev and prod have inverted ownership. In dev, the frontend owns the public port — it's the dev server, it does HMR, it proxies `/api` to the backend on some private port you don't care about. In prod, the backend owns the port — it serves the API and ships the built assets next to its routes. Bun did all of that for me. I just had to figure out how to do it with Vite and Hono.
+The core insight is that dev and prod have inverted ownership. In dev, the frontend owns the public port: it's the dev server, it does HMR, it proxies `/api` to the backend on some private port you don't care about. In prod, the backend owns the port; it serves the API and ships the built assets next to its routes. Bun did all of that for me. I just had to figure out how to do it with Vite and Hono.
 
 Could I game this with a single CLI? Yes. Great. I just needed a config file now. Yoinking the `vite.config.js` ergonomics was the obvious move here.
 
@@ -114,9 +114,9 @@ SeamStack reads its config, resolves who's the asset-source and who's the asset-
 
 The backend needs to know that port. And in prod it needs to know where the built assets are. IPC between a Node process and a spawned `tsx` process. I thought about it for maybe thirty seconds and went with JSON-over-env-vars. `SEAM_INTERNAL__HONO_ADAPTER={"mode":"dev","host":"127.0.0.1","port":51423}`. Unglamorous. Works perfectly. The backend adapter reads the env var and knows everything it needs to know.
 
-Prod was slightly more interesting. The backend starts cold — no SeamStack CLI in the picture, just `node server.js` inside a container. It needs to find the built assets somehow. First attempt: `require('./_seam_prod.js')`. Doesn't exist in dev. `try { require } catch { }`. Graceful degradation. Works.
+Prod was slightly more interesting. The backend starts cold: no SeamStack CLI in the picture, just `node server.js` inside a container. It needs to find the built assets somehow. First attempt: `require('./_seam_prod.js')`. Doesn't exist in dev. `try { require } catch { }`. Graceful degradation. Works.
 
-`_seam_prod.js` is what `seam build` writes into `dist/` — a JS file that default-exports `{ assetsDir, indexHtml }`. The backend adapter finds it, mounts the assets, serves the frontend next to your API routes. The whole "where are the built files" problem, solved in twelve lines.
+`_seam_prod.js` is what `seam build` writes into `dist/`, a JS file that default-exports `{ assetsDir, indexHtml }`. The backend adapter finds it, mounts the assets, serves the frontend next to your API routes. The whole "where are the built files" problem, solved in twelve lines.
 
 ---
 
@@ -139,7 +139,7 @@ seamstack
 
 ... Oops. By Saturday evening: support for three frontends and five backends. All in the same `fabric` array, all working together with zero config. `seam dev` does all you need.
 
-The interesting cell in the matrix is Angular + NestJS. Both are, charitably, the Spring Framework of the JavaScript ecosystem. Decorators everywhere, opinionated module systems, strong opinions about project structure, strong opinions about *everything*. SeamStack has no opinions about any of that — it just wires them together like husband and wife. Angular and NestJS in the same `fabric` array. SeamStack genuinely does not care. It was a sight to behold.
+The interesting cell in the matrix is Angular + NestJS. Both are, charitably, the Spring Framework of the JavaScript ecosystem. Decorators everywhere, opinionated module systems, strong opinions about project structure, strong opinions about *everything*. SeamStack has no opinions about any of that. It just wires them together like husband and wife. Angular and NestJS in the same `fabric` array. SeamStack genuinely does not care. It was a sight to behold.
 
 Sunday: `create-seam`. All the possible combinations someone could imagine. Interactive scaffolder. `pnpm create seam@latest`, pick a frontend, pick a backend, get a working project.
 
@@ -149,7 +149,7 @@ At some point I stopped asking myself whether this was still a prototype.
 
 ## The Part Where I Realized I Built a Not-A-Framework
 
-Frameworks have opinions. SeamStack's only opinions are about ports and process boundaries — who starts first, who owns the public URL in each phase, where the manifest lives. None of that is an opinion about your code. In a sense, it's as opinionated as Vite is. And no one in their right mind would call Vite opinionated.
+Frameworks have opinions. SeamStack's only opinions are about ports and process boundaries: who starts first, who owns the public URL in each phase, where the manifest lives. None of that is an opinion about your code. In a sense, it's as opinionated as Vite is. And no one in their right mind would call Vite opinionated.
 
 One CLI to rule them all. One config file to find them. One command to bring them all and in the darkness bind them.
 

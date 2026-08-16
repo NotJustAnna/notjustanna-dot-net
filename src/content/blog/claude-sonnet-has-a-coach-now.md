@@ -17,13 +17,13 @@ Anthropic announced what they call the "[advisor strategy](https://claude.com/bl
 
 Corporate Anthropic jargon aside, this is just a `/advisor` command on Claude Code that enables another tool. When Claude Sonnet (or Haiku) feels unsure, it asks the Opus coach for help. The harness spawns an Opus instance, looks at the shared context, returns a plan or a correction, and disappears. Sonnet gets the advice as if it just made a tool call on what to do next, and keeps driving.
 
-That's the entire shape. No orchestration layer, no subagent pool, no "big model decides what to delegate" — that's the *other* pattern, the older one, and the advisor strategy is the inverse: the cheaper model drives, escalates when it has to, and Opus only shows up when paged.
+That's the entire shape. No orchestration layer, no subagent pool, no "big model decides what to delegate." That's the *other* pattern, the older one, and the advisor strategy is the inverse: the cheaper model drives, escalates when it has to, and Opus only shows up when paged.
 
 ---
 
 ## Somehow, It Works
 
-Anthropic ran the benchmarks — Sonnet+advisor scored 2.7 points higher than Sonnet alone on SWE-bench Multilingual, at 11.9% lower cost per task. For further specifics, see the [blog post](https://claude.com/blog/the-advisor-strategy). The gist is: cheaper and a bit smarter.
+Anthropic ran the benchmarks: Sonnet+advisor scored 2.7 points higher than Sonnet alone on SWE-bench Multilingual, at 11.9% lower cost per task. For further specifics, see the [blog post](https://claude.com/blog/the-advisor-strategy). The gist is: cheaper and a bit smarter.
 
 And this was published on April 9. Opus 4.7 shipped April 16. The numbers above all use Opus **4.6** as the advisor. Treat them as a floor.
 
@@ -35,11 +35,11 @@ Which means it isn't *"you can stop using Opus."* It's *"you should probably sto
 
 Sonnet 4.6 already felt like Opus 4.5. Which is a compliment. The mid-tier of one generation matching the flagship of the previous one is what progress actually looks like, and Anthropic has been doing it for a few cycles now.
 
-Opus, in advisory mode, is surgical. It doesn't rewrite Sonnet's plan. It points at the specific thing Sonnet is about to forget — the edge case, the test, the function that already exists three directories away. Two sentences. Sonnet adjusts and continues.
+Opus, in advisory mode, is surgical. It doesn't rewrite Sonnet's plan. It points at the specific thing Sonnet is about to forget: the edge case, the test, the function that already exists three directories away. Two sentences. Sonnet adjusts and continues.
 
 Sonnet 4.6 with an Opus 4.7 advisor feels, to me, like the Sonnet 4.7 that doesn't, and may never.
 
-The output, when Sonnet finishes, is still distinctly Sonnet. Sonnet's prose, Sonnet's structure, Sonnet's tendency to ship the obvious version and call it done. That's not a complaint — I picked Sonnet on purpose, the texture is fine — it's just that the advisor doesn't change *what kind of code Sonnet writes*. It changes how often Sonnet forgets things.
+The output, when Sonnet finishes, is still distinctly Sonnet. Sonnet's prose, Sonnet's structure, Sonnet's tendency to ship the obvious version and call it done. That's not a complaint (I picked Sonnet on purpose, the texture is fine); it's just that the advisor doesn't change *what kind of code Sonnet writes*. It changes how often Sonnet forgets things.
 
 Which means the thing you don't get is Opus's other gear. Sometimes Opus alone, given a hard problem, goes *completely out of the box* and the result is the kind of code review where you go *wait* and then *huh* and then *okay wow the model was smarter than me i guess*. Opus-as-advisor doesn't do that. The advisor's job is to keep Sonnet on Sonnet's rails, not to drag Sonnet onto Opus's. If you wanted Opus's rails, you wanted Opus.
 
@@ -49,7 +49,7 @@ I don't feel like I'll ever be surprised by Sonnet-plus-Opus the way I am someti
 
 ## The Current Lineup
 
-Opus 4.7 itself isn't going anywhere. The genuinely hard problems — the ones where the breakthrough *is* the answer, where you'd like the model to come back with something you wouldn't have asked for — still go to Opus solo.
+Opus 4.7 itself isn't going anywhere. The genuinely hard problems (the ones where the breakthrough *is* the answer, where you'd like the model to come back with something you wouldn't have asked for) still go to Opus solo.
 
 Sonnet 4.6 is now getting lifetime Opus 4.7 coaching on my Claude Code instances. Opus will catch the mistakes Sonnet makes, and Sonnet will keep doing what it does best.
 

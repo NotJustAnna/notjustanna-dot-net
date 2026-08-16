@@ -17,9 +17,9 @@ This is not because it's good.
 
 ## The Challengers
 
-MongoDB said no more SQL. Redis said no more SQL. RethinkDB said no more SQL. CouchDB, Cassandra, DynamoDB — the entire NoSQL wave of the 2010s was built on the premise that SQL was the problem and that removing it would fix something.
+MongoDB said no more SQL. Redis said no more SQL. RethinkDB said no more SQL. CouchDB, Cassandra, DynamoDB: the entire NoSQL wave of the 2010s was built on the premise that SQL was the problem and that removing it would fix something.
 
-The thing is, "SQL" was three things at once: a data model, a set of consistency guarantees, and a wire protocol. The NoSQL wave attacked the bundle. Most of them dropped joins. Most of them dropped transactions. Most of them dropped referential integrity. A few of them — the ones that survived — found legitimate use cases where those tradeoffs made sense.
+The thing is, "SQL" was three things at once: a data model, a set of consistency guarantees, and a wire protocol. The NoSQL wave attacked the bundle. Most of them dropped joins. Most of them dropped transactions. Most of them dropped referential integrity. A few of them (the ones that survived) found legitimate use cases where those tradeoffs made sense.
 
 None of them dropped the part that was actually causing pain.
 
@@ -55,7 +55,7 @@ RethinkDB's ReQL was the closest anyone has come. The query language wasn't a la
 
 `r.table("users").filter({name: "John"})` is an object. Not a string. It's ReQL's AST representing the query. It composes safely. It has no injection surface. It can be introspected without parsing. It's a query builder that isn't pretending to be a compiler; it's just building a tree.
 
-RethinkDB lost anyway — not because ReQL was wrong, but because it came bundled with "also abandon your relational model and your existing schema." The market read "no SQL" and heard "start over." Which was the wrong ask.
+RethinkDB lost anyway, not because ReQL was wrong, but because it came bundled with "also abandon your relational model and your existing schema." The market read "no SQL" and heard "start over." Which was the wrong ask.
 
 ReQL was the right idea attached to the wrong migration.
 
@@ -95,7 +95,7 @@ Let's embrace Microsoft's favorite playbook for winning standards wars.
 
 **Embrace.** Add structured queries as an *optional* wire format in Postgres. Existing SQL clients keep working. New clients can opt in. Nothing breaks. Prisma, Drizzle, every ORM with a query AST suddenly has a way to skip the string round-trip.
 
-**Extend.** Build features that only work on the structured path. Better error messages — column references resolved to source positions in the AST. Better introspection — query plans returned alongside results without re-parsing. Better composition — fragments that compose at the AST level instead of by string concatenation. None of this is possible on the string path. All of it is easy on the tree path.
+**Extend.** Build features that only work on the structured path. Better error messages: column references resolved to source positions in the AST. Better introspection, query plans returned alongside results without re-parsing. Better composition. Fragments that compose at the AST level instead of by string concatenation. None of this is possible on the string path. All of it is easy on the tree path.
 
 **Extinguish.** The string path becomes the compatibility mode. New tooling targets the structured path because that's where the features are. Old tooling keeps working forever, because that's what compatibility modes do. Twenty years later, SQL is what you write when you're typing into psql by hand, and nothing else.
 
