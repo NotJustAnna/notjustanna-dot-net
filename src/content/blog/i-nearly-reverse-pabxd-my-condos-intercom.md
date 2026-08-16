@@ -39,7 +39,7 @@ There's a message board on the elevator. Last week, it was updated to read:
 >
 > We're modernizing our communications. Deliveries and visitors will be announced through our new condo app.
 >
-> Please install the app — we will stop phoning you.
+> Please install the app --- we will stop phoning you.
 >
 > Signed, Front Desk & Management.
 

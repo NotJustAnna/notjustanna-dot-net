@@ -6,7 +6,7 @@ category: dev
 heroImage: '../../assets/blog/engineering.jpg'
 ---
 
-There's a school of thought in creative fields — architecture, music, graphic design — that constraints produce better work than freedom. You don't write a sonnet because fourteen lines is the optimal poem length. You write a sonnet because the form forces decisions you wouldn't have made otherwise, and some of those decisions turn out to be the interesting ones.
+There's a school of thought in creative fields --- architecture, music, graphic design --- that constraints produce better work than freedom. You don't write a sonnet because fourteen lines is the optimal poem length. You write a sonnet because the form forces decisions you wouldn't have made otherwise, and some of those decisions turn out to be the interesting ones.
 
 Software doesn't get talked about this way. Instead we talk about "optimization" and "cost reduction" like they're chores: things you do after the real design is done, or when someone notices the AWS bill needs its own line item in the board deck. We treat the budget as an obstacle to the architecture, something to apologize for, not something to design *with*.
 
@@ -99,7 +99,7 @@ If you're coming from Postgres or MySQL, your first instinct will be to model yo
 
 Your second instinct will be to search for the AWS serverless SQL solution. That's the devil speaking. Aurora Serverless exists, and it will let you write `SELECT * FROM notes WHERE user_id = ?` like a civilized person, and it will also cold start for up to 30 seconds on the first connection, bill you per ACU-hour whether you're doing anything or not, and cheerfully generate a surprise invoice the moment you get any real traffic. It is not a free tier play. It is not even a cheap play. It is a trap with a familiar interface.
 
-So: DynamoDB. And look — the instinct to resist it is correct, because DynamoDB is genuinely strange. But strange in a way that pays off.
+So: DynamoDB. And look --- the instinct to resist it is correct, because DynamoDB is genuinely strange. But strange in a way that pays off.
 
 DynamoDB will let you design a relational model. DynamoDB will then punish you for it at read time, slowly, expensively, and without remorse. What it wants instead is single-table design. It wants you to think about your access patterns *first* and your data model *second*. How will Insight Notes be queried? By user ID. By document ID. By user ID sorted by last modified. That's three access patterns, and if you're clever about your partition key and sort key, that's one table.
 

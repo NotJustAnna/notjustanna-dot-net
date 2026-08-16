@@ -38,7 +38,7 @@ Pankratov launched it in 2004 by uploading a setup package to FileForum. The lau
 
 The hosting bill in that pre-acquisition period: a bit over five hundred dollars a month. That was the rack fee. With basic bandwidth allocation.
 
-The reason it could be that cheap is that Hamachi was peer-to-peer — actually peer-to-peer, not "peer-to-peer" as a branding exercise. Clients connected directly to each other. The servers were coordination infrastructure, not data pipes. Almost no traffic flowed through them. The architecture wasn't just elegant; it was what made the business model viable at all.
+The reason it could be that cheap is that Hamachi was peer-to-peer --- actually peer-to-peer, not "peer-to-peer" as a branding exercise. Clients connected directly to each other. The servers were coordination infrastructure, not data pipes. Almost no traffic flowed through them. The architecture wasn't just elegant; it was what made the business model viable at all.
 
 And the IP addressing scheme, which I had filed away as "weird thing Hamachi did," turns out to have been a deliberate decision. The usual RFC 1918 ranges (10.x, 172.16.x, 192.168.x) were excluded specifically to avoid colliding with the private networks Hamachi was supposed to complement. So they picked 5.0.0.0/8, which was unallocated by IANA at the time.
 

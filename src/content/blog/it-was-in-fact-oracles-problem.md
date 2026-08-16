@@ -43,7 +43,7 @@ Let me tell how *insufferably smug* I feel right now.
 
 I spent a week rebuilding this whole thing so the VM is *cattle*: nothing on the boot volume I care about, the entire environment in a versioned image, everything stateful sitting on a separate block volume. I did that because long-lived servers rot, not because I had any idea Oracle was about to do this.
 
-But it turns out "the cloud silently changed the deal" is just another flavor of the same problem. Resizing from 4/24 to 2/12 is one number in Terraform and a `terraform apply`. The container doesn't know and doesn't care. The steward comes up, K3s finds its state on `/data` exactly where it left it, ArgoCD redeploys the world, and two and a half minutes later I have the same homelab on half the silicon. It's tighter — 12GB is less room to be careless in — but it runs.
+But it turns out "the cloud silently changed the deal" is just another flavor of the same problem. Resizing from 4/24 to 2/12 is one number in Terraform and a `terraform apply`. The container doesn't know and doesn't care. The steward comes up, K3s finds its state on `/data` exactly where it left it, ArgoCD redeploys the world, and two and a half minutes later I have the same homelab on half the silicon. It's tighter --- 12GB is less room to be careless in --- but it runs.
 
 That's the whole payoff of treating the box as disposable. When someone else changes the terms, you change one number. Nobody SSHes into anything at 2am.
 

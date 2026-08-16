@@ -11,7 +11,7 @@ Cards land in `src/assets/og/` as 1200x630 PNGs, which is where the pages import
 
 ## Adding a card
 
-Add an entry to `cards.mjs` and re-run. `template.mjs` is the design — it's the site's own
+Add an entry to `cards.mjs` and re-run. `template.mjs` is the design --- it's the site's own
 `AmbientBackground` and `:root` palette, flattened into one self-contained HTML file.
 
 ## Why it doesn't download a browser

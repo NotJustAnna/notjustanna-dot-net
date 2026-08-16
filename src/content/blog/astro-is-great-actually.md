@@ -6,7 +6,7 @@ category: dev
 heroImage: '../../assets/blog/comet.jpg'
 ---
 
-I've been building personal websites long enough to have opinions about Bootstrap 2. Not nostalgia — opinions. It was the right tool for 2013, it held its ground on IE, and if you think that's funny you've never debugged a flexbox fallback at 1am for a browser that predates flexbox.
+I've been building personal websites long enough to have opinions about Bootstrap 2. Not nostalgia --- opinions. It was the right tool for 2013, it held its ground on IE, and if you think that's funny you've never debugged a flexbox fallback at 1am for a browser that predates flexbox.
 
 Since then: CRA when I wanted to play with the fancy React hooks, Next.js when Next.js was the new hotness, Tailwind the moment I learned it existed (and it never left), Vite when I wanted a cleaner foundation. The through-line is Tailwind and `.tsx`. That's where I live. Everything else is negotiable.
 

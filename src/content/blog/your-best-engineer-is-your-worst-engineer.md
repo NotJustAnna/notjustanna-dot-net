@@ -58,7 +58,7 @@ The specialist protects their expertise. It's a moat. It's a job. *Fair.* Dan ha
 
 ---
 
-If you've read this far and some of Dan sounds like you — congratulations, probably. The discomfort is the diagnostic. Specialists don't read posts about generalists and recognize themselves. Ducks do.
+If you've read this far and some of Dan sounds like you --- congratulations, probably. The discomfort is the diagnostic. Specialists don't read posts about generalists and recognize themselves. Ducks do.
 
 ---
 

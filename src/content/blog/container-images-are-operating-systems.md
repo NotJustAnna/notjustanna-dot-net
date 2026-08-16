@@ -83,7 +83,7 @@ And the second kernel isn't free. It's a slice of RAM that's spoken for before y
 
 Sidenote, before I close. Snap and Flatpak do the exact same trick. A Snap's `base: core24` *is* Ubuntu 24.04: a squashfs of the whole userland, one loop device per app in your `lsblk`. A Flatpak's runtime is the same idea with a different logo. Same namespaces, same bind mounts, same architecture this entire post just described.
 
-Which means your calculator app requires a third install of Ubuntu on your machine (the host's, your containers', and now its own), and I don't feel like everyone is anywhere near mad enough about that. On a server, the tenant model is the value. On your desktop, the app's entire job is to touch your files, your fonts, your clipboard — and it's sealed in a box, petitioning through D-Bus for your own documents.
+Which means your calculator app requires a third install of Ubuntu on your machine (the host's, your containers', and now its own), and I don't feel like everyone is anywhere near mad enough about that. On a server, the tenant model is the value. On your desktop, the app's entire job is to touch your files, your fonts, your clipboard --- and it's sealed in a box, petitioning through D-Bus for your own documents.
 
 Same machine. Wrong door. That rant is its own post; this is just the receipt that I noticed.
 

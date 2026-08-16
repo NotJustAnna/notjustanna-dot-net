@@ -63,7 +63,7 @@ Although the five survivors are all on the right-hand side, their connectors are
 
 I'm not saying this is bad. A Thunderbolt dock turning a laptop into a workstation with double the performance is, unavoidably, kind of cool. I grew up somewhere every one of those old cables cost triple what it should have because of import tax, so I am the last person who gets to be precious about "convenience."
 
-I just miss the cables that had exactly one job. RCA was never going to be mistaken for anything else. A parallel cable wasn't secretly also a display cable if you plugged it in wrong. There was a glamour to that specificity — it *felt* infallible, the way a thing built for one purpose always does.
+I just miss the cables that had exactly one job. RCA was never going to be mistaken for anything else. A parallel cable wasn't secretly also a display cable if you plugged it in wrong. There was a glamour to that specificity --- it *felt* infallible, the way a thing built for one purpose always does.
 
 Instead, you have to guess what you can do with a given USB-C port. Does it support video? power? PCIe? The answer always feels like "maybe," and that is a very different feeling than "yes" or "no."
 

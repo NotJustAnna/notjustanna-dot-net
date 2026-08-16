@@ -19,7 +19,7 @@ This post is an accounting. Both columns are longer than I'd like.
 
 ## Abandonware With a Storefront
 
-Valve makes — made? — some of the best games ever shipped. Then it discovered a store that takes a cut of everyone else's games, and the games division became a rounding error with a fan club.
+Valve makes --- made? --- some of the best games ever shipped. Then it discovered a store that takes a cut of everyone else's games, and the games division became a rounding error with a fan club.
 
 Portal and Half-Life get remembered when there's hardware to sell. *Alyx* exists because the Index needed a reason to. *Aperture Desk Job* exists because the Deck did. Everything else gets the long silence. Left 4 Dead is two games and a decade and a half of nothing. Team Fortress 2 spent *years* overrun by aimbot-and-slur bots (an actual, measurable majority of some servers) while the community trended [#SaveTF2](https://save.tf/) worldwide, twice, before Valve mustered banwaves and a comment. The famous flat structure, where employees work on whatever interests them, has a corollary nobody puts on the recruiting page: nobody has to work on what *doesn't* interest them. Maintenance doesn't interest them.
 

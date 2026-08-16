@@ -19,7 +19,7 @@ Those words are marketing, not architecture. A gaming PC is a workstation with w
 
 The only actual difference is who's allowed to be in the room with it, and in your case that's you, which is the *permissive* configuration, not the restrictive one. You have physical access, a keyboard, and root. Datacenter operators pay real money to have less of that than you do for free.
 
-Mine is a Ryzen 7 8700G, an RX 6750 XT, 32GB of RAM and 3TB of SSD, running CachyOS — which is Arch, btw. Now go read that spec sheet again and pretend I told you it was a rack unit with Proxmox. Eight cores. Thirty-two gigs. Three terabytes of local NVMe. You would not blink. You'd ask what it costs per month.
+Mine is a Ryzen 7 8700G, an RX 6750 XT, 32GB of RAM and 3TB of SSD, running CachyOS --- which is Arch, btw. Now go read that spec sheet again and pretend I told you it was a rack unit with Proxmox. Eight cores. Thirty-two gigs. Three terabytes of local NVMe. You would not blink. You'd ask what it costs per month.
 
 For scale: my Oracle Always Free VM, the one an entire homelab is bolted to, is 2 OCPU and 12GB, and it only got that small in June, which is [its own story](/post/it-was-in-fact-oracles-problem/). The Windows Servers I deployed to professionally, the behemoths running twenty-something JVM services each, were 32 or 64GB. The machine I bought to play video games on sits comfortably inside that range, and unlike any of them it has a GPU with a hardware video encoder in it.
 
