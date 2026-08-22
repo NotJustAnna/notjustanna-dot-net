@@ -104,7 +104,7 @@ export default defineWeave({
 })
 ```
 
-A new thing started to take shape: SeamStack.
+A new thing started to take shape: [SeamStack](https://github.com/NotJustAnna/SeamStack).
 
 ---
 
