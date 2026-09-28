@@ -20,11 +20,11 @@ A 32 billion parameter (or 32B, for short) model, the smallest size anyone calls
 
 My desktop has 32GB of RAM. I could empty the whole machine, swap every process to disk, and I still wouldn't fit the small model.
 
-This is why the craze is specifically Mac Minis and Mac Studios and not gaming PCs: Apple's unified memory means the RAM and the GPU draw from the same pool, so a maxed-out Studio can plausibly hold something a normal desktop can't without wiring together enough consumer GPUs to look like a server rack. "Plausibly hold" is doing work in that sentence, because it means quantized down from FP16 to something like Q4, four bits a parameter instead of sixteen. A lossy compression pass, so the model fits on a computer you can buy at a mall. Nobody phrases the post that way. It's always "I'm running it locally," never "I'm running a blurrier copy of it locally, on the one consumer machine where the memory arithmetic barely closes."
+This is why the craze is specifically Mac Minis and Mac Studios and not gaming PCs: Apple's unified memory means the CPU and the GPU draw from the same memory pool, so a maxed-out Studio can plausibly hold something a normal desktop can't without wiring together enough consumer GPUs to look like a server rack. "Plausibly hold" is doing work in that sentence, because it means quantized down from FP16 to something like Q4, four bits a parameter instead of sixteen. A lossy compression pass, so the model fits on a computer you can buy at a mall. Nobody phrases the post that way. It's always "I'm running it locally," never "I'm running a blurrier copy of it locally, on the one consumer machine where the memory arithmetic barely closes."
 
 That's the small model.
 
-Nobody says how big Claude Fable 5 is. Nor how big GPT 5.6-Sol is. What everyone says, in unison, is that they're *smarter*. Smarter than Claude Opus or Gemini, smarter than last quarter, smarter in a way you can feel. However, we do know everything about their open-weight counterparts. Kimi K3 is 2.8 *trillion* parameters. Same math: 5.6TB of numbers, plus context, so six or seven terabytes of RAM to run a chat window.
+Nobody says how big Claude Fable is. Nor how big GPT Astra is. What everyone says, in unison, is that they're *smarter*. Smarter than Claude Opus or Gemini, smarter than last quarter, smarter in a way you can feel. However, we do know everything about their open-weight counterparts. Kimi K3 is 2.8 *trillion* parameters. Same math: 5.6TB of numbers, plus context, so six or seven terabytes of RAM to run a chat window.
 
 You're not even running a *program*. There's no `if` in there. It's a giant grid of weights that turns "the text so far" into "probably this next piece of text." That's the entire mechanism. Every model since GPT-2 is the same trick, a Markov chain on *steroids*: given the last N things, guess the next thing, repeat until it emits a stop token.
 
@@ -44,7 +44,7 @@ Backpropagation is the search. Calculus is how the search knows which way is dow
 
 And then, to make it *useful*, you *supply-chain* it, one escalation at a time:
 
-1. Crawl the public web. [All of it.](https://commoncrawl.org/get-started). Be sure to grab previous snapshots too, because the internet is a moving target and you want to know what it looked like before it was edited. You want the deleted posts, the retracted papers, the forum threads that got nuked. You want the stuff that was there and isn't anymore, because that's part of the story too.
+1. Crawl the public web. [All of it.](https://commoncrawl.org/get-started) Be sure to grab previous snapshots too, because the internet is a moving target and you want to know what it looked like before it was edited. You want the deleted posts, the retracted papers, the forum threads that got nuked. You want the stuff that was there and isn't anymore, because that's part of the story too.
 
 2. The public web is not enough. Crawl [all torrentable e-books and PDFs](https://copyrightalliance.org/wp-content/uploads/2025/06/Bartz-v.-Anthropic-Order.pdf). Pass [the entirety of YouTube through a speech-to-text model](https://www.nytimes.com/2024/04/06/technology/tech-giants-harvest-data-artificial-intelligence.html). It's still not enough. [Buy books in bulk, scan them, and OCR all the characters.](https://www.copyright.gov/fair-use/summaries/Bartz-v-Anthropic-PBC-787-F-Supp-3d-1007-ND-Cal-2025.pdf) Be sure to burn the leftover paper as fuel for your generators to help with the power bill a bit.
 
@@ -74,7 +74,7 @@ Here's the thing, though: 7zip is lossless. The folder comes back exactly as it 
 
 An LLM is the JPEG kind.
 
-The public internet is well into the petabytes; a single Common Crawl snapshot alone runs around 100TB compressed, and the archive is years of those. The curated slice they actually train on is tens of terabytes of text. The model that comes out the other side is a handful of terabytes, and it can hand you back a plausible version of nearly any page that went in.
+The public internet is well into the petabytes; a single Common Crawl snapshot alone runs around 100TB compressed, and the archive is years of those. The curated slice they actually train on is dozens to hundreds of terabytes of text. The model that comes out the other side is a handful of terabytes, and it can hand you back a plausible version of nearly any page that went in.
 
 Reader, that is not a compressed image. That is a *thumbnail*.
 
