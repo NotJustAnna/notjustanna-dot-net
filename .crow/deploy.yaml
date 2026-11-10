@@ -14,7 +14,7 @@ steps:
     image: woodpeckerci/plugin-s3
     settings:
       bucket: notjustanna.net
-      endpoint: http://garage.garage.svc.cluster.local:3900
+      endpoint: https://garage.notjustanna.net
       region: garage
       path_style: true
       source: dist/**/*
