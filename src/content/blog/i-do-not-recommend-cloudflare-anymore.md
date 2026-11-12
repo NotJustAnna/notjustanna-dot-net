@@ -4,6 +4,7 @@ description: 'My website had an intermittent ten-second stall that hit every dev
 pubDate: 'May 26 2026'
 category: tech
 heroImage: '../../assets/blog/lava-lamp.jpg'
+heroCrop: center-left
 ---
 
 In 2025, multiple recruiters told me my portfolio wasn't loading.

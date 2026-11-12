@@ -5,6 +5,7 @@ pubDate: 'May 28 2026'
 highlight: true
 category: dev
 heroImage: '../../assets/blog/mysql.jpg'
+heroCrop: left
 ---
 
 SQL was designed in 1973. It is younger than C by two years and older than C++ by six. It shares conceptual DNA with COBOL and Pascal.

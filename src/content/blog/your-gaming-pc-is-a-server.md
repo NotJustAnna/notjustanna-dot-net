@@ -4,6 +4,7 @@ description: 'The machine under your desk out-specs the VM you''re paying for. I
 pubDate: 'Aug 10 2026'
 category: tech
 heroImage: '../../assets/blog/gaming-pc.jpg'
+heroCrop: center-right
 ---
 Right now my desktop is turning an anime episode into something my TV is willing to decode. It's also running the game I'm actually looking at, on the monitor I'm actually looking at. The fans have not moved. The frame counter has not moved either.
 

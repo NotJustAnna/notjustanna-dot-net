@@ -14,6 +14,8 @@ const posts = defineCollection({
 			pubDate: z.coerce.date(),
 			updatedDate: z.coerce.date().optional(),
 			heroImage: z.optional(image()),
+			// Horizontal anchor when the hero is cropped to a square in post lists.
+			heroCrop: z.enum(['left', 'center-left', 'center', 'center-right', 'right']).default('center'),
 			category: z.enum(['dev', 'tech', 'ramblings']).optional(),
 			archived: z.boolean().default(false),
 			highlight: z.boolean().default(false),

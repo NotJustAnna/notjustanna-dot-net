@@ -12,9 +12,19 @@ type Post = {
     description?: string | null;
     category?: 'dev' | 'tech' | 'ramblings';
     heroImage?: ImageMetadata;
+    heroCrop?: 'left' | 'center-left' | 'center' | 'center-right' | 'right';
     highlight?: boolean;
   };
 };
+
+/** Static class names so Tailwind picks them up. */
+const CROP_CLASS = {
+  center: 'object-center',
+  left: 'object-left',
+  'center-left': 'object-[25%_50%]',
+  'center-right': 'object-[75%_50%]',
+  right: 'object-right',
+} as const;
 
 export function PostList({
   posts,
@@ -43,7 +53,7 @@ export function PostList({
                     height={420}
                     src={post.data.heroImage.src}
                     alt=""
-                    className="w-full h-full object-cover"
+                    className={`w-full h-full object-cover ${CROP_CLASS[post.data.heroCrop ?? 'center']}`}
                   />
                 </div>
               )}

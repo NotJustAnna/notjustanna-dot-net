@@ -4,6 +4,7 @@ description: "I replaced my containerized single-node K3s with Podman playing Ku
 pubDate: 'Nov 10 2026'
 category: dev
 heroImage: '../../assets/blog/pods.jpg'
+heroCrop: center-left
 ---
 
 > This is the end of the road that started with ["Containers, The Wrong Way, For Always-Free Fun and Profit"](https://notjustanna.net/post/containers-the-wrong-way-for-always-free-fun-and-profit/). And also technically a follow-up to ["Container Images Are Operating Systems"](https://notjustanna.net/post/container-images-are-operating-systems/).

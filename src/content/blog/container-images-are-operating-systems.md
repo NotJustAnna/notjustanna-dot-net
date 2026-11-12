@@ -5,6 +5,7 @@ pubDate: 'Aug 14 2026'
 category: dev
 highlight: true
 heroImage: '../../assets/blog/container-images-are-operating-systems.jpg'
+heroCrop: left
 ---
 
 > This is, loosely, a do-over of ["Containers, The Wrong Way, For Always-Free Fun and Profit"](https://notjustanna.net/post/containers-the-wrong-way-for-always-free-fun-and-profit/) and its [lessons-learnt sequel](https://notjustanna.net/post/containers-the-wrong-way-lessons-learnt/). Those posts showed you the thing. This one tells you why the thing was never wrong.
