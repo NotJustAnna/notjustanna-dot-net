@@ -1,0 +1,13 @@
+.git
+.github
+.crow
+.astro
+.vscode
+.env
+.env.*
+node_modules
+**/node_modules
+dist
+_old
+old
+*.md
