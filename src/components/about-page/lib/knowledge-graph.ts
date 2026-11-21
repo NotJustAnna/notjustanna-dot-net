@@ -270,6 +270,17 @@ const CONTEXT: [Knowledge, Note[]][] = [
   // Collaboration
   [collab.github, ["Planned to leave; GHCR kept me"]],
 
+  // Front-end
+  [fe.vite, ["The de facto standard for anything web today"]],
+  [fe.astro, ["For when the content is static and crawlability and SEO matter", "This site runs on it"]],
+  [fe.react, ["Favourite way to make things on the web interactive"]],
+  [fe.tailwind, ["Love it. Perfectly opinionated, to the point where a class like mx-6 is actually reasonable"]],
+  [fe.shadcn, ["The best way to make a quick-and-dirty site look great"]],
+
+  // Databases
+  [db.sqlite, ["The best database for anything local"]],
+  [db.postgres, ["The best database for anything distributed"]],
+
   // Embedded
   [emb.arduino, [{ text: "When timing matters; {} when computing does", see: [emb.rpi] }]],
   [emb.rpi, [{ text: "When computing matters; {} when timing does", see: [emb.arduino] }]],
