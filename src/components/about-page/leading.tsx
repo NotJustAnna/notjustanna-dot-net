@@ -1,19 +1,8 @@
 import {SocialLinks} from "@/components/social-links";
 
-const identity = [
-  { label: "she / her", className: "bg-leaf-crimson text-band-ink" },
-  { label: "transgender", className: "bg-leaf-orange text-leaf-ink" },
-  { label: "autistic", className: "bg-leaf-amber text-leaf-ink" },
-];
-
 export function Leading() {
   return <section className="flex flex-col gap-6 bg-card p-6 sm:p-10 max-[57.75rem]:-mx-4">
-    <ul className="flex flex-wrap gap-1.5 list-none p-0 m-0">
-      {identity.map(({ label, className }) => (
-        <li key={label} className={`px-2.5 py-1 text-sm font-semibold ${className}`}>{label}</li>
-      ))}
-    </ul>
-    <h1 className="font-extrabold tracking-[-0.035em] leading-[1.05] text-4xl sm:text-5xl md:text-6xl text-balance m-0">
+    <h1 className="font-extrabold tracking-[-0.03em] leading-[1.1] text-3xl sm:text-4xl md:text-[2.75rem] text-balance m-0">
       I build the thing your developers needed yesterday.
     </h1>
     <div className="space-y-4 text-lg leading-relaxed max-w-2xl">

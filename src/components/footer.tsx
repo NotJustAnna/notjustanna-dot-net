@@ -1,4 +1,5 @@
 import { SocialLinks } from "@/components/social-links";
+import { IdentityBadges } from "@/components/identity-badges";
 
 export function Footer({ flush = false }: { flush?: boolean }) {
   return (
@@ -9,6 +10,7 @@ export function Footer({ flush = false }: { flush?: boolean }) {
           <p className="text-band-ink/75 text-lg m-0">
             Usually <span className="text-leaf-amber font-semibold">@notjustanna</span> on the internet.
           </p>
+          <IdentityBadges className="mt-3" />
         </div>
         <div className="grid grid-cols-4 gap-1.5 md:w-[26rem]">
           <SocialLinks variant="tile" />

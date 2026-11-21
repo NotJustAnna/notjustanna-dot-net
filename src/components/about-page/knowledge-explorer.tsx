@@ -48,8 +48,16 @@ function NamedButton({ node, onPick }: { node: Node; onPick: (n: Node) => void }
   );
 }
 
+const hiddenCategories = categories.filter((c) => !c.inSummary);
+
+/** "AWS, Collaboration, Databases and Embedded" */
+const listNames = (names: string[]) =>
+  names.length < 2 ? names.join("") : `${names.slice(0, -1).join(", ")} and ${names[names.length - 1]}`;
+
 function Summary({ onPick }: { onPick: (n: Node) => void }) {
   const [open, setOpen] = useState<Set<string>>(new Set());
+  const [allCategories, setAllCategories] = useState(false);
+  const rows = allCategories ? categories : categories.filter((c) => c.inSummary);
   const toggle = (id: string) =>
     setOpen((prev) => {
       const next = new Set(prev);
@@ -59,18 +67,18 @@ function Summary({ onPick }: { onPick: (n: Node) => void }) {
     });
 
   return (
+    <>
     <ul className="list-none p-0 m-0 divide-y divide-border">
-      {categories.map((category) => {
+      {rows.map((category) => {
         const expanded = open.has(category.id);
         const shown = expanded ? category.nodes : category.nodes.slice(0, category.featured);
         const rest = category.nodes.length - category.featured;
         return (
-          <li key={category.id} className="grid gap-x-6 gap-y-2 py-4 first:pt-0 last:pb-0 sm:grid-cols-[13rem_1fr]">
+          <li key={category.id} className="grid gap-x-6 gap-y-2 py-4 first:pt-0 last:pb-0 sm:grid-cols-[9rem_1fr]">
             <div>
               <div className="font-bold">
                 {category.label} <span className="font-normal text-foreground/75 tabular-nums">{category.nodes.length}</span>
               </div>
-              {category.description && <p className="text-sm text-foreground/75 m-0 mt-0.5">{category.description}</p>}
             </div>
             <div className="flex flex-wrap gap-1.5 items-start content-start">
               {shown.map((node) => (
@@ -91,6 +99,17 @@ function Summary({ onPick }: { onPick: (n: Node) => void }) {
         );
       })}
     </ul>
+    {hiddenCategories.length > 0 && (
+      <button
+        type="button"
+        onClick={() => setAllCategories((v) => !v)}
+        aria-expanded={allCategories}
+        className="press cursor-pointer mt-4 w-full min-h-10 px-3 py-2 text-left bg-background hover:bg-foreground hover:text-background transition-colors text-sm font-semibold"
+      >
+        {allCategories ? "Fewer categories" : `Also: ${listNames(hiddenCategories.map((c) => c.label))}`}
+      </button>
+    )}
+    </>
   );
 }
 
@@ -169,7 +188,7 @@ function Focus({ node, onPick }: { node: Node; onPick: (n: Node) => void }) {
       ) : (
         <div className="space-y-3">
           {groups.map(({ category, nodes: partners }) => (
-            <div key={category.id} className="grid gap-x-6 gap-y-1.5 sm:grid-cols-[13rem_1fr]">
+            <div key={category.id} className="grid gap-x-6 gap-y-1.5 sm:grid-cols-[9rem_1fr]">
               <span className="text-sm font-bold sm:pt-2">{category.label}</span>
               <div className="flex flex-wrap gap-1.5">
                 {partners.map((partner) => (

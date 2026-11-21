@@ -10,20 +10,25 @@ import { K, knowledgebase, type Knowledge } from "./knowledge";
 
 export type CategoryId = keyof typeof knowledgebase;
 
-type CategoryMeta = { id: CategoryId; label: string; description?: string };
+type CategoryMeta = {
+  id: CategoryId;
+  label: string;
+  /** Shown in the summary by default; the rest sit behind a "show more" button. */
+  inSummary?: boolean;
+};
 
 /** Display order and copy for the summary rows. */
 const CATEGORY_META: CategoryMeta[] = [
-  { id: "backend", label: "Back-end" },
-  { id: "frontend", label: "Front-end" },
-  { id: "languages", label: "Languages" },
+  { id: "backend", label: "Back-end", inSummary: true },
+  { id: "frontend", label: "Front-end", inSummary: true },
+  { id: "languages", label: "Languages", inSummary: true },
   { id: "development", label: "Dev tools" },
-  { id: "ai", label: "AI tools", description: "Used daily, as a scaffolder and a very fast reader." },
-  { id: "deployment", label: "Deployment" },
-  { id: "aws", label: "AWS", description: "Years of it on cloud-first projects." },
-  { id: "collaboration", label: "Collaboration", description: "Every team picks a different stack. I have worked in all of these." },
-  { id: "databases", label: "Databases", description: "From local to global, be it SQL or Not." },
-  { id: "embedded", label: "Embedded", description: "Fewer abstractions, more consequences." },
+  { id: "ai", label: "AI tools", inSummary: true },
+  { id: "deployment", label: "Deployment", inSummary: true },
+  { id: "aws", label: "AWS" },
+  { id: "collaboration", label: "Collaboration" },
+  { id: "databases", label: "Databases" },
+  { id: "embedded", label: "Embedded" },
 ];
 
 export type Node = Knowledge & {
@@ -118,7 +123,6 @@ const PAIRS: [Knowledge, Knowledge][] = [
   [aws.codebuild, aws.codepipeline], [aws.codebuild, aws.ecr],
   [aws.ses, aws.sns], [aws.sqs, aws.sns], [aws.ssm, aws.iam],
   [aws.bedrock, ai.claudeCode], [aws.polly, ai.whisper],
-  [deploy.aws, aws.lambda], [deploy.aws, aws.s3], [deploy.aws, aws.ec2],
 
   // Deployment
   [deploy.terraform, deploy.aws], [deploy.terraform, deploy.cloudflare], [deploy.terraform, deploy.oracle],
@@ -366,15 +370,18 @@ const CONTEXT: [Knowledge, Note[]][] = [
 /* ------------------------------------------------------------------------ */
 
 const neighbourIds = new Map<string, Set<string>>();
-for (const [a, b] of PAIRS) {
-  const x = nodeFor(a).id;
-  const y = nodeFor(b).id;
-  if (x === y) continue;
+const link = (x: string, y: string) => {
+  if (x === y) return;
   if (!neighbourIds.has(x)) neighbourIds.set(x, new Set());
   if (!neighbourIds.has(y)) neighbourIds.set(y, new Set());
   neighbourIds.get(x)!.add(y);
   neighbourIds.get(y)!.add(x);
-}
+};
+for (const [a, b] of PAIRS) link(nodeFor(a).id, nodeFor(b).id);
+
+// The AWS umbrella pairs with every AWS service, so new services connect without a hand-written pair.
+const awsId = nodeFor(deploy.aws).id;
+for (const service of categoryById.get("aws")!.nodes) link(awsId, service.id);
 
 /** A node's pairs, grouped under each partner's first category, in display order. */
 export function neighboursOf(id: string): { category: Category; nodes: Node[] }[] {
