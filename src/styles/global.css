@@ -2,6 +2,7 @@
 @import "tw-animate-css";
 @import "@fontsource-variable/open-sans/wght.css";
 @import "@fontsource-variable/open-sans/wght-italic.css";
+@import "@fontsource-variable/cascadia-code/wght.css";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -13,6 +14,7 @@
 
 @theme inline {
   --font-sans: "Open Sans Variable", "Segoe UI", system-ui, sans-serif;
+  --font-mono: "Cascadia Code Variable", "Cascadia Code", ui-monospace, monospace;
   --radius-sm: 0px;
   --radius-md: 0px;
   --radius-lg: 0px;
@@ -35,9 +37,15 @@
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
-  --color-cat-dev: var(--cat-dev);
-  --color-cat-tech: var(--cat-tech);
-  --color-cat-ramblings: var(--cat-ramblings);
+  --color-link: var(--link);
+  /* Fixed across themes: band ink and tile colours. */
+  --color-band: var(--band);
+  --color-band-ink: #fbf1e3;
+  --color-leaf-amber: #e8a020;
+  --color-leaf-orange: #d4601a;
+  --color-leaf-vermilion: #b5361a;
+  --color-leaf-crimson: #9b1b1b;
+  --color-leaf-ink: #1d1410;
 }
 
 :root {
@@ -45,7 +53,7 @@
   --radius: 0px;
   --background: #f2e6d3;
   --foreground: #2b1a10;
-  --card: #e9d9c0;
+  --card: #e7d5b8; /* painted cards: a step darker than the page */
   --card-foreground: #2b1a10;
   --popover: #f2e6d3;
   --popover-foreground: #2b1a10;
@@ -61,34 +69,32 @@
   --border: #d6c09f;
   --input: #ccb38f;
   --ring: #b5361a;
-  --cat-dev: #9b1b1b;
-  --cat-tech: #d4601a;
-  --cat-ramblings: #e8a020;
+  --link: #9b1b1b;
+  --band: #7c1813; /* header & footer */
 }
 
 .dark {
-  /* Dark: espresso and bark, parchment ink. */
-  --background: #1d1410;
+  /* Dark: near-black espresso page, espresso cards, parchment ink. */
+  --background: #090605;
   --foreground: #f2e5d2;
-  --card: #2b1e17;
+  --card: #1e1613; /* painted cards: a step lighter than the page */
   --card-foreground: #f2e5d2;
-  --popover: #2b1e17;
+  --popover: #090605;
   --popover-foreground: #f2e5d2;
   --primary: #e8a020;
-  --primary-foreground: #1d1410;
-  --secondary: #35261d;
+  --primary-foreground: #090605;
+  --secondary: #2d231f;
   --secondary-foreground: #f2e5d2;
-  --muted: #33241b;
+  --muted: #29201c;
   --muted-foreground: #b8a089;
-  --accent: #35261d;
+  --accent: #2d231f;
   --accent-foreground: #f2e5d2;
   --destructive: #d4601a;
-  --border: #453226;
-  --input: #4d3829;
+  --border: #3d302a;
+  --input: #483932;
   --ring: #e8a020;
-  --cat-dev: #c0391a;
-  --cat-tech: #d4601a;
-  --cat-ramblings: #e8a020;
+  --link: #e8a020;
+  --band: #2b1b14; /* header & footer */
 }
 
 @layer base {

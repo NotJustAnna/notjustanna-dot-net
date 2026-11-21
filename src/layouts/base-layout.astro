@@ -12,9 +12,11 @@ interface Props {
   image?: ImageMetadata;
   /** Path of the pivot to highlight when the URL alone doesn't say (e.g. a post's category). */
   section?: string;
+  /** Drop the gaps above and below the content where it runs edge to edge (posts on mobile). */
+  flush?: boolean;
 }
 
-const { title, description, image, section } = Astro.props;
+const { title, description, image, section, flush = false } = Astro.props;
 const socialImage = image ?? FallbackImage;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 ---
@@ -72,10 +74,24 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <script defer src="https://umami.notjustanna.net/script.js" data-website-id="47e613ef-8ceb-404e-82b2-ccadf2561057"></script>
   </head>
   <body>
-    <div class="grow w-full max-[57.75rem]:px-4 max-w-4xl min-[57.75rem]:mx-auto">
-      <slot name="header"><BlogHeader client:load pathname={Astro.url.pathname} section={section} /></slot>
-      <main><slot /></main>
-    </div>
-    <Footer />
+    <slot name="header"><BlogHeader client:load pathname={Astro.url.pathname} section={section} /></slot>
+    <main class:list={["grow w-full max-[57.75rem]:px-4 max-w-4xl min-[57.75rem]:mx-auto pt-10 md:pt-14", flush && "max-[57.75rem]:pt-0"]}>
+      <slot />
+    </main>
+    <Footer flush={flush} />
+    <script>
+      import { SITE_TITLE } from '../consts';
+
+      // See src/components/about-page/lib/decorator.tsx.
+      const site = SITE_TITLE.toLowerCase();
+      const address = `${site.split('.')[0]}@${site}`;
+      const decorate = (event: Event) => {
+        const link = (event.target as Element | null)?.closest?.('a[data-decorate-mail]');
+        if (link instanceof HTMLAnchorElement) link.href = `mailto:${address}`;
+      };
+      for (const type of ['mouseover', 'focusin', 'pointerdown', 'touchstart', 'click']) {
+        document.addEventListener(type, decorate, { capture: true, passive: true });
+      }
+    </script>
   </body>
 </html>

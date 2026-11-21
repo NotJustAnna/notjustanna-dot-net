@@ -1,13 +1,13 @@
 import {SocialLinks} from "@/components/social-links";
 
 const identity = [
-  { label: "she / her", className: "bg-cat-dev text-white" },
-  { label: "transgender", className: "bg-cat-tech text-black" },
-  { label: "autistic", className: "bg-cat-ramblings text-black" },
+  { label: "she / her", className: "bg-leaf-crimson text-band-ink" },
+  { label: "transgender", className: "bg-leaf-orange text-leaf-ink" },
+  { label: "autistic", className: "bg-leaf-amber text-leaf-ink" },
 ];
 
 export function Leading() {
-  return <section className="flex flex-col gap-6">
+  return <section className="flex flex-col gap-6 bg-card p-6 sm:p-10 max-[57.75rem]:-mx-4">
     <ul className="flex flex-wrap gap-1.5 list-none p-0 m-0">
       {identity.map(({ label, className }) => (
         <li key={label} className={`px-2.5 py-1 text-sm font-semibold ${className}`}>{label}</li>
@@ -30,7 +30,7 @@ export function Leading() {
       <p>
         Five years of it, across consulting, product teams, and my own freelance clients.
       </p>
-      <p className="font-semibold text-primary">
+      <p className="font-semibold text-link">
         If that sounds like someone you&apos;d want on your team — good. That was the idea.
       </p>
     </div>

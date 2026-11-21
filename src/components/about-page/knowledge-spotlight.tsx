@@ -19,7 +19,7 @@ function KnowledgeItem({ value }: { value: Knowledge }) {
     <div className="size-12 bg-white flex items-center">
       <img src={value.icon} alt={`${value.name} Icon`} className="p-2" />
     </div>
-    <div className="text-xs font-semibold text-muted-foreground text-center text-balance">{value.name}</div>
+    <div className="text-xs font-semibold text-foreground/75 text-center text-balance">{value.name}</div>
   </a>;
 }
 
@@ -29,7 +29,7 @@ function MinorKnowledge({ value }: { value: Knowledge }) {
       <div className="size-6 min-[360px]:size-8 bg-white flex items-center">
         <img src={value.icon} alt={`${value.name} Icon`} className={enhanceClasses[value.custom || ""] || "p-1"} />
       </div>}
-    <div className="text-xs font-semibold text-muted-foreground min-sm:w-16 text-balance flex-1 ">{value.name}</div>
+    <div className="text-xs font-semibold text-foreground/75 min-sm:w-16 text-balance flex-1 ">{value.name}</div>
   </a>;
 }
 
@@ -131,7 +131,7 @@ export function KnowledgeSpotlight() {
           <KnowledgeCategoryCard
             title="Amazon Web Services"
             description="Years of it on cloud-first projects."
-            headerIcon={<img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" alt="AWS Icon" className="max-sm:hidden size-12 bg-white p-1.5" />}
+            headerIcon={<img src="https://cdn.jsdelivr.net/npm/devicon@2.16.0/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" alt="AWS Icon" className="max-sm:hidden size-12 bg-white p-1.5" />}
             items={knowledgebase.aws.spotlight}
             moreItems={knowledgebase.aws.others}
             moreLabelWide="More services deployed:"

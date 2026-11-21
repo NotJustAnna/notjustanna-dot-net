@@ -39,16 +39,15 @@ function TabsList({
   className,
   ...props
 }: React.ComponentProps<typeof TabsPrimitive.List>) {
-  // Metro pivot: no box, just words. Scrolls sideways when they don't fit.
+  // Square buttons in a row (scrolls sideways when tight) or a column beside the panel.
   const inlineClasses = `
   flex
-  gap-x-5
+  gap-1.5
   data-[orientation=horizontal]:overflow-x-auto
   data-[orientation=horizontal]:scrollbar-none
   data-[orientation=vertical]:flex-col
-  data-[orientation=vertical]:gap-y-1
   data-[orientation=vertical]:shrink-0
-  data-[orientation=vertical]:pe-6
+  data-[orientation=vertical]:w-40
   `;
 
   return (
@@ -67,18 +66,20 @@ function TabsTrigger({
   className,
   ...props
 }: React.ComponentProps<typeof TabsPrimitive.Trigger>) {
+  // Same language as the carousel's < > buttons: card-coloured squares, solid when active.
   const inlineClasses = `
-  text-2xl
-  md:text-3xl
-  font-bold
-  tracking-[-0.025em]
-  leading-tight
+  press
+  h-10
+  px-4
+  text-base
+  font-semibold
   text-left
   whitespace-nowrap
-  lowercase
-  text-foreground/25
-  hover:text-foreground/60
-  data-[state=active]:text-foreground
+  bg-card
+  text-foreground
+  hover:bg-accent
+  data-[state=active]:bg-foreground
+  data-[state=active]:text-background
   transition-colors
   cursor-pointer
   disabled:pointer-events-none

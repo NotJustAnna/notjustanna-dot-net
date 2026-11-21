@@ -1,5 +1,5 @@
 import type { ImageMetadata } from 'astro';
-import { CATEGORY_BG, CategoryPill, FeaturedPill } from './category-pill';
+import { CategoryPill, FeaturedPill } from './category-pill';
 import { FormattedDate } from './formatted-date';
 
 type Post = {
@@ -27,7 +27,7 @@ const CROP_CLASS = {
 
 function PostMeta({ post }: { post: Post }) {
   return (
-    <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-sm text-muted-foreground">
+    <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-sm text-foreground/75">
       <span>
         {post.data.updatedDate ? (
           <>
@@ -51,21 +51,18 @@ function PostMeta({ post }: { post: Post }) {
   );
 }
 
-/** Square thumbnail; posts without a hero get a flat tile in their category colour. */
-function Thumb({ post }: { post: Post }) {
-  const fallback = post.data.category ? CATEGORY_BG[post.data.category] : 'bg-muted';
+/** Square thumbnail, flush to the card's edge. Only for posts that have a hero. */
+function Thumb({ image, crop }: { image: ImageMetadata; crop: keyof typeof CROP_CLASS }) {
   return (
-    <div className={`size-18 sm:size-28 shrink-0 ${post.data.heroImage ? 'bg-muted' : fallback}`}>
-      {post.data.heroImage && (
-        <img
-          width={224}
-          height={224}
-          src={post.data.heroImage.src}
-          alt=""
-          loading="lazy"
-          className={`size-full object-cover ${CROP_CLASS[post.data.heroCrop ?? 'center']}`}
-        />
-      )}
+    <div className="w-20 sm:w-32 self-stretch min-h-20 sm:min-h-32 shrink-0 bg-muted">
+      <img
+        width={256}
+        height={256}
+        src={image.src}
+        alt=""
+        loading="lazy"
+        className={`size-full object-cover ${CROP_CLASS[crop]}`}
+      />
     </div>
   );
 }
@@ -79,44 +76,48 @@ export function PostList({
   featureFirst?: boolean;
 }) {
   return (
-    <ul className="list-none p-0 m-0 space-y-8 sm:space-y-10">
+    <ul className="list-none p-0 m-0 space-y-2">
       {posts.map((post, i) => {
         const isLead = featureFirst && i === 0;
         return (
           <li key={post.id} className="group relative">
             {isLead ? (
-              <article className="press">
+              <article className="press bg-card">
                 {post.data.heroImage && (
                   <img
                     width={1000}
                     height={420}
                     src={post.data.heroImage.src}
                     alt=""
-                    className={`w-full aspect-[1000/420] object-cover mb-4 ${CROP_CLASS[post.data.heroCrop ?? 'center']}`}
+                    className={`w-full aspect-[1000/420] object-cover ${CROP_CLASS[post.data.heroCrop ?? 'center']}`}
                   />
                 )}
-                <h2 className="text-3xl sm:text-4xl font-extrabold tracking-[-0.025em] leading-[1.1] text-balance m-0 mb-2 group-hover:text-primary transition-colors">
-                  <a href={`/post/${post.id}/`} className="no-underline text-inherit after:absolute after:inset-0">
-                    {post.data.title}
-                  </a>
-                </h2>
-                <PostMeta post={post} />
-                {post.data.description && (
-                  <p className="text-lg text-muted-foreground mt-3 mb-0 max-w-2xl">{post.data.description}</p>
-                )}
-              </article>
-            ) : (
-              <article className="press flex gap-4 sm:gap-5 items-start">
-                <Thumb post={post} />
-                <div className="flex-1 min-w-0">
-                  <h2 className="text-lg sm:text-xl font-bold tracking-[-0.01em] leading-snug text-balance m-0 mb-1 group-hover:text-primary transition-colors">
+                <div className="p-5 sm:p-7">
+                  <h2 className="text-3xl sm:text-4xl font-extrabold tracking-[-0.025em] leading-[1.1] text-balance m-0 mb-2 group-hover:text-link transition-colors">
                     <a href={`/post/${post.id}/`} className="no-underline text-inherit after:absolute after:inset-0">
                       {post.data.title}
                     </a>
                   </h2>
                   <PostMeta post={post} />
                   {post.data.description && (
-                    <p className="text-[0.9375rem] text-muted-foreground mt-1.5 mb-0 line-clamp-2 max-sm:hidden">
+                    <p className="text-lg text-foreground/75 mt-3 mb-0 max-w-2xl">{post.data.description}</p>
+                  )}
+                </div>
+              </article>
+            ) : (
+              <article className="press flex items-start bg-card">
+                {post.data.heroImage && (
+                  <Thumb image={post.data.heroImage} crop={post.data.heroCrop ?? 'center'} />
+                )}
+                <div className="flex-1 min-w-0 p-3 sm:p-4 sm:px-5">
+                  <h2 className="text-lg sm:text-xl font-bold tracking-[-0.01em] leading-snug text-balance m-0 mb-1 group-hover:text-link transition-colors">
+                    <a href={`/post/${post.id}/`} className="no-underline text-inherit after:absolute after:inset-0">
+                      {post.data.title}
+                    </a>
+                  </h2>
+                  <PostMeta post={post} />
+                  {post.data.description && (
+                    <p className="text-[0.9375rem] text-foreground/75 mt-1.5 mb-0 line-clamp-2 max-sm:hidden">
                       {post.data.description}
                     </p>
                   )}

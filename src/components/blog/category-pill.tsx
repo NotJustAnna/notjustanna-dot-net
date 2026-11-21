@@ -6,22 +6,14 @@ const hrefs = {
   ramblings: '/ramblings',
 } as const;
 
-/** Static class names so Tailwind picks them up. */
-export const CATEGORY_BG = {
-  dev: 'bg-cat-dev',
-  tech: 'bg-cat-tech',
-  ramblings: 'bg-cat-ramblings',
-} as const;
-
-/** A small square of the category's colour, then its name. */
+/** The category as a path, `/dev/`, in monospace, linking to its page. */
 export function CategoryPill({ category }: { category: Category }) {
   return (
     <a
       href={hrefs[category]}
-      className="inline-flex items-center gap-1.5 no-underline text-muted-foreground hover:text-foreground transition-colors"
+      className="font-mono text-[0.9em] no-underline text-inherit hover:text-foreground transition-colors"
     >
-      <span aria-hidden="true" className={`size-2.5 ${CATEGORY_BG[category]}`} />
-      {category}
+      /{category}/
     </a>
   );
 }
@@ -30,10 +22,9 @@ export function FeaturedPill() {
   return (
     <a
       href="/featured"
-      className="inline-flex items-center gap-1.5 no-underline text-muted-foreground hover:text-foreground transition-colors"
+      className="font-mono text-[0.9em] no-underline text-inherit hover:text-foreground transition-colors"
     >
-      <span aria-hidden="true" className="size-2.5 bg-primary" />
-      featured
+      /featured/
     </a>
   );
 }

@@ -19,7 +19,7 @@ const sections = { dev: '/development', tech: '/tech', ramblings: '/ramblings' }
 const { title, description, pubDate, updatedDate, heroImage, category } = post.data;
 ---
 
-<BaseLayout title={title} description={description ?? ''} image={heroImage} section={category && sections[category]}>
+<BaseLayout title={title} description={description ?? ''} image={heroImage} section={category && sections[category]} flush>
 	<PostArticle title={title} pubDate={pubDate} updatedDate={updatedDate} category={category} heroImage={heroImage}>
 		<Content />
 	</PostArticle>

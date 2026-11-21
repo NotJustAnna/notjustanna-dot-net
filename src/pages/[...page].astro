@@ -21,14 +21,11 @@ const featured = page.currentPage === 1 ? await getFeaturedPosts() : [];
   <h1 class="sr-only">{page.currentPage === 1 ? 'Posts' : `Posts, page ${page.currentPage}`}</h1>
   {featured.length > 0 && (
     <section aria-labelledby="featured-heading" class="mb-12 md:mb-16">
-      <h2 id="featured-heading" class="text-2xl font-bold tracking-[-0.02em] mb-4">
-        <a href="/featured" class="no-underline hover:text-primary transition-colors">featured</a>
-      </h2>
-      <FeaturedPosts posts={featured} />
+      <FeaturedPosts posts={featured} client:load />
     </section>
   )}
   <section aria-labelledby="latest-heading">
-    <h2 id="latest-heading" class="text-2xl font-bold tracking-[-0.02em] mb-6">latest</h2>
+    <h2 id="latest-heading" class="font-mono text-xl font-bold mb-6">/latest/</h2>
     <PostList posts={page.data} featureFirst={false} />
     <Pagination
       currentPage={page.currentPage}

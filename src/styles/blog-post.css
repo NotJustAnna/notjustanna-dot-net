@@ -34,8 +34,13 @@
   margin-bottom: 1.25em;
 }
 
+/* The card's own padding is the bottom margin. */
+.prose > :last-child {
+  margin-bottom: 0;
+}
+
 .prose a {
-  color: var(--primary);
+  color: var(--link);
   text-decoration: underline;
   text-decoration-thickness: 1px;
   text-underline-offset: 0.15em;
@@ -50,18 +55,33 @@
 }
 
 .prose code {
-  background: var(--muted);
+  background: var(--background);
   color: var(--foreground);
   padding: 0.1em 0.35em;
   font-size: 0.875em;
 }
 
 .prose pre {
-  background: var(--card);
+  background: var(--background);
   padding: 0.9em 1.1em;
   overflow-x: auto;
   margin-bottom: 1.25em;
   line-height: 1.4;
+}
+
+/* Shiki emits both autumn themes as variables (see src/lib/shiki-autumn.mjs); pick by theme. */
+.prose .astro-code,
+.prose .astro-code span {
+  color: var(--shiki-light);
+  font-style: var(--shiki-light-font-style);
+  font-weight: var(--shiki-light-font-weight);
+}
+
+.dark .prose .astro-code,
+.dark .prose .astro-code span {
+  color: var(--shiki-dark);
+  font-style: var(--shiki-dark-font-style);
+  font-weight: var(--shiki-dark-font-weight);
 }
 
 .prose pre > code {
