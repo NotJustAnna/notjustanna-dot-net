@@ -1,5 +1,7 @@
-// The card, as HTML. Colours are lifted from src/styles/global.css `:root` — the blue light
-// theme, because it's the one that reads as *this site* in a timeline.
+// The card, as HTML. It's the site in miniature: the crimson header band, the wheat page with a
+// mono path label and an extrabold headline, and the footer band with the four leaf tiles.
+// Colours are lifted from src/styles/global.css (the light theme, which reads best in a timeline).
+// Fonts are the site's own, passed in as data URLs by render.mjs.
 
 const escape = (s) =>
   String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
@@ -7,88 +9,74 @@ const escape = (s) =>
 export const WIDTH = 1200;
 export const HEIGHT = 630;
 
-export function template({ eyebrow, title, body, avatar }) {
+const c = {
+  page: '#f2e6d3',
+  ink: '#2b1a10',
+  muted: '#6b5340',
+  band: '#7c1813',
+  bandInk: '#fbf1e3',
+  amber: '#e8a020',
+  orange: '#d4601a',
+  vermilion: '#b5361a',
+  crimson: '#9b1b1b',
+};
+
+export function template({ path, title, body, avatar, sans, mono }) {
   return `<!doctype html>
 <html>
 <head>
 <meta charset="utf-8">
 <style>
+  @font-face { font-family: "Open Sans Variable"; font-weight: 300 800; src: url(${sans}) format("woff2"); }
+  @font-face { font-family: "Cascadia Code Variable"; font-weight: 200 700; src: url(${mono}) format("woff2"); }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html, body {
-    width: ${WIDTH}px; height: ${HEIGHT}px;
-    background: oklch(0.44 0.115 255);
-    color: oklch(0.985 0.005 240);
-    font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    width: ${WIDTH}px; height: ${HEIGHT}px; overflow: hidden;
+    background: ${c.page}; color: ${c.ink};
+    font-family: "Open Sans Variable", sans-serif;
     -webkit-font-smoothing: antialiased;
-    overflow: hidden;
   }
-  .bg { position: absolute; inset: 0; }
-  /* the ambient-background component, flattened */
-  .glow {
-    background: radial-gradient(ellipse 80% 80% at 50% -20%, rgba(255,255,255,0.18), rgba(255,255,255,0));
-  }
-  .grid-fine {
-    background-image:
-      linear-gradient(to right, rgba(255,255,255,0.14) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(255,255,255,0.14) 1px, transparent 1px);
-    background-size: 32px 32px;
-  }
-  .grid-coarse {
-    background-image:
-      linear-gradient(to right, rgba(255,255,255,0.10) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(255,255,255,0.10) 1px, transparent 1px);
-    background-size: 160px 160px;
-  }
-  .card {
-    position: relative; height: 100%;
-    display: flex; flex-direction: column; justify-content: space-between;
-    padding: 64px 72px;
-  }
-  .who { display: flex; align-items: center; gap: 20px; }
-  .who img { width: 88px; height: 88px; border-radius: 999px; border: 2px solid rgba(255,255,255,0.4); }
-  .who .name { font-size: 34px; font-weight: 700; letter-spacing: -0.01em; line-height: 1.15; }
-  .who .handle { font-size: 22px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; opacity: 0.75; }
-  .eyebrow {
-    font-size: 20px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
-    opacity: 0.7; margin-bottom: 14px;
-  }
+  body { display: flex; flex-direction: column; }
+  .mono { font-family: "Cascadia Code Variable", monospace; }
+  .band { background: ${c.band}; color: ${c.bandInk}; display: flex; align-items: center; padding: 0 72px; }
+  header.band { height: 120px; gap: 22px; }
+  header img { width: 64px; height: 64px; object-fit: cover; }
+  header .name { font-size: 34px; font-weight: 700; letter-spacing: -0.01em; }
+  header .handle { margin-left: auto; font-size: 26px; font-weight: 700; color: ${c.amber}; }
+  main { flex: 1; display: flex; flex-direction: column; justify-content: center; padding: 0 72px; }
+  .path { font-size: 30px; font-weight: 700; color: ${c.vermilion}; margin-bottom: 18px; }
   h1 {
-    font-size: ${title.length > 46 ? 62 : 74}px;
-    font-weight: 800; letter-spacing: -0.025em; line-height: 1.06;
-    background: linear-gradient(to right, #dbeafe, #e9d5ff);
-    -webkit-background-clip: text; background-clip: text; color: transparent;
-    text-wrap: balance;
+    font-size: ${title.length > 46 ? 64 : 76}px;
+    font-weight: 800; letter-spacing: -0.03em; line-height: 1.08;
+    text-wrap: balance; max-width: 1020px;
   }
-  .body { margin-top: 22px; font-size: 27px; line-height: 1.4; opacity: 0.9; max-width: 940px; }
-  .foot {
-    display: flex; align-items: center; gap: 14px;
-    font-size: 23px; font-weight: 600; opacity: 0.85;
-  }
-  .rule { flex: 1; height: 1px; background: rgba(255,255,255,0.35); }
+  .body { margin-top: 24px; font-size: 28px; line-height: 1.4; color: ${c.muted}; max-width: 960px; text-wrap: pretty; }
+  footer.band { height: 88px; justify-content: space-between; padding-right: 0; }
+  footer .site { font-size: 26px; font-weight: 700; }
+  .tiles { display: flex; }
+  .tiles span { width: 88px; height: 88px; }
 </style>
 </head>
 <body>
-  <div class="bg glow"></div>
-  <div class="bg grid-fine"></div>
-  <div class="bg grid-coarse"></div>
-  <div class="card">
-    <div class="who">
-      <img src="${avatar}" alt="">
-      <div>
-        <div class="name">Anna Silva</div>
-        <div class="handle">@notjustanna</div>
-      </div>
+  <header class="band">
+    <img src="${avatar}" alt="">
+    <span class="name">Anna Silva</span>
+    <span class="handle mono">@notjustanna</span>
+  </header>
+  <main>
+    ${path ? `<div class="path mono">/${escape(path)}/</div>` : ''}
+    <h1>${escape(title)}</h1>
+    ${body ? `<div class="body">${escape(body)}</div>` : ''}
+  </main>
+  <footer class="band">
+    <span class="site mono">notjustanna.net</span>
+    <div class="tiles">
+      <span style="background:${c.amber}"></span>
+      <span style="background:${c.orange}"></span>
+      <span style="background:${c.vermilion}"></span>
+      <span style="background:${c.crimson}"></span>
     </div>
-    <div>
-      ${eyebrow ? `<div class="eyebrow">${escape(eyebrow)}</div>` : ''}
-      <h1>${escape(title)}</h1>
-      ${body ? `<div class="body">${escape(body)}</div>` : ''}
-    </div>
-    <div class="foot">
-      <span>notjustanna.net</span>
-      <span class="rule"></span>
-    </div>
-  </div>
+  </footer>
 </body>
 </html>`;
 }

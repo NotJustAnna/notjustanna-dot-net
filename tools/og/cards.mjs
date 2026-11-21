@@ -1,9 +1,9 @@
 // The manifest. One entry per social card. Add a card here, run `pnpm og`, commit the PNG.
 //
 // `out`      — filename written into src/assets/og/
-// `title`    — the big gradient line. Keep it a claim, not a topic.
+// `title`    — the big headline. Keep it a claim, not a topic.
 // `body`     — the supporting line. Optional.
-// `eyebrow`  — small label above the title. Optional.
+// `path`     — the section, drawn as a mono /path/ above the title like on the site. Optional.
 
 export const cards = [
   {
@@ -13,7 +13,7 @@ export const cards = [
   },
   {
     out: 'about.png',
-    eyebrow: 'About',
+    path: 'about',
     title: "Where I've worked, and what I've shipped.",
     body: 'Five years of full-stack — backend, frontend, and the CI/CD and cloud architecture underneath.',
   },

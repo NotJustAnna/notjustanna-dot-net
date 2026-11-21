@@ -18,7 +18,11 @@ const repo = join(here, '..', '..');
 const outDir = join(repo, 'src', 'assets', 'og');
 const avatarPath = join(repo, 'src', 'assets', 'profile', 'personal', 'avatar-mini.jpg');
 
-const avatar = `data:image/jpeg;base64,${(await readFile(avatarPath)).toString('base64')}`;
+const dataUrl = async (file, type) => `data:${type};base64,${(await readFile(file)).toString('base64')}`;
+const fonts = join(repo, 'node_modules', '@fontsource-variable');
+const avatar = await dataUrl(avatarPath, 'image/jpeg');
+const sans = await dataUrl(join(fonts, 'open-sans', 'files', 'open-sans-latin-wght-normal.woff2'), 'font/woff2');
+const mono = await dataUrl(join(fonts, 'cascadia-code', 'files', 'cascadia-code-latin-wght-normal.woff2'), 'font/woff2');
 
 await mkdir(outDir, { recursive: true });
 
@@ -26,7 +30,7 @@ const browser = await chromium.launch({ channel: 'chrome' });
 const page = await browser.newPage({ viewport: { width: WIDTH, height: HEIGHT }, deviceScaleFactor: 1 });
 
 for (const card of cards) {
-  await page.setContent(template({ ...card, avatar }), { waitUntil: 'load' });
+  await page.setContent(template({ ...card, avatar, sans, mono }), { waitUntil: 'load' });
   await page.evaluate(() => document.fonts.ready);
   const png = await page.screenshot({ type: 'png' });
   await writeFile(join(outDir, card.out), png);
