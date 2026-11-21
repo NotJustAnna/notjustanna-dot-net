@@ -1,7 +1,6 @@
 ---
 import aboutCard from '../assets/og/about.png';
 import BaseLayout from '../layouts/base-layout.astro';
-import { AboutHeader } from '../components/about-page/about-header';
 import { MainPage } from '../components/about-page/index';
 ---
 
@@ -10,6 +9,5 @@ import { MainPage } from '../components/about-page/index';
   description="Five years of full-stack: where I've worked, what I've shipped, and the technologies I've accumulated along the way."
   image={aboutCard}
 >
-  <AboutHeader slot="header" client:load />
   <MainPage client:load />
 </BaseLayout>

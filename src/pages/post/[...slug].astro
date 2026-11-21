@@ -15,11 +15,12 @@ type Props = CollectionEntry<'posts'>;
 
 const post = Astro.props;
 const { Content } = await render(post);
-const { title, description, pubDate, updatedDate, heroImage } = post.data;
+const sections = { dev: '/development', tech: '/tech', ramblings: '/ramblings' } as const;
+const { title, description, pubDate, updatedDate, heroImage, category } = post.data;
 ---
 
-<BaseLayout title={title} description={description ?? ''} compact image={heroImage}>
-	<PostArticle title={title} pubDate={pubDate} updatedDate={updatedDate} heroImage={heroImage}>
+<BaseLayout title={title} description={description ?? ''} image={heroImage} section={category && sections[category]}>
+	<PostArticle title={title} pubDate={pubDate} updatedDate={updatedDate} category={category} heroImage={heroImage}>
 		<Content />
 	</PostArticle>
 </BaseLayout>

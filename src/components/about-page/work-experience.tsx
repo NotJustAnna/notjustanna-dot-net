@@ -4,7 +4,6 @@ import avanadeIcon from "@/assets/brands/avanade.png?url";
 import tokenlabIcon from "@/assets/brands/tokenlab.png?url";
 import kaffaIcon from "@/assets/brands/kaffa.png?url";
 import { useMediaQuery } from "usehooks-ts";
-import { Badge } from "@/components/ui/badge.tsx";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs.tsx";
 import type { ReactNode } from "react";
 
@@ -107,7 +106,7 @@ function FreelanceTab() {
         <div className="sm:grid sm:grid-cols-2 sm:gap-3 max-sm:space-y-3 max-sm:mx-auto max-sm:max-w-sm">
           {Object.entries(freelanceImages).map(([key, value]) => <img key={key} src={value as string}
             alt={key}
-            className="rounded-lg shadow" />)}
+            className="w-full" />)}
         </div>
       </div>
     </CardContent>
@@ -132,8 +131,8 @@ function TokenlabTab() {
 
 export function WorkExperience() {
   const orientation = useMediaQuery('(min-width: 640px)', { initializeWithValue: false }) ? 'vertical' : 'horizontal';
-  return <div className="space-y-2">
-    <h2 className="text-xl font-semibold flex items-center gap-3">Work Experience <Badge variant="secondary">5+ years</Badge></h2>
+  return <div className="space-y-4">
+    <h2 className="text-2xl md:text-3xl font-bold tracking-[-0.025em] flex items-baseline gap-3">Work experience <span className="text-base font-semibold text-muted-foreground tracking-normal">5+ years</span></h2>
     <Tabs defaultValue="kaffa" orientation={orientation}>
       <TabsList>
         <TabsTrigger value="kaffa">Kaffa</TabsTrigger>

@@ -3,7 +3,6 @@ import type { ImageMetadata } from 'astro';
 import FallbackImage from '../assets/og/home.png';
 import { BlogHeader } from '../components/blog/blog-header';
 import { Footer } from '../components/footer';
-import { AmbientBackground } from '../components/ambient-background';
 import { SITE_TITLE } from '../consts';
 import '../styles/global.css';
 
@@ -11,10 +10,11 @@ interface Props {
   title: string;
   description: string;
   image?: ImageMetadata;
-  compact?: boolean;
+  /** Path of the pivot to highlight when the URL alone doesn't say (e.g. a post's category). */
+  section?: string;
 }
 
-const { title, description, image, compact = false } = Astro.props;
+const { title, description, image, section } = Astro.props;
 const socialImage = image ?? FallbackImage;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 ---
@@ -72,11 +72,10 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <script defer src="https://umami.notjustanna.net/script.js" data-website-id="47e613ef-8ceb-404e-82b2-ccadf2561057"></script>
   </head>
   <body>
-    <AmbientBackground />
-    <div class={`relative grow max-[57.75rem]:mx-3 max-w-4xl min-[57.75rem]:mx-auto md:pt-6 ${compact ? 'pb-0 md:pb-6' : 'pb-6'} transition-all`}>
-      <slot name="header"><BlogHeader client:load /></slot>
+    <div class="grow w-full max-[57.75rem]:px-4 max-w-4xl min-[57.75rem]:mx-auto">
+      <slot name="header"><BlogHeader client:load pathname={Astro.url.pathname} section={section} /></slot>
       <main><slot /></main>
     </div>
-    <Footer compact={compact} />
+    <Footer />
   </body>
 </html>

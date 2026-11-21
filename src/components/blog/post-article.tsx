@@ -1,12 +1,13 @@
 import type { ImageMetadata } from 'astro';
 import type { ReactNode } from 'react';
-import { Card, CardContent } from '../ui/card';
+import { CategoryPill } from './category-pill';
 import { FormattedDate } from './formatted-date';
 
 interface PostArticleProps {
   title: string;
   pubDate: Date;
   updatedDate?: Date;
+  category?: 'dev' | 'tech' | 'ramblings';
   heroImage?: ImageMetadata;
   children?: ReactNode;
 }
@@ -15,38 +16,38 @@ export function PostArticle({
   title,
   pubDate,
   updatedDate,
+  category,
   heroImage,
   children,
 }: PostArticleProps) {
   return (
-    <Card className="overflow-hidden gap-0 py-0 hover:translate-y-0 -mx-3 rounded-none md:mx-0 md:rounded-2xl">
-      {heroImage && (
-        <div className="w-full">
-          <img
-            width={1020}
-            height={510}
-            src={heroImage.src}
-            alt=""
-            className="w-full object-cover"
-          />
-        </div>
-      )}
-      <CardContent className="p-6">
-        <div className="mb-6 text-center">
-          <p className="text-sm text-muted-foreground mb-2">
+    <article>
+      <header className="mb-8 md:mb-10">
+        <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-[-0.035em] leading-[1.05] text-balance m-0">
+          {title}
+        </h1>
+        <div className="mt-4 flex flex-wrap items-center gap-x-4 gap-y-1 text-muted-foreground">
+          <span>
             <FormattedDate date={pubDate} />
             {updatedDate && (
-              <span className="italic">
-                {' '}
-                &middot; Updated <FormattedDate date={updatedDate} />
-              </span>
+              <>
+                , updated <FormattedDate date={updatedDate} />
+              </>
             )}
-          </p>
-          <h1 className="text-4xl font-bold text-foreground">{title}</h1>
-          <hr className="mt-4 border-border" />
+          </span>
+          {category && <CategoryPill category={category} />}
         </div>
-        <div className="prose">{children}</div>
-      </CardContent>
-    </Card>
+      </header>
+      {heroImage && (
+        <img
+          width={1020}
+          height={510}
+          src={heroImage.src}
+          alt=""
+          className="w-full object-cover mb-8 md:mb-12 max-[57.75rem]:-mx-4 max-[57.75rem]:w-[calc(100%+2rem)] max-w-none"
+        />
+      )}
+      <div className="prose">{children}</div>
+    </article>
   );
 }

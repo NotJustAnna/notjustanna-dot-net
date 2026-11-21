@@ -1,4 +1,4 @@
-import { Badge } from '@/components/ui/badge';
+import type { Category } from '@/lib/posts';
 
 const hrefs = {
   dev: '/development',
@@ -6,23 +6,34 @@ const hrefs = {
   ramblings: '/ramblings',
 } as const;
 
-export function CategoryPill({ category }: { category: 'dev' | 'tech' | 'ramblings' }) {
+/** Static class names so Tailwind picks them up. */
+export const CATEGORY_BG = {
+  dev: 'bg-cat-dev',
+  tech: 'bg-cat-tech',
+  ramblings: 'bg-cat-ramblings',
+} as const;
+
+/** A small square of the category's colour, then its name. */
+export function CategoryPill({ category }: { category: Category }) {
   return (
-    <Badge variant="outline" asChild>
-      <a href={hrefs[category]} className="no-underline font-mono">
-        #{category}
-      </a>
-    </Badge>
+    <a
+      href={hrefs[category]}
+      className="inline-flex items-center gap-1.5 no-underline text-muted-foreground hover:text-foreground transition-colors"
+    >
+      <span aria-hidden="true" className={`size-2.5 ${CATEGORY_BG[category]}`} />
+      {category}
+    </a>
   );
 }
 
 export function FeaturedPill() {
   return (
-    <Badge variant="outline" asChild>
-      <a href="/featured" className="no-underline font-mono">
-        #featured
-      </a>
-    </Badge>
+    <a
+      href="/featured"
+      className="inline-flex items-center gap-1.5 no-underline text-muted-foreground hover:text-foreground transition-colors"
+    >
+      <span aria-hidden="true" className="size-2.5 bg-primary" />
+      featured
+    </a>
   );
 }
- 

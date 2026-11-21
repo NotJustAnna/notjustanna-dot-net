@@ -36,15 +36,13 @@ function ProjectCard({ icon, title, description, children }: ProjectCardProps) {
 export function ProjectSpotlight() {
   const hasArrows = useMediaQuery('(min-width: 640px)', { initializeWithValue: false });
 
-  return <div className="space-y-2">
-    <h2 className="text-xl font-semibold">
-            Projects I&apos;m Proud Of
-    </h2>
-    <Carousel className="max-sm:-mx-3 max-sm:w-screen max-lg:mx-auto min-sm:max-lg:w-[calc(100vw-150px)] lg:w-full" opts={{align: hasArrows ? "start" : "center"}}>
-      <CarouselContent className="max-sm:ps-3">
+  return <div className="space-y-4">
+    <h2 className="text-2xl md:text-3xl font-bold tracking-[-0.025em]">Projects I&apos;m proud of</h2>
+    <Carousel className="max-sm:-mx-4 max-sm:w-screen max-lg:mx-auto min-sm:max-lg:w-[calc(100vw-150px)] lg:w-full" opts={{align: hasArrows ? "start" : "center"}}>
+      <CarouselContent className="max-sm:ps-4">
         <CarouselItem className="basis-5/6 sm:basis-full md:basis-1/2">
           <ProjectCard
-            icon={<Layers className="size-12 bg-[#020618] text-white rounded-xl p-1.5"/>}
+            icon={<Layers className="size-12 bg-primary text-primary-foreground p-2"/>}
             title="SeamStack"
             description="A not-a-framework for full-stack web apps."
           >
@@ -60,7 +58,7 @@ export function ProjectSpotlight() {
         </CarouselItem>
         <CarouselItem className="basis-5/6 sm:basis-full md:basis-1/2">
           <ProjectCard
-            icon={<img src="https://avatars.githubusercontent.com/u/64380743?v=4" alt="Nanoflakes Icon" className="size-12 bg-white rounded-xl p-0.5" />}
+            icon={<img src="https://avatars.githubusercontent.com/u/64380743?v=4" alt="Nanoflakes Icon" className="size-12 bg-white p-0.5" />}
             title="Nanoflakes"
             description="Unique IDs for small apps."
           >
@@ -75,7 +73,7 @@ export function ProjectSpotlight() {
         </CarouselItem>
         <CarouselItem className="basis-5/6 sm:basis-full md:basis-1/2">
           <ProjectCard
-            icon={<Cable className="size-12 bg-[#020618] text-white rounded-xl p-1.5"/>}
+            icon={<Cable className="size-12 bg-primary text-primary-foreground p-2"/>}
             title="Aux Cable"
             description="Discord Audio streaming made easy."
           >
@@ -90,7 +88,7 @@ export function ProjectSpotlight() {
         </CarouselItem>
         <CarouselItem className="basis-5/6 sm:basis-full md:basis-1/2">
           <ProjectCard
-            icon={<img src="https://cdn.jsdelivr.net/gh/notjustanna/Lin@main/resources/logo.svg" alt="Lin Icon" className="size-12 bg-blue-200 rounded-xl p-0.5" />}
+            icon={<img src="https://cdn.jsdelivr.net/gh/notjustanna/Lin@main/resources/logo.svg" alt="Lin Icon" className="size-12 bg-white p-0.5" />}
             title="Lin, Tartar & LeanVM"
             description="Lean, multiplatform programming language."
           >
@@ -104,7 +102,7 @@ export function ProjectSpotlight() {
             </p>
           </ProjectCard>
         </CarouselItem>
-        <CarouselItem className="basis-5/6 sm:basis-full md:basis-1/2 max-sm:pe-3">
+        <CarouselItem className="basis-5/6 sm:basis-full md:basis-1/2 max-sm:pe-4">
           <ProjectCard
             title="Open-Source Contributions"
             description="RethinkDB, Nanojson, WebviewJava, JDA, Catnip"

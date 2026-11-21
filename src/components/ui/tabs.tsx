@@ -10,8 +10,8 @@ const tabVariants = cva(
   {
     variants: {
       orientation: {
-        horizontal: "flex-col gap-2",
-        vertical: "flex-row gap-2",
+        horizontal: "flex-col gap-4",
+        vertical: "flex-row gap-4",
       }
     },
     defaultVariants: {
@@ -39,19 +39,16 @@ function TabsList({
   className,
   ...props
 }: React.ComponentProps<typeof TabsPrimitive.List>) {
+  // Metro pivot: no box, just words. Scrolls sideways when they don't fit.
   const inlineClasses = `
-  bg-muted
-  text-muted-foreground
-  inline-flex
-  data-[orientation=vertical]:flex
+  flex
+  gap-x-5
+  data-[orientation=horizontal]:overflow-x-auto
+  data-[orientation=horizontal]:scrollbar-none
   data-[orientation=vertical]:flex-col
-  data-[orientation=horizontal]:h-9
-  data-[orientation=vertical]:flex-shrink-1
-  w-fit
-  items-center
-  justify-center
-  rounded-lg
-  p-[3px]
+  data-[orientation=vertical]:gap-y-1
+  data-[orientation=vertical]:shrink-0
+  data-[orientation=vertical]:pe-6
   `;
 
   return (
@@ -71,38 +68,21 @@ function TabsTrigger({
   ...props
 }: React.ComponentProps<typeof TabsPrimitive.Trigger>) {
   const inlineClasses = `
-  data-[state=active]:bg-background
-  dark:data-[state=active]:text-foreground
-  focus-visible:border-ring
-  focus-visible:ring-ring/50
-  focus-visible:outline-ring
-  dark:data-[state=active]:border-input
-  dark:data-[state=active]:bg-input/30
-  text-foreground
-  dark:text-muted-foreground
-  inline-flex
-  data-[orientation=horizontal]:h-[calc(100%-1px)]
-  data-[orientation=horizontal]:flex-1
-  items-center
-  justify-center
-  gap-1.5
-  rounded-md
-  border
-  border-transparent
-  px-2
-  py-1
-  text-sm
-  font-medium
+  text-2xl
+  md:text-3xl
+  font-bold
+  tracking-[-0.025em]
+  leading-tight
+  text-left
   whitespace-nowrap
-  transition-[color,box-shadow]
-  focus-visible:ring-[3px]
-  focus-visible:outline-1
+  lowercase
+  text-foreground/25
+  hover:text-foreground/60
+  data-[state=active]:text-foreground
+  transition-colors
+  cursor-pointer
   disabled:pointer-events-none
   disabled:opacity-50
-  data-[state=active]:shadow-sm
-  [&_svg]:pointer-events-none
-  [&_svg]:shrink-0
-  [&_svg:not([class*='size-'])]:size-4
   `;
 
   return (

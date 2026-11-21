@@ -6,7 +6,7 @@ import {ProjectSpotlight} from "@/components/about-page/project-spotlight.tsx";
 export function MainPage() {
   return <>
     <Leading/>
-    <div className="my-4 md:my-10 space-y-4 md:space-y-10">
+    <div className="mt-16 md:mt-20 space-y-16 md:space-y-20">
       <WorkExperience/>
       <KnowledgeSpotlight/>
       <ProjectSpotlight/>

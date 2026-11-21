@@ -16,7 +16,7 @@ const enhanceClasses: Record<string, string> = {
 
 function KnowledgeItem({ value }: { value: Knowledge }) {
   return <a href={value.link} className="flex flex-col items-center gap-1.5 text-center hover:scale-115 transition-transform duration-200 ease-in-out">
-    <div className="size-12 bg-white rounded-2xl flex items-center">
+    <div className="size-12 bg-white flex items-center">
       <img src={value.icon} alt={`${value.name} Icon`} className="p-2" />
     </div>
     <div className="text-xs font-semibold text-muted-foreground text-center text-balance">{value.name}</div>
@@ -25,8 +25,8 @@ function KnowledgeItem({ value }: { value: Knowledge }) {
 
 function MinorKnowledge({ value }: { value: Knowledge }) {
   return <a href={value.link} className="flex items-center gap-2 hover:scale-115 transition-transform duration-200 ease-in-out">
-    {(value.custom === "fullsize") ? <img src={value.icon} alt={`${value.name} Icon`} className="size-6 min-[360px]:size-8 rounded-lg" /> :
-      <div className="size-6 min-[360px]:size-8 rounded-lg bg-white flex items-center">
+    {(value.custom === "fullsize") ? <img src={value.icon} alt={`${value.name} Icon`} className="size-6 min-[360px]:size-8" /> :
+      <div className="size-6 min-[360px]:size-8 bg-white flex items-center">
         <img src={value.icon} alt={`${value.name} Icon`} className={enhanceClasses[value.custom || ""] || "p-1"} />
       </div>}
     <div className="text-xs font-semibold text-muted-foreground min-sm:w-16 text-balance flex-1 ">{value.name}</div>
@@ -102,13 +102,13 @@ function KnowledgeCategoryCard({
 
 export function KnowledgeSpotlight() {
   const hasArrows = useMediaQuery('(min-width: 640px)', { initializeWithValue: false });
-  return <div className="space-y-2">
-    <div>
-      <h2 className="text-xl font-semibold">I already worked with…</h2>
+  return <div className="space-y-4">
+    <div className="space-y-1">
+      <h2 className="text-2xl md:text-3xl font-bold tracking-[-0.025em]">I already worked with…</h2>
       <p>… at least <strong>{knowledgebase.count} different technologies</strong>. Not all of them by choice. I&apos;d use most of them again.</p>
     </div>
-    <Carousel className="max-sm:-mx-3 max-sm:w-screen max-lg:mx-auto min-sm:max-lg:w-[calc(100vw-150px)] lg:w-full" opts={{align: hasArrows ? "start" : "center"}}>
-      <CarouselContent className="max-sm:ps-3">
+    <Carousel className="max-sm:-mx-4 max-sm:w-screen max-lg:mx-auto min-sm:max-lg:w-[calc(100vw-150px)] lg:w-full" opts={{align: hasArrows ? "start" : "center"}}>
+      <CarouselContent className="max-sm:ps-4">
         <CarouselItem className="basis-5/6 sm:basis-full md:basis-1/2 lg:basis-1/3">
           <KnowledgeCategoryCard title="Back-end development" items={knowledgebase.backend.spotlight} moreItems={knowledgebase.backend.others} />
         </CarouselItem>
@@ -131,7 +131,7 @@ export function KnowledgeSpotlight() {
           <KnowledgeCategoryCard
             title="Amazon Web Services"
             description="Years of it on cloud-first projects."
-            headerIcon={<img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" alt="AWS Icon" className="max-sm:hidden size-12 bg-white rounded-xl p-1.5" />}
+            headerIcon={<img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" alt="AWS Icon" className="max-sm:hidden size-12 bg-white p-1.5" />}
             items={knowledgebase.aws.spotlight}
             moreItems={knowledgebase.aws.others}
             moreLabelWide="More services deployed:"
@@ -143,7 +143,7 @@ export function KnowledgeSpotlight() {
         <CarouselItem className="basis-5/6 sm:basis-full md:basis-1/2 lg:basis-1/3">
           <KnowledgeCategoryCard title="Databases" description="From local to global, be it SQL or Not." items={knowledgebase.databases.all} />
         </CarouselItem>
-        <CarouselItem className="basis-5/6 sm:basis-full md:basis-1/2 lg:basis-1/3 max-sm:pe-3">
+        <CarouselItem className="basis-5/6 sm:basis-full md:basis-1/2 lg:basis-1/3 max-sm:pe-4">
           <KnowledgeCategoryCard title="Embedded" description="Fewer abstractions, more consequences." items={knowledgebase.embedded.all} itemVariant="full" />
         </CarouselItem>
       </CarouselContent>
