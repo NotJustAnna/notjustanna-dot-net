@@ -6,7 +6,11 @@
  * Backgrounds are left to CSS (`.prose pre`), so blocks sit inset in the post card.
  */
 
-/** @param {Record<string, string>} c */
+/**
+ * @param {string} name
+ * @param {'light' | 'dark'} type
+ * @param {Record<string, string>} c
+ */
 function theme(name, type, c) {
   return {
     name,

@@ -33,11 +33,11 @@ import vpcLogo from "@/assets/brands/aws/vpc.svg?url";
 import bedrockLogo from "@/assets/brands/ai/bedrock.png?url";
 import claudeLogo from "@/assets/brands/ai/claude.png?url";
 import ollamaLogo from "@/assets/brands/ai/ollama.png?url";
-import qwenLogo from "@/assets/brands/ai/qwen.png?url";
-import gemmaLogo from "@/assets/brands/ai/gemma.png?url";
-import phiLogo from "@/assets/brands/ai/copilot.png?url";
 import crowCiLogo from "@/assets/brands/crowci.svg?url";
 import piLogo from "@/assets/brands/pi.svg?url";
+import pollyLogo from "@/assets/brands/aws/polly.svg?url";
+import openaiLogo from "@/assets/brands/ai/openai.png?url";
+import graalvmLogo from "@/assets/brands/graalvm.png?url";
 
 export interface Knowledge {
   name: string;
@@ -55,7 +55,7 @@ function k(name: string, icon: string, link: string, custom?: string): Knowledge
   return { name, icon, link, custom };
 }
 
-const K = {
+export const K = {
   aws: {
     apigateway: k("API Gateway", apiGatewayLogo, "https://aws.amazon.com/api-gateway", "fullsize"),
     aurora: k("RDS Aurora", auroraLogo, "https://aws.amazon.com/aurora", "fullsize"),
@@ -74,6 +74,7 @@ const K = {
     eks: k("EKS", eksLogo, "https://aws.amazon.com/eks", "fullsize"),
     iam: k("IAM", iamLogo, "https://aws.amazon.com/iam", "fullsize"),
     lambda: k("Lambda", lambdaLogo, "https://aws.amazon.com/lambda", "fullsize"),
+    polly: k("Polly", pollyLogo, "https://aws.amazon.com/polly", "fullsize"),
     route53: k("Route 53", route53Logo, "https://aws.amazon.com/route53", "fullsize"),
     s3: k("S3", s3Logo, "https://aws.amazon.com/s3", "fullsize"),
     ses: k("SES", sesLogo, "https://aws.amazon.com/ses", "fullsize"),
@@ -84,8 +85,10 @@ const K = {
   },
   backend: {
     express: k("Express", "https://cdn.jsdelivr.net/npm/devicon@2.16.0/icons/express/express-original.svg", "https://expressjs.com"),
+    fastify: k("Fastify", "https://cdn.jsdelivr.net/npm/devicon@2.16.0/icons/fastify/fastify-original.svg", "https://fastify.dev/"),
     graphql: k("GraphQL", "https://www.vectorlogo.zone/logos/graphql/graphql-icon.svg", "https://graphql.org"),
     helidon: k("Helidon", helidonLogo, "https://helidon.io"),
+    ktor: k("Ktor", "https://cdn.jsdelivr.net/npm/devicon@2.16.0/icons/ktor/ktor-original.svg", "https://ktor.io/"),
     jdbi: k("JDBI", "https://cdn.jsdelivr.net/gh/jdbi/jdbi@refs/heads/master/docs/src/adoc/images/logo.svg", "https://jdbi.org", "bigger-1"),
     micronaut: k("Micronaut", micronautLogo, "https://www.micronaut.com/", "bigger-3"),
     nestjs: k("NestJS", "https://cdn.jsdelivr.net/npm/devicon@2.16.0/icons/nestjs/nestjs-original.svg", "https://nestjs.com/"),
@@ -148,6 +151,7 @@ const K = {
     electron: k("Electron", "https://cdn.jsdelivr.net/npm/devicon@2.16.0/icons/electron/electron-original.svg", "https://www.electronjs.org", "bigger-4"),
     figma: k("Figma", "https://www.vectorlogo.zone/logos/figma/figma-icon.svg", "https://www.figma.com/"),
     git: k("Git", "https://cdn.jsdelivr.net/npm/devicon@2.16.0/icons/git/git-original.svg", "https://git-scm.com/", "bigger-1"),
+    graalvm: k("GraalVM", graalvmLogo, "https://www.graalvm.org/", "fullsize"),
     gradle: k("Gradle", "https://cdn.jsdelivr.net/npm/devicon@2.16.0/icons/gradle/gradle-original.svg", "https://gradle.org", "bigger-1"),
     insomnia: k("Insomnia", "https://cdn.jsdelivr.net/npm/devicon@2.16.0/icons/insomnia/insomnia-original.svg", "https://insomnia.rest"),
     intellij: k("IntelliJ", "https://cdn.jsdelivr.net/npm/devicon@2.16.0/icons/intellij/intellij-original.svg", "https://www.jetbrains.com/idea/", "bigger-2"),
@@ -160,6 +164,7 @@ const K = {
     podman: k("Podman", "https://cdn.jsdelivr.net/npm/devicon@2.16.0/icons/podman/podman-original.svg", "https://podman.io/", "bigger-2"),
     puppeteer: k("Puppeteer", "https://cdn.jsdelivr.net/npm/devicon@2.16.0/icons/puppeteer/puppeteer-original.svg", "https://github.com/puppeteer/puppeteer"),
     redis: k("Redis", "https://cdn.jsdelivr.net/npm/devicon@2.16.0/icons/redis/redis-original.svg", "https://redis.io", "bigger-1"),
+    rolldown: k("Rolldown", "https://cdn.jsdelivr.net/npm/simple-icons@16.38.0/icons/rolldown.svg", "https://rolldown.rs/"),
     rxjs: k("RxJS", "https://cdn.jsdelivr.net/npm/devicon@2.16.0/icons/rxjs/rxjs-original.svg", "https://rxjs.dev", "bigger-1"),
     ssh: k("SSH", "https://cdn.jsdelivr.net/npm/devicon@2.16.0/icons/ssh/ssh-original-wordmark.svg", "https://www.ssh.com/ssh/", "bigger-3"),
     tailscale: k("Tailscale", "https://cdn.jsdelivr.net/npm/simple-icons@16.38.0/icons/tailscale.svg", "https://tailscale.com/"),
@@ -192,6 +197,7 @@ const K = {
     bash: k("Bash", "https://cdn.jsdelivr.net/npm/devicon@2.16.0/icons/bash/bash-original.svg", "https://www.gnu.org/software/bash/", "bigger-3"),
     c: k("C", "https://cdn.jsdelivr.net/npm/devicon@2.16.0/icons/c/c-original.svg", "https://en.wikipedia.org/wiki/C_(programming_language)"),
     cpp: k("C++", "https://cdn.jsdelivr.net/npm/devicon@2.16.0/icons/cplusplus/cplusplus-original.svg", "https://en.wikipedia.org/wiki/C%2B%2B", "bigger-2"),
+    go: k("Go", "https://cdn.jsdelivr.net/npm/devicon@2.16.0/icons/go/go-original-wordmark.svg", "https://go.dev/", "bigger-2"),
     java: k("Java", "https://cdn.jsdelivr.net/npm/devicon@2.16.0/icons/java/java-original.svg", "https://www.java.com", "bigger-2"),
     js: k("JavaScript", "https://cdn.jsdelivr.net/npm/devicon@2.16.0/icons/javascript/javascript-original.svg", "https://www.javascript.com/", "fullsize"),
     kt: k("Kotlin", "https://cdn.jsdelivr.net/npm/devicon@2.16.0/icons/kotlin/kotlin-original.svg", "https://kotlinlang.org", "bigger-4"),
@@ -207,11 +213,10 @@ const K = {
     copilot: k("GitHub Copilot", "https://cdn.jsdelivr.net/npm/devicon@2.16.0/icons/github/github-original.svg", "https://github.com/features/copilot"),
     cursor: k("Cursor", "https://www.cursor.com/favicon.ico", "https://www.cursor.com/", "fullsize"),
     ollama: k("Ollama", ollamaLogo, "https://ollama.com/", "fullsize"),
+    whisper: k("Whisper", openaiLogo, "https://github.com/openai/whisper", "fullsize"),
+    codex: k("Codex", openaiLogo, "https://openai.com/codex/", "fullsize"),
     antigravity: k("Antigravity", "https://cdn.jsdelivr.net/npm/simple-icons@16.38.0/icons/googlegemini.svg", "https://gemini.google.com"),
     mcp: k("MCP", "https://cdn.jsdelivr.net/npm/simple-icons@16.38.0/icons/modelcontextprotocol.svg", "https://modelcontextprotocol.io/"),
-    qwen: k("Qwen", qwenLogo, "https://qwenlm.github.io/", "fullsize"),
-    gemma: k("Gemma", gemmaLogo, "https://ai.google.dev/gemma", "fullsize"),
-    phi: k("Microsoft Phi", phiLogo, "https://azure.microsoft.com/en-us/products/phi", "fullsize"),
   }
 };
 
@@ -232,15 +237,16 @@ export const knowledgebase = {
       K.aws.aurora, K.aws.ses,
       K.aws.sns, K.aws.sqs,
       K.aws.ssm, K.aws.vpc,
+      K.aws.polly,
     ],
   },
   backend: {
     spotlight: [
       K.backend.graphql, K.backend.micronaut,
-      K.backend.serverless, K.backend.spring,
-      K.backend.helidon, K.backend.prisma,
+      K.backend.ktor, K.backend.spring,
+      K.backend.prisma,
     ],
-    others: [K.backend.express, K.backend.nestjs, K.backend.jdbi, K.backend.sequelize, K.backend.typeorm],
+    others: [K.backend.fastify, K.backend.serverless, K.backend.helidon, K.backend.express, K.backend.nestjs, K.backend.jdbi, K.backend.sequelize, K.backend.typeorm],
   },
   collaboration: {
     spotlight: [
@@ -276,13 +282,13 @@ export const knowledgebase = {
   deployment: {
     spotlight: [
       K.deploy.aws,
-      K.deploy.cloudflare,
       K.deploy.terraform,
       K.deploy.kubernetes,
       K.deploy.ghactions,
       K.deploy.ubuntu,
     ],
     others: [
+      K.deploy.cloudflare,
       K.deploy.crowci,
       K.deploy.sonarqube,
       K.deploy.teamcity,
@@ -300,17 +306,20 @@ export const knowledgebase = {
   },
   development: {
     spotlight: [
-      K.dev.intellij, K.dev.webstorm,
-      K.dev.vsCode, K.dev.nodeJs,
-      K.dev.docker, K.dev.bun,
-      K.dev.git, K.dev.linux,
+      K.dev.vsCode, K.dev.intellij,
+      K.dev.nodeJs,
+      K.dev.docker, K.dev.podman,
+      K.dev.bun,
     ],
     others: [
+      K.dev.git,
+      K.dev.linux,
+      K.dev.webstorm,
       K.dev.gradle,
+      K.dev.graalvm,
       K.dev.yarn,
       K.dev.npm,
       K.dev.pnpm,
-      K.dev.podman,
       K.dev.electron,
       K.dev.figma,
       K.dev.insomnia,
@@ -318,6 +327,7 @@ export const knowledgebase = {
       K.dev.playwright,
       K.dev.puppeteer,
       K.dev.redis,
+      K.dev.rolldown,
       K.dev.rxjs,
       K.dev.ssh,
       K.dev.tailscale,
@@ -333,41 +343,32 @@ export const knowledgebase = {
     spotlight: [
       K.frontend.vite, K.frontend.tailwind,
       K.frontend.react, K.frontend.astro,
-      K.frontend.shadcn, K.frontend.sass,
+      K.frontend.shadcn,
     ],
-    others: [K.frontend.html5, K.frontend.css3, K.frontend.nextjs, K.frontend.bootstrap, K.frontend.bulma, K.frontend.materialize, K.frontend.mui],
+    others: [K.frontend.sass, K.frontend.html5, K.frontend.css3, K.frontend.nextjs, K.frontend.bootstrap, K.frontend.bulma, K.frontend.materialize, K.frontend.mui],
   },
   languages: {
     spotlight: [
       K.lang.java, K.lang.kt,
-      K.lang.ts, K.lang.js,
-      K.lang.c, K.lang.cpp,
+      K.lang.ts, K.lang.go,
     ],
-    others: [K.lang.lua, K.lang.pwsh, K.lang.bash]
+    others: [K.lang.js, K.lang.c, K.lang.cpp, K.lang.lua, K.lang.pwsh, K.lang.bash]
   },
   ai: {
     spotlight: [
       K.ai.claudeCode,
       K.ai.pi,
       K.ai.openrouter,
-      K.ai.museSpark,
-      K.ai.cursor,
-      K.ai.ollama,
       K.ai.mcp,
     ],
     others: [
+      K.ai.museSpark,
+      K.ai.ollama,
+      K.ai.cursor,
+      K.ai.codex,
       K.ai.copilot,
       K.ai.antigravity,
-      K.ai.qwen,
-      K.ai.gemma,
-      K.ai.phi,
+      K.ai.whisper,
     ],
   },
-  count: 0,
 };
-
-knowledgebase.count = Object.values(knowledgebase).reduce((acc: number, it) => {
-  return typeof it !== "object"
-    ? acc
-    : Object.values(it).reduce((subAcc, subIt) => subAcc + subIt.length, acc);
-}, 0);
