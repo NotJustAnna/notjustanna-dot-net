@@ -79,13 +79,23 @@ My last post was about how the i5 stopped needing to get faster once daily usage
 
 It went straight into the V14's old job as the ambient computing layer of the apartment. Anime on my chest, recipes on the counter, plugged into the TV.
 
-Which left the V14 without a job.
+Which was, technically speaking, the end of the line for the V14.
+
+> **Lenovo V14 G2**
+>
+> 2021–2026
+>
+> Survived Canada, three moves, two job changes and a cracked bezel. Never once crashed the ACPI stack.
+
+Press F to pay respects.
+
+...
 
 ---
 
 ## Alone in the Dark
 
-The V14 has 24GB of RAM. The Oracle VM the cloud half of my homelab runs on has 12.
+Hold on. The V14 has 24GB of RAM. The Oracle VM the cloud half of my homelab runs on has 12.
 
 It took a Thursday. Ubuntu Server 26.04, installed off my Ventoy stick, with Ventoy's `auto_install` plugin feeding an autoinstall file to the stock ISO. No custom image. The 1TB Crucial BX500 that had been holding the entire media library inside the desktop came out and went into the laptop's 2.5" bay.
 
