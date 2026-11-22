@@ -6,6 +6,9 @@ category: tech
 heroImage: '../../assets/blog/gaming-pc.jpg'
 heroCrop: center-right
 ---
+
+> **Update, November 2026:** The media stack has since moved off the desktop and onto an old laptop with a broken lid sensor. The premise still holds, the machine changed. See ["My laptop can't tell its lid is closed. It's a server now."](/post/my-laptop-is-a-server-now/)
+
 Right now my desktop is turning an anime episode into something my TV is willing to decode. It's also running the game I'm actually looking at, on the monitor I'm actually looking at. The fans have not moved. The frame counter has not moved either.
 
 The machine does not consider these two things to be in conflict.

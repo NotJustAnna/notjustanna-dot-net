@@ -6,6 +6,8 @@ category: tech
 heroImage: '../../assets/blog/laptop.jpg'
 ---
 
+> **Update, November 2026:** The chassis gave out first, as predicted. See ["My laptop can't tell its lid is closed. It's a server now."](/post/my-laptop-is-a-server-now/)
+
 At my first job, I worked for three years. A month before I left, I realized I needed a new laptop.
 
 At the time, I had a Dell Inspiron 7559, bought years before that job, and purchasing it was one of the most haunting decisions I'd made up to that point. Core i7-6700HQ, GTX 960M, and a thermal design philosophy best described as "optimistic." 95°C wasn't a warning. It was operating temperature. It ate thermal paste for breakfast and asked for more. The ACPI driver crashed regularly enough that I learned to yank the internal battery connector at 3AM using a knife as a screwdriver.
