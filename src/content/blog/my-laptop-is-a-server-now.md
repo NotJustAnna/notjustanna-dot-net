@@ -99,6 +99,8 @@ The broken lid sensor turns out to be the most server-appropriate thing about th
 
 I can close the lid now. It still won't find out.
 
+So I did. It lives under the router now, lid shut, screen on for all it knows.
+
 Its hostname is `aloneinthedark`. I name my machines after Siamés songs; the Oracle VM has been `summernights` this entire time, and you're only hearing about it now because it finally has a sibling.
 
 ---
