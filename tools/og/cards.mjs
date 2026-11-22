@@ -9,7 +9,7 @@ export const cards = [
   {
     out: 'home.png',
     title: 'I build software for a living and infrastructure for fun.',
-    body: 'Kubernetes on a free-tier VM, on purpose. Firmware I had no business reading. Whatever broke this week.',
+    body: 'The stupidest ideas, applied in the best way possible.',
   },
   {
     out: 'about.png',

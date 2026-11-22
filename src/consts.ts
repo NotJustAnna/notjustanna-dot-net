@@ -3,4 +3,4 @@
 
 export const SITE_TITLE = 'NotJustAnna.net';
 export const SITE_DESCRIPTION =
-  'I build software for a living and infrastructure for fun. Kubernetes on a free-tier VM, firmware I had no business reading, and whatever broke this week.';
+  'I build software for a living and infrastructure for fun. The stupidest ideas, applied in the best way possible.';
